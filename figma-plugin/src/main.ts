@@ -14,11 +14,12 @@ const COMMANDS = {
   ANALYZE_SELECTION: 'analyze-selection'
 } as const;
 
-// Show plugin UI
+// Show plugin UI immediately
 figma.showUI(__html__, {
   width: 400,
   height: 600,
-  themeColors: true
+  themeColors: true,
+  title: 'H2WW Component Library'
 });
 
 // Handle plugin commands
