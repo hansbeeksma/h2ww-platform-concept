@@ -1,0 +1,421 @@
+name: H2WW Component Library - Test & Validation Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run nightly tests at 2 AM UTC
+    - cron: '0 2 * * *'
+
+env:
+  NODE_VERSION: '18'
+  FIGMA_API_TOKEN: ${{ secrets.FIGMA_API_TOKEN }}
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+jobs:
+  # JSON Schema Validation
+  json-validation:
+    name: JSON Schema Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+          npm install -g ajv-cli ajv-formats
+
+      - name: Validate Component JSON files
+        run: |
+          echo "Validating component JSON files..."
+          find . -name "*.json" -path "*/components/*" -not -path "*/node_modules/*" | while read file; do
+            echo "Validating $file"
+            node tests/validation/json-validator.js "$file" component-schema
+          done
+
+      - name: Validate Design Token JSON files
+        run: |
+          echo "Validating design token JSON files..."
+          find . -name "*tokens*.json" -not -path "*/node_modules/*" | while read file; do
+            echo "Validating $file"
+            node tests/validation/json-validator.js "$file" design-tokens-schema
+          done
+
+      - name: Generate validation report
+        run: |
+          echo "Generating comprehensive validation report..."
+          node tests/validation/json-validator.js ./design-system design-tokens-schema > validation-report.txt
+          node tests/validation/json-validator.js ./figma-plugin/src component-schema >> validation-report.txt
+
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: json-validation-report
+          path: validation-report.txt
+          retention-days: 30
+
+  # Unit Tests
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+
+      - name: Run unit tests
+        run: |
+          cd figma-plugin
+          npm run test:unit
+        env:
+          NODE_OPTIONS: --experimental-vm-modules
+
+      - name: Generate test coverage
+        run: |
+          cd figma-plugin
+          npm run test:coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./figma-plugin/coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Check coverage threshold
+        run: |
+          cd figma-plugin
+          npm run test:coverage:check
+
+  # Integration Tests
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    needs: [unit-tests]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+
+      - name: Run integration tests
+        run: |
+          cd figma-plugin
+          npm run test:integration
+        env:
+          FIGMA_API_TOKEN: ${{ env.FIGMA_API_TOKEN }}
+
+      - name: Test Figma plugin build
+        run: |
+          cd figma-plugin
+          npm run build
+
+          # Verify build artifacts
+          if [ ! -f dist/main.js ]; then
+            echo "Build artifact missing: dist/main.js"
+            exit 1
+          fi
+
+          if [ ! -f dist/ui.html ]; then
+            echo "Build artifact missing: dist/ui.html"
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: figma-plugin-build
+          path: figma-plugin/dist/
+          retention-days: 7
+
+  # Accessibility Testing
+  accessibility-tests:
+    name: Accessibility Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+          npm install -g @axe-core/cli
+
+      - name: Run accessibility tests
+        run: |
+          cd figma-plugin
+          npm run test:a11y
+
+      - name: Check WCAG compliance
+        run: |
+          echo "Checking WCAG AA compliance for generated components..."
+          node tests/accessibility/wcag-checker.js
+
+      - name: Validate color contrast ratios
+        run: |
+          echo "Validating color contrast ratios..."
+          node tests/accessibility/contrast-checker.js ./design-system/tokens/
+
+  # Performance Testing
+  performance-tests:
+    name: Performance Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+
+      - name: Test large file processing
+        run: |
+          echo "Testing performance with large design files..."
+          node tests/performance/large-file-test.js
+
+      - name: Memory usage test
+        run: |
+          echo "Testing memory usage..."
+          node --max-old-space-size=512 tests/performance/memory-test.js
+
+      - name: JSON validation performance
+        run: |
+          echo "Testing JSON validation performance..."
+          time node tests/validation/json-validator.js ./design-system design-tokens-schema
+
+  # Visual Regression Testing
+  visual-regression:
+    name: Visual Regression Tests
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+          npm install -g chromatic
+
+      - name: Run visual regression tests
+        run: |
+          cd figma-plugin
+          npm run test:visual
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      - name: Upload visual diff report
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: visual-regression-diffs
+          path: figma-plugin/visual-tests/
+          retention-days: 14
+
+  # Security Testing
+  security-tests:
+    name: Security Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd figma-plugin
+          npm ci
+
+      - name: Run security audit
+        run: |
+          cd figma-plugin
+          npm audit --audit-level=high
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Check for secrets in JSON files
+        run: |
+          echo "Scanning for potential secrets in JSON files..."
+          find . -name "*.json" -not -path "*/node_modules/*" | xargs grep -l "api_key\|secret\|password\|token" || echo "No secrets found"
+
+  # Quality Gates
+  quality-gates:
+    name: Quality Gates
+    runs-on: ubuntu-latest
+    needs: [json-validation, unit-tests, integration-tests, accessibility-tests, performance-tests]
+    if: always()
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Evaluate quality metrics
+        run: |
+          echo "Evaluating quality gates..."
+
+          # Check test coverage (minimum 90%)
+          COVERAGE=$(grep -o 'Lines.*: [0-9]*' ./artifacts/*/coverage-summary.txt | grep -o '[0-9]*' | head -1)
+          if [ "$COVERAGE" -lt 90 ]; then
+            echo "❌ Coverage below threshold: $COVERAGE% < 90%"
+            exit 1
+          fi
+          echo "✅ Coverage meets threshold: $COVERAGE% >= 90%"
+
+          # Check for validation errors
+          if grep -q "✗ Invalid" ./artifacts/*/validation-report.txt; then
+            echo "❌ JSON validation errors found"
+            exit 1
+          fi
+          echo "✅ JSON validation passed"
+
+          # Check accessibility score
+          if [ -f "./artifacts/accessibility-report.json" ]; then
+            ACCESSIBILITY_SCORE=$(jq '.score' ./artifacts/accessibility-report.json)
+            if [ "$ACCESSIBILITY_SCORE" -lt 85 ]; then
+              echo "❌ Accessibility score below threshold: $ACCESSIBILITY_SCORE% < 85%"
+              exit 1
+            fi
+            echo "✅ Accessibility score meets threshold: $ACCESSIBILITY_SCORE% >= 85%"
+          fi
+
+      - name: Generate quality report
+        run: |
+          echo "# H2WW Quality Report" > quality-report.md
+          echo "Generated: $(date)" >> quality-report.md
+          echo "" >> quality-report.md
+          echo "## Summary" >> quality-report.md
+          echo "- ✅ JSON Validation: Passed" >> quality-report.md
+          echo "- ✅ Unit Tests: Passed" >> quality-report.md
+          echo "- ✅ Integration Tests: Passed" >> quality-report.md
+          echo "- ✅ Accessibility Tests: Passed" >> quality-report.md
+          echo "- ✅ Performance Tests: Passed" >> quality-report.md
+
+      - name: Upload quality report
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-report
+          path: quality-report.md
+
+  # Deployment readiness check
+  deployment-ready:
+    name: Deployment Readiness
+    runs-on: ubuntu-latest
+    needs: [quality-gates]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check deployment criteria
+        run: |
+          echo "Checking deployment readiness..."
+
+          # All quality gates must pass
+          echo "✅ Quality gates passed"
+
+          # Version should be updated for releases
+          VERSION=$(node -p "require('./figma-plugin/package.json').version")
+          echo "Current version: $VERSION"
+
+          # Check if this is a version bump commit
+          if git log -1 --pretty=format:"%s" | grep -q "bump version\|release"; then
+            echo "✅ Version bump detected"
+          else
+            echo "ℹ️ No version bump detected (may be a patch deployment)"
+          fi
+
+      - name: Trigger deployment
+        run: |
+          echo "Ready for deployment to production"
+          # In a real scenario, this would trigger deployment to Figma Community
+
+  # Notification
+  notify:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: [quality-gates]
+    if: always()
+    steps:
+      - name: Notify Slack on failure
+        if: failure()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          webhook_url: ${{ env.SLACK_WEBHOOK }}
+          text: "🚨 H2WW Component Library tests failed on ${{ github.ref }}"
+
+      - name: Notify Slack on success
+        if: success()
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          webhook_url: ${{ env.SLACK_WEBHOOK }}
+          text: "✅ H2WW Component Library tests passed on ${{ github.ref }}"

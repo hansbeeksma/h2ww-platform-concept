@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://h2ww.org/schemas/component.json",
+  "title": "H2WW Anxiety-Aware Component Schema",
+  "description": "Schema for validating H2WW anxiety-aware design system components",
+  "type": "object",
+  "required": ["id", "name", "category", "variants", "anxietyReduction", "accessibilityFeatures"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-_]+$",
+      "description": "Unique component identifier"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable component name"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["atom", "molecule", "organism", "template"],
+      "description": "Atomic design system category"
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/componentVariant"
+      },
+      "description": "Array of component variants"
+    },
+    "anxietyReduction": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "reduced-cognitive-load",
+          "clear-visual-hierarchy",
+          "predictable-interactions",
+          "progress-indicators",
+          "error-prevention",
+          "graceful-degradation",
+          "calm-color-palette",
+          "consistent-spacing",
+          "familiar-patterns"
+        ]
+      },
+      "description": "Anxiety reduction techniques implemented"
+    },
+    "accessibilityFeatures": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "wcag-aa-compliant",
+          "keyboard-navigable",
+          "screen-reader-optimized",
+          "high-contrast-support",
+          "focus-indicators",
+          "semantic-markup",
+          "aria-labels",
+          "color-blind-friendly",
+          "touch-target-size"
+        ]
+      },
+      "description": "Accessibility features implemented"
+    },
+    "usageGuidelines": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Guidelines for component usage"
+    },
+    "designTokens": {
+      "$ref": "#/definitions/designTokens"
+    },
+    "figmaMapping": {
+      "$ref": "#/definitions/figmaMapping"
+    },
+    "testIds": {
+      "type": "object",
+      "properties": {
+        "component": {"type": "string"},
+        "variants": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {"type": "string"}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "componentVariant": {
+      "type": "object",
+      "required": ["name", "properties", "anxietyLevel", "accessibilityScore"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "properties": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "anxietyLevel": {
+          "type": "string",
+          "enum": ["very-low", "low", "medium", "high"],
+          "description": "Anxiety level induced by this variant"
+        },
+        "accessibilityScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Accessibility score (0-100)"
+        },
+        "cognitiveLoadScore": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 10,
+          "description": "Cognitive load score (1-10)"
+        }
+      }
+    },
+    "designTokens": {
+      "type": "object",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "properties": {
+            "primary": {"$ref": "#/definitions/colorValue"},
+            "secondary": {"$ref": "#/definitions/colorValue"},
+            "semantic": {"$ref": "#/definitions/semanticColors"}
+          }
+        },
+        "typography": {"$ref": "#/definitions/typography"},
+        "spacing": {"$ref": "#/definitions/spacing"},
+        "shadows": {"$ref": "#/definitions/shadows"}
+      }
+    },
+    "colorValue": {
+      "type": "string",
+      "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$|^rgba?\\(.*\\)$|^hsl\\(.*\\)$"
+    },
+    "semanticColors": {
+      "type": "object",
+      "properties": {
+        "success": {"$ref": "#/definitions/colorValue"},
+        "warning": {"$ref": "#/definitions/colorValue"},
+        "error": {"$ref": "#/definitions/colorValue"},
+        "info": {"$ref": "#/definitions/colorValue"}
+      }
+    },
+    "typography": {
+      "type": "object",
+      "properties": {
+        "fontSize": {"type": "string"},
+        "fontWeight": {"type": "number"},
+        "lineHeight": {"type": "number"},
+        "letterSpacing": {"type": "string"}
+      }
+    },
+    "spacing": {
+      "type": "object",
+      "patternProperties": {
+        "^(xs|sm|md|lg|xl|\\d+)$": {"type": "string"}
+      }
+    },
+    "shadows": {
+      "type": "object",
+      "patternProperties": {
+        "^(sm|base|lg|xl)$": {"type": "string"}
+      }
+    },
+    "figmaMapping": {
+      "type": "object",
+      "properties": {
+        "nodeId": {"type": "string"},
+        "componentSetId": {"type": "string"},
+        "variantMappings": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

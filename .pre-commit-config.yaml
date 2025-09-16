@@ -1,0 +1,200 @@
+# H2WW Component Library Pre-commit Hooks Configuration
+# Ensures code quality and validation before commits
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+        description: Remove trailing whitespace
+      - id: end-of-file-fixer
+        description: Ensure files end with newline
+      - id: check-merge-conflict
+        description: Check for merge conflict markers
+      - id: check-json
+        description: Validate JSON syntax
+        files: \.json$
+      - id: check-yaml
+        description: Validate YAML syntax
+        files: \.ya?ml$
+      - id: pretty-format-json
+        description: Format JSON files
+        files: \.json$
+        args: ['--autofix', '--indent=2']
+
+  # JavaScript/TypeScript linting
+  - repo: https://github.com/eslint/eslint
+    rev: v8.57.0
+    hooks:
+      - id: eslint
+        name: ESLint (TypeScript/JavaScript)
+        files: \.(ts|tsx|js|jsx)$
+        additional_dependencies:
+          - eslint@^8.57.0
+          - '@typescript-eslint/eslint-plugin@^6.14.0'
+          - '@typescript-eslint/parser@^6.14.0'
+          - eslint-plugin-react@^7.33.2
+          - eslint-plugin-react-hooks@^4.6.0
+
+  # TypeScript type checking
+  - repo: local
+    hooks:
+      - id: typescript-check
+        name: TypeScript Type Check
+        entry: npm run type-check
+        language: system
+        files: \.(ts|tsx)$
+        pass_filenames: false
+        always_run: false
+
+  # Custom H2WW JSON validation hooks
+  - repo: local
+    hooks:
+      - id: h2ww-component-validation
+        name: H2WW Component JSON Validation
+        entry: node tests/validation/json-validator.js
+        language: system
+        files: ^(.*components.*\.json|.*component.*\.json)$
+        args: ['component-schema']
+        description: Validate H2WW component JSON files against schema
+
+      - id: h2ww-tokens-validation
+        name: H2WW Design Tokens Validation
+        entry: node tests/validation/json-validator.js
+        language: system
+        files: ^(.*tokens.*\.json|.*design-system.*\.json)$
+        args: ['design-tokens-schema']
+        description: Validate H2WW design token JSON files against schema
+
+      - id: h2ww-anxiety-validation
+        name: H2WW Anxiety-Aware Validation
+        entry: node tests/validation/anxiety-checker.js
+        language: system
+        files: ^(.*components.*\.json)$
+        description: Validate anxiety-aware design principles
+
+      - id: h2ww-accessibility-validation
+        name: H2WW Accessibility Validation
+        entry: node tests/validation/accessibility-checker.js
+        language: system
+        files: ^(.*components.*\.json|.*tokens.*\.json)$
+        description: Validate WCAG compliance and accessibility features
+
+  # JSON Schema validation for Figma plugin files
+  - repo: local
+    hooks:
+      - id: figma-manifest-validation
+        name: Figma Manifest Validation
+        entry: node tests/validation/figma-manifest-validator.js
+        language: system
+        files: ^figma-plugin/manifest\.json$
+        description: Validate Figma plugin manifest.json
+
+  # Prevent sensitive data commits
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        name: Detect Secrets
+        description: Detect potential secrets in code
+        args: ['--baseline', '.secrets.baseline']
+        exclude: \.lock$|\.min\.js$
+
+  # Security checks
+  - repo: local
+    hooks:
+      - id: npm-audit
+        name: NPM Security Audit
+        entry: npm audit
+        language: system
+        files: package\.json$
+        pass_filenames: false
+        args: ['--audit-level=high']
+
+  # Performance checks for JSON files
+  - repo: local
+    hooks:
+      - id: json-size-check
+        name: JSON File Size Check
+        entry: node tests/validation/json-size-checker.js
+        language: system
+        files: \.json$
+        description: Check JSON file sizes for performance
+
+  # Code formatting
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.3
+    hooks:
+      - id: prettier
+        name: Prettier Code Formatting
+        files: \.(ts|tsx|js|jsx|json|md|yaml|yml)$
+        additional_dependencies:
+          - prettier@^3.0.3
+
+  # Figma plugin specific validations
+  - repo: local
+    hooks:
+      - id: figma-plugin-build-test
+        name: Figma Plugin Build Test
+        entry: npm run build
+        language: system
+        files: ^figma-plugin/src/.*\.(ts|tsx|js|jsx)$
+        pass_filenames: false
+        always_run: false
+
+  # Design system consistency checks
+  - repo: local
+    hooks:
+      - id: design-token-consistency
+        name: Design Token Consistency Check
+        entry: node tests/validation/token-consistency-checker.js
+        language: system
+        files: ^design-system/tokens/.*\.json$
+        description: Ensure design token consistency across files
+
+      - id: component-naming-convention
+        name: Component Naming Convention
+        entry: node tests/validation/naming-convention-checker.js
+        language: system
+        files: ^(.*components.*\.json)$
+        description: Validate component naming conventions
+
+  # Documentation checks
+  - repo: local
+    hooks:
+      - id: component-documentation-check
+        name: Component Documentation Check
+        entry: node tests/validation/documentation-checker.js
+        language: system
+        files: ^(.*components.*\.json)$
+        description: Ensure components have proper documentation
+
+  # Test coverage enforcement
+  - repo: local
+    hooks:
+      - id: test-coverage-check
+        name: Test Coverage Check
+        entry: npm run test:coverage:check
+        language: system
+        files: \.(ts|tsx|js|jsx)$
+        pass_filenames: false
+        stages: [push]
+
+# Global configuration
+default_stages: [commit]
+fail_fast: false
+minimum_pre_commit_version: '3.0.0'
+
+# CI configuration
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false

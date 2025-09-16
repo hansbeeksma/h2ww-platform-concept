@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://h2ww.org/schemas/design-tokens.json",
+  "title": "H2WW Design Tokens Schema",
+  "description": "Schema for validating H2WW design system tokens",
+  "type": "object",
+  "required": ["version", "name", "visualLanguage"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the design tokens"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the design system"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the design system"
+    },
+    "visualLanguage": {
+      "type": "object",
+      "required": ["color", "typography", "space"],
+      "properties": {
+        "color": {"$ref": "#/definitions/colorSystem"},
+        "typography": {"$ref": "#/definitions/typographySystem"},
+        "space": {"$ref": "#/definitions/spaceSystem"},
+        "iconography": {"$ref": "#/definitions/iconographySystem"},
+        "motion": {"$ref": "#/definitions/motionSystem"}
+      }
+    },
+    "uiElements": {
+      "type": "object",
+      "description": "UI element definitions",
+      "additionalProperties": {"$ref": "#/definitions/uiElement"}
+    },
+    "uiComponents": {
+      "type": "object",
+      "description": "UI component definitions",
+      "additionalProperties": {"$ref": "#/definitions/uiComponent"}
+    }
+  },
+  "definitions": {
+    "colorSystem": {
+      "type": "object",
+      "required": ["palettes"],
+      "properties": {
+        "palettes": {
+          "type": "object",
+          "properties": {
+            "primary": {"$ref": "#/definitions/colorPalette"},
+            "secondary": {"$ref": "#/definitions/colorPalette"},
+            "neutral": {"$ref": "#/definitions/colorPalette"}
+          }
+        },
+        "categories": {
+          "type": "object",
+          "properties": {
+            "interactive": {"$ref": "#/definitions/colorCategory"},
+            "semantic": {"$ref": "#/definitions/colorCategory"}
+          }
+        }
+      }
+    },
+    "colorPalette": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "oneOf": [
+            {"type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"},
+            {
+              "type": "object",
+              "properties": {
+                "hex": {"type": "string", "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"},
+                "name": {"type": "string"}
+              },
+              "required": ["hex"]
+            }
+          ]
+        }
+      }
+    },
+    "colorCategory": {
+      "type": "object",
+      "patternProperties": {
+        ".*": {"type": "string"}
+      }
+    },
+    "typographySystem": {
+      "type": "object",
+      "required": ["fonts", "hierarchy"],
+      "properties": {
+        "fonts": {
+          "type": "object",
+          "properties": {
+            "primary": {"type": "string"},
+            "secondary": {"type": "string"},
+            "mono": {"type": "string"}
+          }
+        },
+        "hierarchy": {
+          "type": "object",
+          "patternProperties": {
+            "^(h[1-6]|paragraph|small|caption)$": {"$ref": "#/definitions/typographyToken"}
+          }
+        },
+        "weights": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {"type": "string"}
+          }
+        }
+      }
+    },
+    "typographyToken": {
+      "type": "object",
+      "properties": {
+        "size": {"type": "string"},
+        "weight": {"type": "string"},
+        "lineHeight": {"type": "string"},
+        "letterSpacing": {"type": "string"}
+      }
+    },
+    "spaceSystem": {
+      "type": "object",
+      "required": ["units"],
+      "properties": {
+        "units": {
+          "type": "object",
+          "properties": {
+            "base": {"type": "string"},
+            "measurements": {
+              "type": "object",
+              "patternProperties": {
+                "^(xxs|xs|sm|md|lg|xl|xxl|xxxl)$": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "iconographySystem": {
+      "type": "object",
+      "properties": {
+        "style": {"type": "string"},
+        "sizes": {
+          "type": "object",
+          "patternProperties": {
+            "^(xs|sm|md|lg|xl|xxl)$": {"type": "string"}
+          }
+        },
+        "categories": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "motionSystem": {
+      "type": "object",
+      "properties": {
+        "principles": {
+          "type": "object",
+          "properties": {
+            "timing": {"type": "string"},
+            "duration": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {"type": "string"}
+              }
+            }
+          }
+        },
+        "types": {
+          "type": "object",
+          "patternProperties": {
+            ".*": {
+              "type": "object",
+              "additionalProperties": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "uiElement": {
+      "type": "object",
+      "properties": {
+        "type": {"type": "string"},
+        "styles": {"type": "object"},
+        "variants": {"type": "object"}
+      }
+    },
+    "uiComponent": {
+      "type": "object",
+      "properties": {
+        "type": {"type": "string"},
+        "anxietyAware": {"type": "boolean"},
+        "accessibility": {
+          "type": "object",
+          "properties": {
+            "wcagLevel": {"type": "string", "enum": ["A", "AA", "AAA"]},
+            "features": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}
