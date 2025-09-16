@@ -3,6 +3,10 @@
   "id": "h2ww-component-library",
   "api": "1.0.0",
   "main": "dist/main.js",
+<<<<<<< HEAD
   "ui": "dist/ui.html",
   "editorType": ["figma"]
+=======
+  "ui": "dist/ui.html"
+>>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
 }

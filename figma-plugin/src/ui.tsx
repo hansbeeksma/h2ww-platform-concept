@@ -59,6 +59,7 @@ const App: React.FC = () => {
   const [aiAnalysis, setAiAnalysis] = useState<AIAnalysis | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSelection, setHasSelection] = useState(false);
+<<<<<<< HEAD
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -68,6 +69,10 @@ const App: React.FC = () => {
       setIsReady(true);
     }, 1000);
 
+=======
+
+  useEffect(() => {
+>>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
     // Listen for messages from main thread
     window.onmessage = (event) => {
       const { type, data } = event.data.pluginMessage || {};
@@ -75,8 +80,11 @@ const App: React.FC = () => {
       switch (type) {
         case 'plugin-ready':
           console.log('Plugin ready');
+<<<<<<< HEAD
           setIsReady(true);
           clearTimeout(readyTimeout);
+=======
+>>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
           // Request current selection
           parent.postMessage({ pluginMessage: { type: 'get-selection' } }, '*');
           break;
@@ -104,8 +112,11 @@ const App: React.FC = () => {
           console.log('Unknown message type:', type);
       }
     };
+<<<<<<< HEAD
 
     return () => clearTimeout(readyTimeout);
+=======
+>>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
   }, []);
 
   const createComponent = (component: AnxietyAwareComponent) => {
@@ -383,6 +394,7 @@ const App: React.FC = () => {
     </div>
   );
 
+<<<<<<< HEAD
   // Show loading state until ready
   if (!isReady) {
     return (
@@ -405,6 +417,8 @@ const App: React.FC = () => {
     );
   }
 
+=======
+>>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
