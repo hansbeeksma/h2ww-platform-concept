@@ -1,0 +1,35 @@
+{
+  "name": "H2WW Component Library",
+  "id": "h2ww-component-library",
+  "api": "1.0.0",
+  "main": "dist/main.js",
+  "ui": "dist/ui.html",
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["api.openai.com"]
+  },
+  "editorType": ["figma"],
+  "capabilities": ["textreview"],
+  "permissions": ["currentuser"],
+  "menu": [
+    {
+      "name": "H2WW Component Library",
+      "command": "open-plugin"
+    },
+    {
+      "separator": true
+    },
+    {
+      "name": "Design Tokens",
+      "command": "design-tokens"
+    },
+    {
+      "name": "AI Assistant",
+      "command": "ai-assistant"
+    },
+    {
+      "name": "Accessibility Check",
+      "command": "accessibility-check"
+    }
+  ]
+}
