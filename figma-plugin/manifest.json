@@ -1,42 +1,14 @@
 {
   "name": "H2WW Component Library",
-  "id": "1307920194858808143",
+  "id": "h2ww-component-library",
   "api": "1.0.0",
   "main": "dist/main.js",
   "ui": "dist/ui.html",
   "documentAccess": "dynamic-page",
   "networkAccess": {
-    "allowedDomains": ["api.openai.com", "fonts.googleapis.com", "fonts.gstatic.com"]
+    "allowedDomains": ["api.openai.com"]
   },
   "editorType": ["figma"],
-  "capabilities": ["textreview"],
-  "permissions": ["currentuser"],
-  "parameters": [
-    {
-      "name": "Component Type",
-      "key": "componentType",
-      "allowFreeform": false,
-      "options": [
-        { "option": "button", "label": "Button" },
-        { "option": "input", "label": "Input Field" },
-        { "option": "card", "label": "Card" },
-        { "option": "progress", "label": "Progress Indicator" }
-      ]
-    },
-    {
-      "name": "Anxiety Level",
-      "key": "anxietyLevel",
-      "allowFreeform": false,
-      "options": [
-        { "option": "very-low", "label": "Very Low (Maximum Safety)" },
-        { "option": "low", "label": "Low (Standard)" },
-        { "option": "medium", "label": "Medium (Alert)" },
-        { "option": "high", "label": "High (Urgent)" }
-      ]
-    }
-  ],
-  "parameterOnly": false,
-  "build": "npm run build",
   "menu": [
     {
       "name": "H2WW Component Library",
@@ -46,31 +18,16 @@
       "separator": true
     },
     {
-      "name": "Insert Anxiety-Safe Button",
-      "command": "insert-anxiety-button",
-      "parameters": {
-        "componentType": "button",
-        "anxietyLevel": "very-low"
-      }
-    },
-    {
-      "name": "Design Tokens Manager",
+      "name": "Design Tokens",
       "command": "design-tokens"
     },
     {
-      "name": "AI Design Assistant",
+      "name": "AI Assistant",
       "command": "ai-assistant"
     },
     {
-      "name": "Accessibility Validator",
+      "name": "Accessibility Check",
       "command": "accessibility-check"
-    },
-    {
-      "separator": true
-    },
-    {
-      "name": "Quick Anxiety Scan",
-      "command": "quick-anxiety-scan"
     }
   ]
 }
