@@ -1,0 +1,26 @@
+# Samswaab Platform Rules
+
+## Project Context
+Modern AI-driven platform for rapid prototyping.
+NO legacy agent-orchestration code.
+
+## File Structure
+- Pipeline logic: src/pipeline/
+- AI configs: .ai/
+- Projects: projects/active/
+- Components: components/
+
+## Code Style
+- TypeScript strict mode
+- Functional components
+- Tailwind CSS
+- No class components
+
+## Workflow
+1. Concepts go in concepts/active/
+2. Pipeline processes them
+3. Output goes to projects/
+
+## Important
+NEVER use or reference agent-orchestration folder
+Always use the new pipeline structure

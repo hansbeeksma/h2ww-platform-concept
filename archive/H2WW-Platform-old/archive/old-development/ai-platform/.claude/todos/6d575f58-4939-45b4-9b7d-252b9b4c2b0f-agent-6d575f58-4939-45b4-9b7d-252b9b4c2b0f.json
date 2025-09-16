@@ -1,0 +1,38 @@
+[
+  {
+    "content": "Analyze current /Users/samswaab directory structure",
+    "status": "completed",
+    "priority": "high",
+    "id": "analyze-current-structure"
+  },
+  {
+    "content": "Design semantic organization plan",
+    "status": "completed",
+    "priority": "high",
+    "id": "design-semantic-structure"
+  },
+  {
+    "content": "Create new semantic directory structure",
+    "status": "completed",
+    "priority": "high",
+    "id": "create-new-structure"
+  },
+  {
+    "content": "Migrate files to new semantic locations",
+    "status": "in_progress",
+    "priority": "medium",
+    "id": "migrate-files"
+  },
+  {
+    "content": "Verify all files are correctly migrated",
+    "status": "pending",
+    "priority": "medium",
+    "id": "verify-migration"
+  },
+  {
+    "content": "Clean up old scattered files",
+    "status": "pending",
+    "priority": "low",
+    "id": "cleanup-old-structure"
+  }
+]

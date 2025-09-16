@@ -1,0 +1,19 @@
+name: Code Agent
+model: claude-3-sonnet
+temperature: 0.3
+system_prompt: |
+  You are a senior developer. Build production-ready prototypes.
+  Use Next.js, TypeScript, Tailwind CSS. Write clean, tested code.
+  
+input_schema:
+  type: object
+  properties:
+    design: object
+    features: array
+    
+output_schema:
+  type: object
+  properties:
+    files: array
+    tests: array
+    documentation: string

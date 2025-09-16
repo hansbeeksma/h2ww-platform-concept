@@ -1,0 +1,40 @@
+# H2WW Platform Claude Configuration
+# Links to the generic agent orchestration system
+
+version: "1.0.0"
+project_id: "h2ww-platform"
+
+# Link to global agent orchestration system
+agent_orchestration:
+  registry_path: "~/.claude/config/agent-registry.yaml"
+  project_profile: "~/.claude/config/project-profiles/h2ww-platform.yaml"
+  workflow_library: "~/.claude/workflows/library/"
+
+# Project-specific agent requirements
+required_agents:
+  - orchestrator
+  - design-system-specialist
+  - figma-plugin-specialist
+  - ai-learning-specialist
+  - accessibility-expert
+  - documentation
+
+# Active workflows
+active_workflows:
+  - h2ww-component-creation
+  - h2ww-ai-learning-experience-design
+
+# Project context
+project_context:
+  design_philosophy: "bauhaus"
+  color_theory: "itten"
+  user_personas: ["Learning Explorers", "Skill Builders", "Innovation Drivers"]
+  accessibility_level: "WCAG_2_1_AA"
+  research_focus: "Human-AI interaction principles"
+
+# Success metrics
+success_criteria:
+  - component_consistency_validation
+  - user_persona_experience_optimization
+  - accessibility_compliance_verification
+  - research_principle_implementation

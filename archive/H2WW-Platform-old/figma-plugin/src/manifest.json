@@ -1,0 +1,20 @@
+{
+  "name": "H2WW Design System Generator",
+  "id": "h2ww-design-system-generator",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "ui.html",
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "menu": [
+    {
+      "name": "Generate Complete System",
+      "command": "open-generator"
+    }
+  ]
+}

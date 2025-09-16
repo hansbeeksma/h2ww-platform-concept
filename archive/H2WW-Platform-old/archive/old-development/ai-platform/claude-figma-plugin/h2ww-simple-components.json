@@ -1,0 +1,78 @@
+{
+  "version": "1.0.0",
+  "description": "H2WW Design System - Simplified Component Library",
+  "components": {
+    "ai-companion-avatar": {
+      "type": "component",
+      "name": "AI Companion Avatar",
+      "width": 96,
+      "height": 96,
+      "backgroundColor": "#E53E3E",
+      "cornerRadius": 48
+    },
+    
+    "primary-button": {
+      "type": "component",
+      "name": "Primary Button",
+      "width": 200,
+      "height": 48,
+      "backgroundColor": "#E53E3E",
+      "cornerRadius": 8
+    },
+    
+    "secondary-button": {
+      "type": "component",
+      "name": "Secondary Button",
+      "width": 200,
+      "height": 48,
+      "backgroundColor": "transparent",
+      "cornerRadius": 8,
+      "stroke": "#3182CE",
+      "strokeWeight": "2px"
+    },
+    
+    "learning-card": {
+      "type": "component",
+      "name": "Learning Card",
+      "width": 320,
+      "height": 180,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 12
+    },
+    
+    "progress-circle": {
+      "type": "component", 
+      "name": "Progress Circle",
+      "width": 40,
+      "height": 40,
+      "backgroundColor": "#E53E3E"
+    },
+    
+    "progress-square": {
+      "type": "component",
+      "name": "Progress Square", 
+      "width": 40,
+      "height": 40,
+      "backgroundColor": "#3182CE",
+      "cornerRadius": 8
+    },
+    
+    "color-swatch-red": {
+      "type": "component",
+      "name": "Red Color Swatch",
+      "width": 120,
+      "height": 80,
+      "backgroundColor": "#E53E3E",
+      "cornerRadius": 4
+    },
+    
+    "color-swatch-blue": {
+      "type": "component",
+      "name": "Blue Color Swatch",
+      "width": 120, 
+      "height": 80,
+      "backgroundColor": "#3182CE",
+      "cornerRadius": 4
+    }
+  }
+}

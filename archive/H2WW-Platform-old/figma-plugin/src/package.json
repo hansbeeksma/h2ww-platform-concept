@@ -1,0 +1,13 @@
+{
+  "name": "claude-figma-plugin",
+  "version": "1.0.0",
+  "description": "Import Claude-generated designs into Figma",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.117.0",
+    "typescript": "^5.9.2"
+  }
+}

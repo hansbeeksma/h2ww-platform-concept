@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": ["es2015", "dom"],
+    "strict": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "noImplicitAny": false
+  },
+  "include": ["code.ts"]
+}

@@ -1,0 +1,310 @@
+{
+  "version": "1.0.0",
+  "description": "H2WW Design System - Design Tokens based on Human-AI Interaction Research, Itten color psychology, and Bauhaus geometric principles",
+  "research_foundation": {
+    "conversational_design": "Addresses 5 major AI interface problems: blank page, iteration, input-output, scoping, personalization",
+    "obviousness_principle": "Leverages existing user mental models for intuitive interactions",
+    "multimodal_support": "Designed for text, voice, and visual interaction modes",
+    "ai_transparency": "Built-in patterns for communicating AI capabilities and limitations"
+  },
+  
+  "core": {
+    "color": {
+      "learning-triad": {
+        "$description": "Primary Itten color triad for learning psychology states",
+        "primary": {
+          "ai-fundamentals": {
+            "$description": "Red - Energy, attention, and urgency for AI fundamentals",
+            "50": { "$value": "#FEF2F2", "$description": "Lightest red tint" },
+            "100": { "$value": "#FEE2E2", "$description": "Very light red" },
+            "200": { "$value": "#FECACA", "$description": "Light red" },
+            "300": { "$value": "#FCA5A5", "$description": "Medium light red" },
+            "400": { "$value": "#F87171", "$description": "Medium red" },
+            "500": { "$value": "#E53E3E", "$description": "Base red - Core AI fundamentals" },
+            "600": { "$value": "#DC2626", "$description": "Medium dark red" },
+            "700": { "$value": "#B91C1C", "$description": "Dark red" },
+            "800": { "$value": "#991B1B", "$description": "Very dark red" },
+            "900": { "$value": "#7F1D1D", "$description": "Darkest red" }
+          },
+          "discovery": {
+            "$description": "Yellow - Curiosity, optimism, and exploration for discovery phase",
+            "50": { "$value": "#FFFBEB", "$description": "Lightest yellow tint" },
+            "100": { "$value": "#FEF3C7", "$description": "Very light yellow" },
+            "200": { "$value": "#FDE68A", "$description": "Light yellow" },
+            "300": { "$value": "#FCD34D", "$description": "Medium light yellow" },
+            "400": { "$value": "#FBBF24", "$description": "Medium yellow" },
+            "500": { "$value": "#F6E05E", "$description": "Base yellow - Core discovery" },
+            "600": { "$value": "#D69E2E", "$description": "Medium dark yellow" },
+            "700": { "$value": "#B7791F", "$description": "Dark yellow" },
+            "800": { "$value": "#975A16", "$description": "Very dark yellow" },
+            "900": { "$value": "#744210", "$description": "Darkest yellow" }
+          },
+          "mastery": {
+            "$description": "Blue - Trust, stability, and expertise for mastery phase", 
+            "50": { "$value": "#EBF8FF", "$description": "Lightest blue tint" },
+            "100": { "$value": "#BEE3F8", "$description": "Very light blue" },
+            "200": { "$value": "#90CDF4", "$description": "Light blue" },
+            "300": { "$value": "#63B3ED", "$description": "Medium light blue" },
+            "400": { "$value": "#4299E1", "$description": "Medium blue" },
+            "500": { "$value": "#3182CE", "$description": "Base blue - Core mastery" },
+            "600": { "$value": "#2B77CB", "$description": "Medium dark blue" },
+            "700": { "$value": "#2C5AA0", "$description": "Dark blue" },
+            "800": { "$value": "#2A4365", "$description": "Very dark blue" },
+            "900": { "$value": "#1A365D", "$description": "Darkest blue" }
+          }
+        },
+        "secondary": {
+          "orange": {
+            "$description": "Orange - Enthusiasm and creativity (red + yellow mix)",
+            "50": { "$value": "#FFF7ED", "$description": "Lightest orange" },
+            "100": { "$value": "#FFEDD5", "$description": "Very light orange" },
+            "200": { "$value": "#FED7AA", "$description": "Light orange" },
+            "300": { "$value": "#FDBA74", "$description": "Medium light orange" },
+            "400": { "$value": "#FB923C", "$description": "Medium orange" },
+            "500": { "$value": "#F97316", "$description": "Base orange" },
+            "600": { "$value": "#EA580C", "$description": "Medium dark orange" },
+            "700": { "$value": "#C2410C", "$description": "Dark orange" },
+            "800": { "$value": "#9A3412", "$description": "Very dark orange" },
+            "900": { "$value": "#7C2D12", "$description": "Darkest orange" }
+          },
+          "green": {
+            "$description": "Green - Growth and balance (yellow + blue mix)",
+            "50": { "$value": "#F0FDF4", "$description": "Lightest green" },
+            "100": { "$value": "#DCFCE7", "$description": "Very light green" },
+            "200": { "$value": "#BBF7D0", "$description": "Light green" },
+            "300": { "$value": "#86EFAC", "$description": "Medium light green" },
+            "400": { "$value": "#4ADE80", "$description": "Medium green" },
+            "500": { "$value": "#22C55E", "$description": "Base green" },
+            "600": { "$value": "#16A34A", "$description": "Medium dark green" },
+            "700": { "$value": "#15803D", "$description": "Dark green" },
+            "800": { "$value": "#166534", "$description": "Very dark green" },
+            "900": { "$value": "#14532D", "$description": "Darkest green" }
+          },
+          "purple": {
+            "$description": "Purple - Innovation and depth (red + blue mix)",
+            "50": { "$value": "#FAF5FF", "$description": "Lightest purple" },
+            "100": { "$value": "#E9D5FF", "$description": "Very light purple" },
+            "200": { "$value": "#D8B4FE", "$description": "Light purple" },
+            "300": { "$value": "#C084FC", "$description": "Medium light purple" },
+            "400": { "$value": "#A855F7", "$description": "Medium purple" },
+            "500": { "$value": "#8B5CF6", "$description": "Base purple" },
+            "600": { "$value": "#7C3AED", "$description": "Medium dark purple" },
+            "700": { "$value": "#6D28D9", "$description": "Dark purple" },
+            "800": { "$value": "#5B21B6", "$description": "Very dark purple" },
+            "900": { "$value": "#4C1D95", "$description": "Darkest purple" }
+          }
+        }
+      },
+      "neutral": {
+        "$description": "Neutral colors for text, backgrounds, and UI elements",
+        "white": { "$value": "#FFFFFF", "$description": "Pure white" },
+        "gray": {
+          "50": { "$value": "#F9FAFB", "$description": "Lightest gray" },
+          "100": { "$value": "#F3F4F6", "$description": "Very light gray" },
+          "200": { "$value": "#E5E7EB", "$description": "Light gray" },
+          "300": { "$value": "#D1D5DB", "$description": "Medium light gray" },
+          "400": { "$value": "#9CA3AF", "$description": "Medium gray" },
+          "500": { "$value": "#6B7280", "$description": "Base gray" },
+          "600": { "$value": "#4B5563", "$description": "Medium dark gray" },
+          "700": { "$value": "#374151", "$description": "Dark gray" },
+          "800": { "$value": "#1F2937", "$description": "Very dark gray" },
+          "900": { "$value": "#111827", "$description": "Darkest gray" }
+        },
+        "black": { "$value": "#000000", "$description": "Pure black" }
+      }
+    },
+    
+    "spacing": {
+      "$description": "8px base grid system with golden ratio proportions for Bauhaus geometric harmony",
+      "scale": {
+        "xs": { "$value": "4px", "$description": "0.5x base unit - micro spacing" },
+        "sm": { "$value": "8px", "$description": "1x base unit - standard spacing" },
+        "md": { "$value": "16px", "$description": "2x base unit - comfortable spacing" },
+        "lg": { "$value": "24px", "$description": "3x base unit - generous spacing" },
+        "xl": { "$value": "32px", "$description": "4x base unit - section spacing" },
+        "2xl": { "$value": "48px", "$description": "6x base unit - large section spacing" },
+        "3xl": { "$value": "64px", "$description": "8x base unit - page section spacing" },
+        "4xl": { "$value": "96px", "$description": "12x base unit - major section spacing" }
+      },
+      "golden": {
+        "$description": "Golden ratio based spacing for advanced compositions",
+        "phi": { "$value": "13px", "$description": "8px × φ (1.618) = 12.944px ≈ 13px" },
+        "phi2": { "$value": "21px", "$description": "13px × φ = 21.034px ≈ 21px" },
+        "phi3": { "$value": "34px", "$description": "21px × φ = 33.978px ≈ 34px" },
+        "phi4": { "$value": "55px", "$description": "34px × φ = 55.012px ≈ 55px" }
+      }
+    },
+    
+    "sizing": {
+      "$description": "Component and element sizing following 8px grid and geometric proportions",
+      "icon": {
+        "sm": { "$value": "16px", "$description": "Small icon size" },
+        "md": { "$value": "24px", "$description": "Medium icon size" },
+        "lg": { "$value": "32px", "$description": "Large icon size" },
+        "xl": { "$value": "48px", "$description": "Extra large icon size" }
+      },
+      "avatar": {
+        "sm": { "$value": "32px", "$description": "Small avatar - 4x base unit" },
+        "md": { "$value": "48px", "$description": "Medium avatar - 6x base unit" },
+        "lg": { "$value": "64px", "$description": "Large avatar - 8x base unit" },
+        "xl": { "$value": "96px", "$description": "Extra large avatar - 12x base unit" }
+      },
+      "button": {
+        "sm": { "$value": "32px", "$description": "Small button height" },
+        "md": { "$value": "40px", "$description": "Medium button height" },
+        "lg": { "$value": "48px", "$description": "Large button height" },
+        "xl": { "$value": "56px", "$description": "Extra large button height" }
+      }
+    },
+    
+    "border-radius": {
+      "$description": "Border radius values for geometric consistency",
+      "none": { "$value": "0px", "$description": "No radius - sharp geometric edges" },
+      "sm": { "$value": "4px", "$description": "Small radius - subtle rounding" },
+      "md": { "$value": "8px", "$description": "Medium radius - comfortable rounding" },
+      "lg": { "$value": "12px", "$description": "Large radius - prominent rounding" },
+      "xl": { "$value": "16px", "$description": "Extra large radius" },
+      "2xl": { "$value": "24px", "$description": "Very large radius" },
+      "full": { "$value": "9999px", "$description": "Full radius - perfect circle/pill" }
+    },
+    
+    "typography": {
+      "$description": "Typography system with Bauhaus-inspired hierarchy",
+      "font-family": {
+        "heading": { "$value": "Poppins", "$description": "Geometric sans-serif for headings" },
+        "body": { "$value": "Inter", "$description": "Readable sans-serif for body text" },
+        "mono": { "$value": "Fira Code", "$description": "Monospace for code and data" }
+      },
+      "font-size": {
+        "xs": { "$value": "12px", "$description": "Extra small text" },
+        "sm": { "$value": "14px", "$description": "Small text" },
+        "md": { "$value": "16px", "$description": "Base text size" },
+        "lg": { "$value": "18px", "$description": "Large text" },
+        "xl": { "$value": "20px", "$description": "Extra large text" },
+        "2xl": { "$value": "24px", "$description": "2X large text" },
+        "3xl": { "$value": "30px", "$description": "3X large text" },
+        "4xl": { "$value": "36px", "$description": "4X large text" },
+        "5xl": { "$value": "48px", "$description": "5X large text" },
+        "6xl": { "$value": "60px", "$description": "6X large text" }
+      },
+      "font-weight": {
+        "light": { "$value": "300", "$description": "Light weight" },
+        "regular": { "$value": "400", "$description": "Regular weight" },
+        "medium": { "$value": "500", "$description": "Medium weight" },
+        "semibold": { "$value": "600", "$description": "Semi-bold weight" },
+        "bold": { "$value": "700", "$description": "Bold weight" },
+        "extrabold": { "$value": "800", "$description": "Extra bold weight" }
+      },
+      "line-height": {
+        "tight": { "$value": "1.25", "$description": "Tight line spacing" },
+        "snug": { "$value": "1.375", "$description": "Snug line spacing" },
+        "normal": { "$value": "1.5", "$description": "Normal line spacing" },
+        "relaxed": { "$value": "1.625", "$description": "Relaxed line spacing" },
+        "loose": { "$value": "2", "$description": "Loose line spacing" }
+      }
+    },
+    
+    "elevation": {
+      "$description": "Shadow elevation system for depth hierarchy",
+      "none": { 
+        "$value": "none", 
+        "$description": "No shadow - flat on surface" 
+      },
+      "sm": { 
+        "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)", 
+        "$description": "Small shadow - slightly elevated" 
+      },
+      "md": { 
+        "$value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)", 
+        "$description": "Medium shadow - clearly elevated" 
+      },
+      "lg": { 
+        "$value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)", 
+        "$description": "Large shadow - prominently elevated" 
+      },
+      "xl": { 
+        "$value": "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)", 
+        "$description": "Extra large shadow - highly elevated" 
+      },
+      "2xl": { 
+        "$value": "0 25px 50px -12px rgba(0, 0, 0, 0.25)", 
+        "$description": "Maximum shadow - floating effect" 
+      }
+    },
+    
+    "opacity": {
+      "$description": "Opacity values for layering and states",
+      "disabled": { "$value": "0.38", "$description": "Disabled state opacity" },
+      "inactive": { "$value": "0.54", "$description": "Inactive state opacity" },
+      "hover": { "$value": "0.87", "$description": "Hover state opacity" },
+      "overlay": { "$value": "0.8", "$description": "Overlay background opacity" }
+    }
+  },
+  
+  "semantic": {
+    "$description": "Semantic tokens mapping core tokens to specific use cases",
+    "color": {
+      "background": {
+        "primary": { "$value": "{core.color.neutral.white}", "$description": "Primary background color" },
+        "secondary": { "$value": "{core.color.neutral.gray.50}", "$description": "Secondary background color" },
+        "tertiary": { "$value": "{core.color.neutral.gray.100}", "$description": "Tertiary background color" }
+      },
+      "text": {
+        "primary": { "$value": "{core.color.neutral.gray.900}", "$description": "Primary text color" },
+        "secondary": { "$value": "{core.color.neutral.gray.600}", "$description": "Secondary text color" },
+        "tertiary": { "$value": "{core.color.neutral.gray.500}", "$description": "Tertiary text color" },
+        "inverse": { "$value": "{core.color.neutral.white}", "$description": "Inverse text color" }
+      },
+      "border": {
+        "primary": { "$value": "{core.color.neutral.gray.200}", "$description": "Primary border color" },
+        "secondary": { "$value": "{core.color.neutral.gray.300}", "$description": "Secondary border color" },
+        "focus": { "$value": "{core.color.learning-triad.primary.mastery.500}", "$description": "Focus border color" }
+      },
+      "action": {
+        "primary": { "$value": "{core.color.learning-triad.primary.ai-fundamentals.500}", "$description": "Primary action color" },
+        "secondary": { "$value": "{core.color.learning-triad.primary.mastery.500}", "$description": "Secondary action color" },
+        "tertiary": { "$value": "{core.color.learning-triad.primary.discovery.500}", "$description": "Tertiary action color" }
+      },
+      "feedback": {
+        "success": { "$value": "{core.color.learning-triad.secondary.green.500}", "$description": "Success state color" },
+        "warning": { "$value": "{core.color.learning-triad.primary.discovery.500}", "$description": "Warning state color" },
+        "error": { "$value": "{core.color.learning-triad.primary.ai-fundamentals.500}", "$description": "Error state color" },
+        "info": { "$value": "{core.color.learning-triad.primary.mastery.500}", "$description": "Info state color" }
+      }
+    }
+  },
+  
+  "component": {
+    "$description": "Component-specific tokens for consistent implementation",
+    "button": {
+      "primary": {
+        "background": { "$value": "{semantic.color.action.primary}", "$description": "Primary button background" },
+        "text": { "$value": "{semantic.color.text.inverse}", "$description": "Primary button text" },
+        "border-radius": { "$value": "{core.border-radius.md}", "$description": "Primary button border radius" },
+        "padding-horizontal": { "$value": "{core.spacing.scale.lg}", "$description": "Primary button horizontal padding" },
+        "padding-vertical": { "$value": "{core.spacing.scale.md}", "$description": "Primary button vertical padding" }
+      },
+      "secondary": {
+        "background": { "$value": "transparent", "$description": "Secondary button background" },
+        "text": { "$value": "{semantic.color.action.secondary}", "$description": "Secondary button text" },
+        "border": { "$value": "{semantic.color.action.secondary}", "$description": "Secondary button border" },
+        "border-radius": { "$value": "{core.border-radius.md}", "$description": "Secondary button border radius" }
+      }
+    },
+    "card": {
+      "background": { "$value": "{semantic.color.background.primary}", "$description": "Card background color" },
+      "border": { "$value": "{semantic.color.border.primary}", "$description": "Card border color" },
+      "border-radius": { "$value": "{core.border-radius.lg}", "$description": "Card border radius" },
+      "padding": { "$value": "{core.spacing.scale.lg}", "$description": "Card padding" },
+      "shadow": { "$value": "{core.elevation.md}", "$description": "Card shadow" }
+    },
+    "input": {
+      "background": { "$value": "{semantic.color.background.primary}", "$description": "Input background color" },
+      "border": { "$value": "{semantic.color.border.primary}", "$description": "Input border color" },
+      "border-focus": { "$value": "{semantic.color.border.focus}", "$description": "Input border color on focus" },
+      "text": { "$value": "{semantic.color.text.primary}", "$description": "Input text color" },
+      "placeholder": { "$value": "{semantic.color.text.tertiary}", "$description": "Input placeholder color" },
+      "border-radius": { "$value": "{core.border-radius.md}", "$description": "Input border radius" }
+    }
+  }
+}

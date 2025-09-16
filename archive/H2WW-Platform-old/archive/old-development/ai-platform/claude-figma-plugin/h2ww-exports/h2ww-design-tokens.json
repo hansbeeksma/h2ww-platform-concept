@@ -1,0 +1,604 @@
+{
+  "$schema": "https://schemas.figma.com/v1.0.0/design-tokens.json",
+  "$metadata": {
+    "tokenSetOrder": [
+      "core",
+      "semantic", 
+      "component",
+      "geometric",
+      "learning-states"
+    ]
+  },
+  "core": {
+    "$type": "color",
+    "color": {
+      "base": {
+        "geometric-black": {
+          "$value": "#1A202C",
+          "$description": "Primary dark color for text and geometric shapes"
+        },
+        "white": {
+          "$value": "#FFFFFF", 
+          "$description": "Pure white for backgrounds and contrast"
+        }
+      },
+      "neutral": {
+        "50": {
+          "$value": "#F7FAFC",
+          "$description": "Lightest neutral for subtle backgrounds"
+        },
+        "100": {
+          "$value": "#EDF2F7",
+          "$description": "Light neutral for card backgrounds"
+        },
+        "200": {
+          "$value": "#E2E8F0",
+          "$description": "Border color for geometric containers"
+        },
+        "300": {
+          "$value": "#CBD5E0",
+          "$description": "Disabled state and subtle borders"
+        },
+        "400": {
+          "$value": "#A0AEC0",
+          "$description": "Placeholder text and inactive elements"
+        },
+        "500": {
+          "$value": "#718096",
+          "$description": "Secondary text color"
+        },
+        "600": {
+          "$value": "#4A5568",
+          "$description": "Primary text color"
+        },
+        "700": {
+          "$value": "#2D3748",
+          "$description": "High contrast text"
+        },
+        "800": {
+          "$value": "#1A202C",
+          "$description": "Geometric black alias"
+        }
+      },
+      "learning-triad": {
+        "primary": {
+          "ai-fundamentals": {
+            "50": {
+              "$value": "#FEF5F5",
+              "$description": "Lightest red tint for backgrounds"
+            },
+            "100": {
+              "$value": "#FED7D7",
+              "$description": "Light red for hover states"
+            },
+            "500": {
+              "$value": "#E53E3E",
+              "$description": "Core AI fundamentals red - energy and attention"
+            },
+            "600": {
+              "$value": "#C53030",
+              "$description": "Darker red for active states"
+            },
+            "700": {
+              "$value": "#9B2C2C",
+              "$description": "Dark red for pressed states"
+            }
+          },
+          "discovery": {
+            "50": {
+              "$value": "#FEFCBF",
+              "$description": "Lightest yellow for subtle highlights"
+            },
+            "100": {
+              "$value": "#FAF089",
+              "$description": "Light yellow for discovery moments"
+            },
+            "500": {
+              "$value": "#F6E05E",
+              "$description": "Core discovery yellow - curiosity and exploration"
+            },
+            "600": {
+              "$value": "#D69E2E",
+              "$description": "Darker yellow for active discovery"
+            },
+            "700": {
+              "$value": "#B7791F",
+              "$description": "Dark yellow for focused exploration"
+            }
+          },
+          "mastery": {
+            "50": {
+              "$value": "#EBF8FF",
+              "$description": "Lightest blue for trust indicators"
+            },
+            "100": {
+              "$value": "#BEE3F8",
+              "$description": "Light blue for completed states"
+            },
+            "500": {
+              "$value": "#3182CE",
+              "$description": "Core mastery blue - trust and expertise"
+            },
+            "600": {
+              "$value": "#2B77CB",
+              "$description": "Darker blue for expert content"
+            },
+            "700": {
+              "$value": "#2C5282",
+              "$description": "Dark blue for advanced mastery"
+            }
+          }
+        },
+        "secondary": {
+          "innovation": {
+            "500": {
+              "$value": "#FF8C42",
+              "$description": "Innovation orange - creative combination"
+            }
+          },
+          "practice": {
+            "500": {
+              "$value": "#38A169",
+              "$description": "Practice green - safe experimentation"
+            }
+          },
+          "advanced": {
+            "500": {
+              "$value": "#805AD5",
+              "$description": "Advanced purple - deep mastery"
+            }
+          }
+        }
+      }
+    },
+    "spacing": {
+      "$type": "dimension",
+      "base-unit": {
+        "$value": "8px",
+        "$description": "Foundation 8px base unit for all spacing"
+      },
+      "scale": {
+        "xs": {
+          "$value": "4px",
+          "$description": "0.5x base unit"
+        },
+        "sm": {
+          "$value": "8px", 
+          "$description": "1x base unit"
+        },
+        "md": {
+          "$value": "16px",
+          "$description": "2x base unit"
+        },
+        "lg": {
+          "$value": "24px",
+          "$description": "3x base unit"
+        },
+        "xl": {
+          "$value": "32px",
+          "$description": "4x base unit"
+        },
+        "2xl": {
+          "$value": "48px",
+          "$description": "6x base unit"
+        },
+        "3xl": {
+          "$value": "64px",
+          "$description": "8x base unit"
+        },
+        "4xl": {
+          "$value": "96px",
+          "$description": "12x base unit"
+        }
+      }
+    },
+    "typography": {
+      "$type": "fontFamily",
+      "display": {
+        "$value": "Poppins",
+        "$description": "Geometric clarity for headings and brand elements"
+      },
+      "body": {
+        "$value": "Inter",
+        "$description": "Optimized readability for learning content"
+      },
+      "code": {
+        "$value": "Fira Code",
+        "$description": "Technical precision for code examples"
+      }
+    },
+    "font-size": {
+      "$type": "dimension",
+      "scale": {
+        "xs": {
+          "$value": "12px",
+          "$description": "Extra small text"
+        },
+        "sm": {
+          "$value": "14px",
+          "$description": "Small text and captions"
+        },
+        "base": {
+          "$value": "16px",
+          "$description": "Base body text size"
+        },
+        "lg": {
+          "$value": "18px",
+          "$description": "Large body text"
+        },
+        "xl": {
+          "$value": "20px",
+          "$description": "Extra large text"
+        },
+        "2xl": {
+          "$value": "24px",
+          "$description": "Small headings"
+        },
+        "3xl": {
+          "$value": "32px",
+          "$description": "Medium headings"
+        },
+        "4xl": {
+          "$value": "48px",
+          "$description": "Large headings"
+        }
+      }
+    },
+    "line-height": {
+      "$type": "number",
+      "tight": {
+        "$value": "1.2",
+        "$description": "Tight line height for headings"
+      },
+      "normal": {
+        "$value": "1.5",
+        "$description": "Normal line height for body text"
+      },
+      "relaxed": {
+        "$value": "1.75",
+        "$description": "Relaxed line height for reading"
+      }
+    },
+    "border-radius": {
+      "$type": "dimension",
+      "none": {
+        "$value": "0px",
+        "$description": "No border radius"
+      },
+      "sm": {
+        "$value": "4px",
+        "$description": "Small border radius"
+      },
+      "base": {
+        "$value": "8px",
+        "$description": "Base border radius aligned with spacing"
+      },
+      "lg": {
+        "$value": "12px",
+        "$description": "Large border radius"
+      },
+      "full": {
+        "$value": "9999px",
+        "$description": "Full border radius for circles"
+      }
+    },
+    "shadow": {
+      "$type": "boxShadow",
+      "sm": {
+        "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "$description": "Small subtle shadow"
+      },
+      "base": {
+        "$value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "$description": "Base shadow for cards"
+      },
+      "lg": {
+        "$value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "$description": "Large shadow for modals"
+      }
+    }
+  },
+  "geometric": {
+    "$type": "dimension",
+    "shapes": {
+      "circle": {
+        "radius": {
+          "$value": "{core.spacing.scale.lg}",
+          "$description": "Circle radius - 3 base units for continuous learning"
+        },
+        "diameter": {
+          "$value": "48px",
+          "$description": "Circle diameter - 6 base units"
+        }
+      },
+      "square": {
+        "side": {
+          "$value": "{core.spacing.scale.2xl}",
+          "$description": "Square side - 6 base units for stable foundation"
+        }
+      },
+      "triangle": {
+        "height": {
+          "$value": "{core.spacing.scale.4xl}",
+          "$description": "Triangle height - 9 base units for growth"
+        },
+        "base": {
+          "$value": "56px",
+          "$description": "Triangle base width"
+        }
+      }
+    },
+    "proportions": {
+      "golden-ratio": {
+        "$value": "1.618",
+        "$description": "Golden ratio for geometric harmonies"
+      },
+      "aspect-ratios": {
+        "square": {
+          "$value": "1:1",
+          "$description": "Perfect square ratio"
+        },
+        "learning-card": {
+          "$value": "16:9",
+          "$description": "Optimal ratio for learning content cards"
+        },
+        "companion-avatar": {
+          "$value": "1:1",
+          "$description": "Square ratio for AI companion consistency"
+        }
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "$type": "color",
+      "text": {
+        "primary": {
+          "$value": "{core.color.neutral.700}",
+          "$description": "Primary text color for high readability"
+        },
+        "secondary": {
+          "$value": "{core.color.neutral.500}",
+          "$description": "Secondary text for supporting information"
+        },
+        "disabled": {
+          "$value": "{core.color.neutral.400}",
+          "$description": "Disabled text color"
+        },
+        "inverse": {
+          "$value": "{core.color.base.white}",
+          "$description": "Text on dark backgrounds"
+        }
+      },
+      "background": {
+        "primary": {
+          "$value": "{core.color.base.white}",
+          "$description": "Primary background color"
+        },
+        "secondary": {
+          "$value": "{core.color.neutral.50}",
+          "$description": "Secondary background for cards"
+        },
+        "tertiary": {
+          "$value": "{core.color.neutral.100}",
+          "$description": "Tertiary background for subtle areas"
+        }
+      },
+      "border": {
+        "primary": {
+          "$value": "{core.color.neutral.200}",
+          "$description": "Primary border color"
+        },
+        "secondary": {
+          "$value": "{core.color.neutral.100}",
+          "$description": "Subtle border color"
+        },
+        "focus": {
+          "$value": "{core.color.learning-triad.primary.mastery.500}",
+          "$description": "Focus ring color"
+        }
+      },
+      "learning-states": {
+        "energy": {
+          "$value": "{core.color.learning-triad.primary.ai-fundamentals.500}",
+          "$description": "High energy learning state"
+        },
+        "discovery": {
+          "$value": "{core.color.learning-triad.primary.discovery.500}",
+          "$description": "Discovery and exploration state"
+        },
+        "mastery": {
+          "$value": "{core.color.learning-triad.primary.mastery.500}",
+          "$description": "Mastery and confidence state"
+        },
+        "innovation": {
+          "$value": "{core.color.learning-triad.secondary.innovation.500}",
+          "$description": "Creative innovation state"
+        },
+        "practice": {
+          "$value": "{core.color.learning-triad.secondary.practice.500}",
+          "$description": "Safe practice environment"
+        },
+        "advanced": {
+          "$value": "{core.color.learning-triad.secondary.advanced.500}",
+          "$description": "Advanced expertise state"
+        }
+      }
+    }
+  },
+  "component": {
+    "button": {
+      "primary": {
+        "$type": "color",
+        "background": {
+          "default": {
+            "$value": "{semantic.color.learning-states.energy}",
+            "$description": "Primary button background"
+          },
+          "hover": {
+            "$value": "{core.color.learning-triad.primary.ai-fundamentals.600}",
+            "$description": "Primary button hover state"
+          },
+          "active": {
+            "$value": "{core.color.learning-triad.primary.ai-fundamentals.700}",
+            "$description": "Primary button active state"
+          }
+        },
+        "text": {
+          "$value": "{semantic.color.text.inverse}",
+          "$description": "Primary button text color"
+        }
+      },
+      "secondary": {
+        "$type": "color", 
+        "background": {
+          "default": {
+            "$value": "transparent",
+            "$description": "Secondary button transparent background"
+          },
+          "hover": {
+            "$value": "{core.color.learning-triad.primary.mastery.50}",
+            "$description": "Secondary button hover background"
+          }
+        },
+        "border": {
+          "$value": "{core.color.learning-triad.primary.mastery.500}",
+          "$description": "Secondary button border color"
+        },
+        "text": {
+          "$value": "{core.color.learning-triad.primary.mastery.500}",
+          "$description": "Secondary button text color"
+        }
+      }
+    },
+    "card": {
+      "learning": {
+        "$type": "color",
+        "background": {
+          "$value": "{semantic.color.background.primary}",
+          "$description": "Learning card background"
+        },
+        "border": {
+          "$value": "{semantic.color.border.primary}",
+          "$description": "Learning card border"
+        },
+        "shadow": {
+          "$value": "{core.shadow.base}",
+          "$description": "Learning card shadow"
+        }
+      }
+    },
+    "ai-companion": {
+      "avatar": {
+        "$type": "dimension",
+        "size": {
+          "default": {
+            "$value": "{geometric.shapes.circle.diameter}",
+            "$description": "Default AI companion avatar size"
+          },
+          "large": {
+            "$value": "80px",
+            "$description": "Large AI companion avatar"
+          },
+          "small": {
+            "$value": "32px",
+            "$description": "Small AI companion avatar"
+          }
+        }
+      },
+      "states": {
+        "$type": "color",
+        "circle": {
+          "background": {
+            "$value": "linear-gradient(135deg, {semantic.color.learning-states.energy} 0%, {semantic.color.learning-states.discovery} 100%)",
+            "$description": "Circle state gradient background"
+          }
+        },
+        "square": {
+          "background": {
+            "$value": "{semantic.color.learning-states.mastery}",
+            "$description": "Square state solid background"
+          }
+        },
+        "triangle": {
+          "background": {
+            "$value": "linear-gradient(180deg, {semantic.color.learning-states.discovery} 0%, {semantic.color.learning-states.innovation} 100%)",
+            "$description": "Triangle state upward gradient"
+          }
+        }
+      }
+    }
+  },
+  "learning-states": {
+    "progression": {
+      "$type": "color",
+      "beginner": {
+        "primary": {
+          "$value": "{semantic.color.learning-states.energy}",
+          "$description": "Beginner learner primary color"
+        },
+        "secondary": {
+          "$value": "{core.color.learning-triad.primary.ai-fundamentals.100}",
+          "$description": "Beginner learner secondary color"
+        }
+      },
+      "intermediate": {
+        "primary": {
+          "$value": "{semantic.color.learning-states.practice}",
+          "$description": "Intermediate learner primary color"
+        },
+        "secondary": {
+          "$value": "{core.color.learning-triad.secondary.practice.500}",
+          "$description": "Intermediate learner secondary color"
+        }
+      },
+      "advanced": {
+        "primary": {
+          "$value": "{semantic.color.learning-states.mastery}",
+          "$description": "Advanced learner primary color"
+        },
+        "secondary": {
+          "$value": "{core.color.learning-triad.primary.mastery.100}",
+          "$description": "Advanced learner secondary color"
+        }
+      },
+      "expert": {
+        "primary": {
+          "$value": "{semantic.color.learning-states.advanced}",
+          "$description": "Expert learner primary color"
+        },
+        "secondary": {
+          "$value": "{core.color.learning-triad.secondary.advanced.500}",
+          "$description": "Expert learner secondary color"
+        }
+      }
+    },
+    "emotional": {
+      "$type": "color",
+      "curious": {
+        "$value": "{semantic.color.learning-states.discovery}",
+        "$description": "Curiosity and exploration emotion"
+      },
+      "confident": {
+        "$value": "{semantic.color.learning-states.mastery}",
+        "$description": "Confidence and trust emotion"
+      },
+      "energized": {
+        "$value": "{semantic.color.learning-states.energy}",
+        "$description": "High energy and engagement emotion"
+      },
+      "creative": {
+        "$value": "{semantic.color.learning-states.innovation}",
+        "$description": "Creative and innovative emotion"
+      },
+      "focused": {
+        "$value": "{semantic.color.learning-states.practice}",
+        "$description": "Focused practice and concentration"
+      },
+      "accomplished": {
+        "$value": "{semantic.color.learning-states.advanced}",
+        "$description": "Sense of accomplishment and mastery"
+      }
+    }
+  }
+}

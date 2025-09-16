@@ -1,0 +1,32 @@
+[
+  {
+    "content": "Analyze existing agent orchestration system and available prototyping agents",
+    "status": "completed",
+    "priority": "high",
+    "id": "1"
+  },
+  {
+    "content": "Create missing /quick-prototype command that orchestrates Concept Agent, Design Agent, and Review Agent workflow",
+    "status": "completed",
+    "priority": "high",
+    "id": "2"
+  },
+  {
+    "content": "Test the complete pipeline with the food delivery app idea",
+    "status": "completed",
+    "priority": "high",
+    "id": "3"
+  },
+  {
+    "content": "Generate detailed validation report of workflow components",
+    "status": "completed",
+    "priority": "medium",
+    "id": "4"
+  },
+  {
+    "content": "Identify missing components and provide recommendations for fixes",
+    "status": "completed",
+    "priority": "medium",
+    "id": "5"
+  }
+]

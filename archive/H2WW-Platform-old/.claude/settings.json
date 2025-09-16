@@ -1,0 +1,45 @@
+{
+  "projectName": "H2WW Platform",
+  "projectType": "design-system-platform",
+  "allowedTools": [
+    "Read",
+    "Write",
+    "Edit",
+    "MultiEdit",
+    "Bash",
+    "Glob",
+    "Grep",
+    "TodoWrite",
+    "WebFetch",
+    "WebSearch",
+    "mcp__memory__*",
+    "mcp__github__*"
+  ],
+  "ignorePatterns": [
+    ".DS_Store",
+    "node_modules/**",
+    "*.log",
+    ".git/**",
+    "*.cache",
+    "dist/**",
+    "build/**"
+  ],
+  "customInstructions": {
+    "codeStyle": "typescript-react-functional",
+    "designPhilosophy": "bauhaus-itten-research-driven",
+    "userPersonas": ["learning-explorers", "skill-builders", "innovation-drivers"],
+    "accessibilityStandard": "wcag-2.1-aa",
+    "componentApproach": "token-based-design-system"
+  },
+  "workflowPreferences": {
+    "commitStyle": "conventional-with-rationale",
+    "testingApproach": "component-driven-accessibility-first",
+    "documentationStyle": "research-backed-user-centered"
+  },
+  "ai": {
+    "contextAwareness": "high",
+    "researchDriven": true,
+    "designSystemFirst": true,
+    "progressiveComplexity": true
+  }
+}

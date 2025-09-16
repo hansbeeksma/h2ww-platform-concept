@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      padding: 16px;
+      margin: 0;
+    }
+    
+    h2 {
+      margin: 0 0 16px 0;
+      font-size: 18px;
+    }
+    
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #18a0fb;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    
+    button:hover {
+      background: #0090f0;
+    }
+    
+    .secondary {
+      background: #f0f0f0;
+      color: #333;
+    }
+    
+    .secondary:hover {
+      background: #e0e0e0;
+    }
+    
+    #status {
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 16px;
+      display: none;
+    }
+    
+    .success {
+      background: #d4edda;
+      color: #155724;
+      display: block !important;
+    }
+    
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      display: block !important;
+    }
+  </style>
+</head>
+<body>
+  <h2>🤖 Claude → Figma</h2>
+  
+  <div style="margin-bottom: 16px;">
+    <input type="file" id="json-file" accept=".json" style="display: none;" onchange="loadJSONFile()">
+    <button class="secondary" onclick="document.getElementById('json-file').click()">📁 Upload JSON File</button>
+  </div>
+  
+  <textarea id="design-json" placeholder='{"type": "frame", "name": "Test", "width": 400, "height": 300, "backgroundColor": "#3182CE"}'></textarea>
+  
+  <button onclick="importDesign()">Create Design</button>
+  <button class="secondary" onclick="loadTestDesign()">Load Test Design</button>
+  <button class="secondary" onclick="loadH2WWColors()">Load H2WW Colors</button>
+  
+  <div id="status"></div>
+
+  <script>
+    function loadTestDesign() {
+      const testDesign = {
+        "type": "frame",
+        "name": "Test Design",
+        "width": 400,
+        "height": 300,
+        "backgroundColor": "#3182CE"
+      };
+      
+      document.getElementById('design-json').value = JSON.stringify(testDesign, null, 2);
+    }
+    
+    function loadH2WWColors() {
+      const h2wwColors = {
+        "type": "frame",
+        "name": "H2WW Color Palettes",
+        "width": 1200,
+        "height": 400,
+        "backgroundColor": "#FFFFFF",
+        "padding": 32,
+        "layout": true,
+        "direction": "horizontal",
+        "spacing": 24,
+        "children": [
+          {
+            "type": "frame",
+            "name": "Red - AI Fundamentals",
+            "width": 200,
+            "height": 120,
+            "backgroundColor": "#E53E3E",
+            "cornerRadius": 12,
+            "children": [
+              {
+                "type": "text",
+                "content": "Red",
+                "x": 16,
+                "y": 16,
+                "fontSize": 16,
+                "fontWeight": 600,
+                "color": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "content": "#E53E3E",
+                "x": 16,
+                "y": 36,
+                "fontSize": 14,
+                "color": "#FFFFFF",
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "name": "Yellow - Learning",
+            "width": 200,
+            "height": 120,
+            "backgroundColor": "#F6E05E",
+            "cornerRadius": 12,
+            "children": [
+              {
+                "type": "text",
+                "content": "Yellow",
+                "x": 16,
+                "y": 16,
+                "fontSize": 16,
+                "fontWeight": 600,
+                "color": "#1A202C"
+              },
+              {
+                "type": "text",
+                "content": "#F6E05E",
+                "x": 16,
+                "y": 36,
+                "fontSize": 14,
+                "color": "#1A202C",
+                "opacity": 0.9
+              }
+            ]
+          },
+          {
+            "type": "frame",
+            "name": "Blue - Trust",
+            "width": 200,
+            "height": 120,
+            "backgroundColor": "#3182CE",
+            "cornerRadius": 12,
+            "children": [
+              {
+                "type": "text",
+                "content": "Blue",
+                "x": 16,
+                "y": 16,
+                "fontSize": 16,
+                "fontWeight": 600,
+                "color": "#FFFFFF"
+              },
+              {
+                "type": "text",
+                "content": "#3182CE",
+                "x": 16,
+                "y": 36,
+                "fontSize": 14,
+                "color": "#FFFFFF",
+                "opacity": 0.9
+              }
+            ]
+          }
+        ]
+      };
+      
+      document.getElementById('design-json').value = JSON.stringify(h2wwColors, null, 2);
+    }
+    
+    function loadJSONFile() {
+      const fileInput = document.getElementById('json-file');
+      const file = fileInput.files[0];
+      
+      if (file && file.type === 'application/json') {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+          try {
+            const jsonContent = e.target.result;
+            // Validate JSON
+            JSON.parse(jsonContent);
+            
+            // Load into textarea
+            document.getElementById('design-json').value = jsonContent;
+            showStatus('✅ JSON file loaded successfully!', 'success');
+            
+          } catch (error) {
+            showStatus('❌ Invalid JSON file: ' + error.message, 'error');
+          }
+        };
+        
+        reader.readAsText(file);
+      } else {
+        showStatus('❌ Please select a valid JSON file', 'error');
+      }
+    }
+    
+    function showStatus(message, type) {
+      const status = document.getElementById('status');
+      status.textContent = message;
+      status.className = type;
+    }
+    
+    function importDesign() {
+      const input = document.getElementById('design-json').value.trim();
+      
+      if (!input) {
+        showStatus('Please enter design JSON', 'error');
+        return;
+      }
+      
+      try {
+        const design = JSON.parse(input);
+        
+        parent.postMessage({
+          pluginMessage: {
+            type: 'create-design',
+            design: design
+          }
+        }, '*');
+        
+        showStatus('Creating design...', 'success');
+        
+      } catch (error) {
+        showStatus('Invalid JSON: ' + error.message, 'error');
+      }
+    }
+    
+    // Listen for messages from plugin
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      if (msg) {
+        if (msg.type === 'success') {
+          showStatus('✅ ' + msg.message, 'success');
+        } else if (msg.type === 'error') {
+          showStatus('❌ ' + msg.message, 'error');
+        }
+      }
+    };
+  </script>
+</body>
+</html>

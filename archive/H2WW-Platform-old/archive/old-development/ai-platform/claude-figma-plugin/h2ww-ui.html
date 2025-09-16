@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      background: #ffffff;
+      color: #333;
+      padding: 16px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1A202C;
+    }
+    
+    h3 {
+      color: #2D3748;
+      margin-bottom: 12px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .section {
+      margin-bottom: 24px;
+    }
+    
+    .button {
+      background: #E53E3E;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .button:hover {
+      background: #C53030;
+    }
+    
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-size: 13px;
+      display: none;
+    }
+    
+    .status.success {
+      background: #C6F6D5;
+      color: #22543D;
+      border: 1px solid #9AE6B4;
+      display: block;
+    }
+    
+    .status.error {
+      background: #FED7D7;
+      color: #9B2C2C;
+      border: 1px solid #FEB2B2;
+      display: block;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #E2E8F0;
+    }
+    
+    .tab {
+      padding: 12px 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      color: #4A5568;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      font-family: 'Poppins', sans-serif;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .tab.active {
+      color: #3182CE;
+      border-bottom-color: #3182CE;
+      background: #EBF8FF;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .preview {
+      background: #F7FAFC;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 12px;
+      border: 1px solid #E2E8F0;
+      line-height: 1.6;
+    }
+    
+    .geometric-accent {
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(135deg, #E53E3E 0%, #F6E05E 100%);
+      display: inline-block;
+      margin-right: 8px;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h2><span class="geometric-accent"></span>🎨 H2WW Design System Importer</h2>
+  
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('components')">H2WW Components</button>
+    <button class="tab" onclick="switchTab('help')">Help</button>
+  </div>
+  
+  <!-- Components Tab -->
+  <div id="components-tab" class="tab-content active">
+    <div class="section">
+      <h3>H2WW Bauhaus Design Components</h3>
+      <p style="color: #4A5568; margin-bottom: 20px;">Import the complete H2WW design system with 10 geometric components based on Bauhaus principles and Itten color psychology.</p>
+      
+      <button class="button" onclick="importComponents();" style="background: #E53E3E; font-size: 16px; padding: 16px;">
+        🎨 Import H2WW Component Library
+      </button>
+      
+      <div id="components-status" class="status"></div>
+      
+      <div class="preview" style="margin-top: 20px;">
+        <strong>Core Components:</strong><br>
+        • AI Companion Avatar (Red Circle)<br>
+        • Learning Card (White Frame)<br>
+        • Primary/Secondary Buttons<br>
+        • Progress Indicators (Red/Blue/Yellow)<br>
+        • Navigation & Dashboard Elements<br><br>
+        
+        <strong>🧠 Research-Based AI Components:</strong><br>
+        • AI Guidance Panel (Blank Page Solution)<br>
+        • Capability Indicator (Scoping Solution)<br>
+        • Iteration Controls (Refinement Tools)<br>
+        • Multimodal Input Interface<br>
+        • Personalization Widget (Learning Styles)<br>
+        • Contextual AI Controls (Beyond Text)<br>
+        • AI State Indicator (System Context)<br>
+        • Gesture Input Area (Direct Manipulation)<br>
+        • Predictive Learning Interface (Feedback Loops)<br>
+        • Social Boundary Indicator (Ethical AI)<br>
+        • Privacy & Disclosure Panel (Transparency)<br>
+        • Trust Building Interface (Polyadic AI)<br>
+        • Privacy Harm Prevention (18 Harms/Risks)<br>
+        • Conversation Context Adapter (Relationship Stages)<br>
+        • Functional Trust Indicator (Security-Based)<br>
+        • Transactional Conversation Frame (Task-Oriented)
+      </div>
+    </div>
+  </div>
+  
+  <!-- Help Tab -->
+  <div id="help-tab" class="tab-content">
+    <div class="section">
+      <h3>🎨 H2WW Design System</h3>
+      <p style="line-height: 1.6;">The H2WW (How To Work With) Design System is built on Bauhaus principles and Itten color psychology for AI learning interfaces.</p>
+      
+      <h3 style="margin-top: 20px;">✨ Features:</h3>
+      <div class="preview">
+        • Geometric design language (Circle → Square → Triangle)<br>
+        • Itten color psychology for learning states<br>
+        • 8px grid system with golden ratio proportions<br>
+        • AI companion avatar with progressive states<br>
+        • Ready-to-use component library
+      </div>
+      
+      <h3 style="margin-top: 20px;">🧩 Components Included:</h3>
+      <ul style="margin-left: 20px; line-height: 1.8; color: #4A5568;">
+        <li><strong>Core Components:</strong> AI Avatar, Learning Cards, Buttons, Progress Indicators</li>
+        <li><strong>Navigation:</strong> Tabs, Headers, Dashboard Elements</li>
+        <li><strong>AI Guidance Panel:</strong> Solves "blank page problem" with templates</li>
+        <li><strong>Capability Indicator:</strong> Shows AI confidence & limitations</li>
+        <li><strong>Iteration Controls:</strong> Enables precise AI output refinement</li>
+        <li><strong>Multimodal Input:</strong> Text, voice, visual interaction modes</li>
+        <li><strong>Personalization:</strong> Adapts to individual learning styles</li>
+        <li><strong>Contextual AI Controls:</strong> Graphical controls beyond text input</li>
+        <li><strong>AI State Indicators:</strong> Clear system capability signifiers</li>
+        <li><strong>Gesture Input:</strong> Direct manipulation for non-text interaction</li>
+        <li><strong>Predictive Learning:</strong> Algorithm-friendly feedback loops</li>
+      </ul>
+      
+      <h3 style="margin-top: 20px;">📚 Research Foundation:</h3>
+      <div class="preview">
+        Based on Human-AI Interaction research addressing:<br>
+        • Conversational Interface Design Problems<br>
+        • "Obviousness" Principle for Intuitive UX<br>
+        • Beyond-Conversational AI Patterns<br>
+        • Contextual Intelligence & State Awareness<br>
+        • Multimodal Interaction (Text + Visual + Gesture)<br>
+        • Polyadic Human-Human-AI Social Dynamics<br>
+        • Comprehensive Privacy Harm Prevention (Solove Taxonomy)<br>
+        • Conversation Context & Relationship Stage Adaptation<br>
+        • Functional vs Emotional Trust Models<br>
+        • Transactional Conversation Design Patterns<br>
+        • Ethical Boundaries & Privacy Protection<br>
+        • AI Transparency & Trust Building
+      </div>
+      
+      <div style="margin-top: 20px; padding: 12px; background: #EBF8FF; border-radius: 8px; border-left: 4px solid #3182CE;">
+        <strong>💡 Usage:</strong> Click "Import H2WW Component Library" to add all 27 research-based components to your Figma file as reusable frames.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // H2WW Component Library Data
+    function getH2WWComponents() {
+      return {
+        "components": {
+          "ai-companion-avatar": {
+            "type": "frame",
+            "name": "[Component] AI Companion Avatar",
+            "width": 96,
+            "height": 96,
+            "backgroundColor": "#E53E3E",
+            "cornerRadius": 48
+          },
+          "learning-card": {
+            "type": "frame",
+            "name": "[Component] H2WW Learning Card",
+            "width": 320,
+            "height": 180,
+            "backgroundColor": "#FFFFFF",
+            "cornerRadius": 12
+          },
+          "primary-button": {
+            "type": "frame",
+            "name": "[Component] Primary Button",
+            "width": 200,
+            "height": 48,
+            "backgroundColor": "#E53E3E",
+            "cornerRadius": 8
+          },
+          "secondary-button": {
+            "type": "frame",
+            "name": "[Component] Secondary Button",
+            "width": 200,
+            "height": 48,
+            "backgroundColor": "transparent",
+            "cornerRadius": 8,
+            "stroke": "#3182CE",
+            "strokeWeight": "2px"
+          },
+          "progress-red": {
+            "type": "frame",
+            "name": "[Component] Progress Red",
+            "width": 150,
+            "height": 80,
+            "backgroundColor": "#E53E3E",
+            "cornerRadius": 8
+          },
+          "progress-blue": {
+            "type": "frame",
+            "name": "[Component] Progress Blue",
+            "width": 150,
+            "height": 80,
+            "backgroundColor": "#3182CE",
+            "cornerRadius": 8
+          },
+          "progress-yellow": {
+            "type": "frame",
+            "name": "[Component] Progress Yellow",
+            "width": 150,
+            "height": 80,
+            "backgroundColor": "#F6E05E",
+            "cornerRadius": 8
+          },
+          "navigation-tab": {
+            "type": "frame",
+            "name": "[Component] Navigation Tab",
+            "width": 120,
+            "height": 48,
+            "backgroundColor": "#F7FAFC",
+            "cornerRadius": 8
+          },
+          "dashboard-header": {
+            "type": "frame",
+            "name": "[Component] Dashboard Header",
+            "width": 800,
+            "height": 80,
+            "backgroundColor": "#FFFFFF",
+            "cornerRadius": 0
+          },
+          "color-palette": {
+            "type": "frame",
+            "name": "[Component] Color Palette",
+            "width": 300,
+            "height": 100,
+            "backgroundColor": "#F7FAFC",
+            "cornerRadius": 12
+          }
+        }
+      };
+    }
+    
+    function importComponents() {
+      const components = getH2WWComponents();
+      parent.postMessage({
+        pluginMessage: {
+          type: 'import-components',
+          components: components,
+          tokens: null
+        }
+      }, '*');
+      
+      const status = document.getElementById('components-status');
+      status.className = 'status success';
+      status.textContent = '🎨 Importing H2WW components...';
+    }
+    
+    function switchTab(tab) {
+      // Update tab buttons
+      document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+      event.target.classList.add('active');
+      
+      // Update tab content
+      document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
+      document.getElementById(tab + '-tab').classList.add('active');
+    }
+    
+    // Listen for messages from plugin
+    window.onmessage = function(event) {
+      const msg = event.data.pluginMessage;
+      if (!msg) return;
+      
+      const status = document.getElementById('components-status');
+      if (msg.type === 'success') {
+        status.className = 'status success';
+        status.textContent = '✅ ' + msg.message;
+      } else if (msg.type === 'error') {
+        status.className = 'status error';
+        status.textContent = '❌ ' + msg.message;
+      }
+    };
+  </script>
+</body>
+</html>

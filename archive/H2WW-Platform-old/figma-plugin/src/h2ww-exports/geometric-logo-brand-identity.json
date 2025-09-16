@@ -1,0 +1,1661 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "H2WW Geometric Logo & Brand Identity System",
+    "description": "Bauhaus-inspired visual identity using geometric learning metaphors",
+    "philosophy": "Form follows function - geometry serves learning psychology",
+    "designApproach": "Minimalist, accessible, emotionally intelligent",
+    "geometricMetaphors": {
+      "circle": "Continuous learning journey, AI companion presence, infinite potential",
+      "square": "Stable knowledge foundation, reliable tools, structured learning",
+      "triangle": "Growth progression, skill advancement, breakthrough moments"
+    },
+    "lastUpdated": "2024-09-15"
+  },
+  "type": "frame",
+  "name": "H2WW Geometric Logo & Brand Identity",
+  "width": 1440,
+  "height": 6000,
+  "backgroundColor": "#FFFFFF",
+  "padding": 64,
+  "layout": true,
+  "direction": "vertical",
+  "spacing": 64,
+  "brandIdentitySystem": {
+    "logoVariations": {
+      "primary": {
+        "description": "Full logo with geometric elements and wordmark",
+        "usage": "Primary brand application, hero sections, official documents",
+        "elements": ["H2WW wordmark", "Geometric trinity", "Brand colors"]
+      },
+      "compact": {
+        "description": "Condensed version for small spaces",
+        "usage": "Social media, favicons, app icons, compact headers",
+        "elements": ["H2WW abbreviation", "Single geometric element"]
+      },
+      "wordmark": {
+        "description": "Text-only version with geometric influence",
+        "usage": "Text-heavy contexts, legal documents, accessibility",
+        "elements": ["Typography", "Geometric spacing"]
+      },
+      "symbol": {
+        "description": "Geometric elements only",
+        "usage": "Watermarks, loading states, pattern backgrounds",
+        "elements": ["Circle-square-triangle trinity"]
+      }
+    },
+    "geometricSystem": {
+      "circle": {
+        "meaning": "Continuous learning journey",
+        "application": "AI companion avatar, progress indicators, user profiles",
+        "psychology": "Completeness, unity, infinite potential",
+        "colorAssociation": "Primary blue for trust and reliability"
+      },
+      "square": {
+        "meaning": "Stable knowledge foundation", 
+        "application": "Content blocks, tool cards, structured information",
+        "psychology": "Stability, reliability, order",
+        "colorAssociation": "Secondary colors for different tool categories"
+      },
+      "triangle": {
+        "meaning": "Growth and progression",
+        "application": "Progress arrows, level indicators, achievement badges",
+        "psychology": "Direction, advancement, energy",
+        "colorAssociation": "Primary red for motivation and achievement"
+      }
+    },
+    "typographyHierarchy": {
+      "primary": {
+        "family": "Poppins",
+        "usage": "Headlines, logos, display text",
+        "characteristics": "Geometric, friendly, approachable"
+      },
+      "secondary": {
+        "family": "Inter",
+        "usage": "Body text, UI elements, data",
+        "characteristics": "Highly legible, neutral, professional"
+      },
+      "monospace": {
+        "family": "Fira Code",
+        "usage": "Code examples, technical content",
+        "characteristics": "Developer-friendly, clear distinction"
+      }
+    },
+    "brandVoice": {
+      "personality": "Knowledgeable guide, supportive mentor, trusted companion",
+      "tone": "Professional yet approachable, confident but humble",
+      "language": "Clear, jargon-free, encouraging, educational"
+    }
+  },
+  "children": [
+    {
+      "type": "frame",
+      "name": "Brand Identity Header",
+      "width": 1312,
+      "height": 200,
+      "backgroundColor": "#1A202C",
+      "cornerRadius": 16,
+      "padding": 40,
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 16,
+      "children": [
+        {
+          "type": "text",
+          "content": "🎯 H2WW Geometric Logo & Brand Identity",
+          "fontSize": 36,
+          "fontWeight": 700,
+          "color": "#FFFFFF",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "text",
+          "content": "Bauhaus-inspired visual identity • Geometric learning metaphors • Form follows function",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#E2E8F0",
+          "fontFamily": "Inter"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "Primary Logo System",
+      "width": 1312,
+      "height": 800,
+      "backgroundColor": "transparent",
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 40,
+      "children": [
+        {
+          "type": "text",
+          "content": "Primary Logo Variations",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Logo Variations Grid",
+          "width": 1312,
+          "height": 720,
+          "backgroundColor": "transparent",
+          "layout": true,
+          "direction": "horizontal",
+          "spacing": 32,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Full Logo Version",
+              "width": 640,
+              "height": 720,
+              "backgroundColor": "#F7FAFC",
+              "cornerRadius": 16,
+              "padding": 40,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "🎯 Full Logo - Primary Version",
+                  "fontSize": 20,
+                  "fontWeight": 600,
+                  "color": "#1A202C",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "Logo Construction",
+                  "width": 560,
+                  "height": 200,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 32,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Geometric Trinity",
+                      "width": 160,
+                      "height": 136,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Circle Element",
+                          "width": 40,
+                          "height": 40,
+                          "backgroundColor": "#3182CE",
+                          "cornerRadius": 20
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Square Element",
+                          "width": 40,
+                          "height": 40,
+                          "backgroundColor": "#F6E05E",
+                          "cornerRadius": 4
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Triangle Element",
+                          "width": 40,
+                          "height": 40,
+                          "backgroundColor": "#E53E3E",
+                          "cornerRadius": 8
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Wordmark",
+                      "width": 360,
+                      "height": 136,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "H2WW",
+                          "fontSize": 48,
+                          "fontWeight": 700,
+                          "color": "#1A202C",
+                          "fontFamily": "Poppins"
+                        },
+                        {
+                          "type": "text",
+                          "content": "HowToWorkWith",
+                          "fontSize": 16,
+                          "fontWeight": 400,
+                          "color": "#4A5568",
+                          "fontFamily": "Inter",
+                          "opacity": 0.8
+                        },
+                        {
+                          "type": "text",
+                          "content": "AI Learning Platform",
+                          "fontSize": 12,
+                          "fontWeight": 500,
+                          "color": "#718096",
+                          "fontFamily": "Inter"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Usage Guidelines",
+                  "width": 560,
+                  "height": 200,
+                  "backgroundColor": "#EBF8FF",
+                  "cornerRadius": 12,
+                  "padding": 24,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Usage Guidelines",
+                      "fontSize": 16,
+                      "fontWeight": 600,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "text",
+                      "content": "✅ Primary brand applications\n✅ Hero sections and headers\n✅ Official documents\n✅ Marketing materials\n✅ Minimum size: 120px width",
+                      "fontSize": 13,
+                      "color": "#2B77CB",
+                      "lineHeight": 1.6
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Color Variations",
+                  "width": 560,
+                  "height": 120,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Light Background",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#FFFFFF",
+                      "cornerRadius": 8,
+                      "padding": 16,
+                      "stroke": "#E2E8F0",
+                      "strokeWeight": 1,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "H2WW",
+                          "fontSize": 20,
+                          "fontWeight": 700,
+                          "color": "#1A202C",
+                          "fontFamily": "Poppins"
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Mini Trinity",
+                          "width": 60,
+                          "height": 20,
+                          "backgroundColor": "transparent",
+                          "layout": true,
+                          "direction": "horizontal",
+                          "spacing": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "name": "Mini Circle",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#3182CE",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Mini Square",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#F6E05E",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Mini Triangle",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#E53E3E",
+                              "cornerRadius": 4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Dark Background",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#1A202C",
+                      "cornerRadius": 8,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "H2WW",
+                          "fontSize": 20,
+                          "fontWeight": 700,
+                          "color": "#FFFFFF",
+                          "fontFamily": "Poppins"
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Mini Trinity",
+                          "width": 60,
+                          "height": 20,
+                          "backgroundColor": "transparent",
+                          "layout": true,
+                          "direction": "horizontal",
+                          "spacing": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "name": "Mini Circle",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#63B3ED",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Mini Square",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#FAF089",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Mini Triangle",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#FC8181",
+                              "cornerRadius": 4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Monochrome",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#F7FAFC",
+                      "cornerRadius": 8,
+                      "padding": 16,
+                      "stroke": "#E2E8F0",
+                      "strokeWeight": 1,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "H2WW",
+                          "fontSize": 20,
+                          "fontWeight": 700,
+                          "color": "#1A202C",
+                          "fontFamily": "Poppins"
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Mini Trinity",
+                          "width": 60,
+                          "height": 20,
+                          "backgroundColor": "transparent",
+                          "layout": true,
+                          "direction": "horizontal",
+                          "spacing": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "name": "Mini Circle",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#1A202C",
+                              "cornerRadius": 8
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Mini Square",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#4A5568",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Mini Triangle",
+                              "width": 16,
+                              "height": 16,
+                              "backgroundColor": "#718096",
+                              "cornerRadius": 4
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Compact & Symbol Versions",
+              "width": 640,
+              "height": 720,
+              "backgroundColor": "#F7FAFC",
+              "cornerRadius": 16,
+              "padding": 40,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 32,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "🎯 Compact & Symbol Versions",
+                  "fontSize": 20,
+                  "fontWeight": 600,
+                  "color": "#1A202C",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "App Icon Version",
+                  "width": 560,
+                  "height": 160,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 24,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "App Icon",
+                      "width": 120,
+                      "height": 120,
+                      "backgroundColor": "#3182CE",
+                      "cornerRadius": 24,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "H2WW",
+                          "x": 20,
+                          "y": 20,
+                          "fontSize": 18,
+                          "fontWeight": 700,
+                          "color": "#FFFFFF",
+                          "fontFamily": "Poppins"
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Icon Trinity",
+                          "width": 80,
+                          "height": 32,
+                          "backgroundColor": "transparent",
+                          "x": 20,
+                          "y": 60,
+                          "layout": true,
+                          "direction": "horizontal",
+                          "spacing": 8,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "name": "Icon Circle",
+                              "width": 20,
+                              "height": 20,
+                              "backgroundColor": "#FFFFFF",
+                              "cornerRadius": 10
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Icon Square",
+                              "width": 20,
+                              "height": 20,
+                              "backgroundColor": "#F6E05E",
+                              "cornerRadius": 2
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Icon Triangle",
+                              "width": 20,
+                              "height": 20,
+                              "backgroundColor": "#E53E3E",
+                              "cornerRadius": 4
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "App Icon Info",
+                      "width": 380,
+                      "height": 120,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "App Icon Version",
+                          "fontSize": 16,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Perfect for mobile apps, favicons, and small digital applications. Maintains brand recognition at 16px and larger.",
+                          "fontSize": 13,
+                          "color": "#4A5568",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Symbol Only Version",
+                  "width": 560,
+                  "height": 160,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 24,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Symbol",
+                      "width": 120,
+                      "height": 120,
+                      "backgroundColor": "#F7FAFC",
+                      "cornerRadius": 12,
+                      "stroke": "#E2E8F0",
+                      "strokeWeight": 1,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Large Circle",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#3182CE",
+                          "cornerRadius": 16,
+                          "x": 44,
+                          "y": 20
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Large Square",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#F6E05E",
+                          "cornerRadius": 4,
+                          "x": 44,
+                          "y": 44
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Large Triangle",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#E53E3E",
+                          "cornerRadius": 8,
+                          "x": 44,
+                          "y": 68
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Symbol Info",
+                      "width": 380,
+                      "height": 120,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Symbol Only Version",
+                          "fontSize": 16,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "For watermarks, loading states, pattern backgrounds, and contexts where wordmark isn't needed.",
+                          "fontSize": 13,
+                          "color": "#4A5568",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Social Media Versions",
+                  "width": 560,
+                  "height": 200,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Social Media Applications",
+                      "fontSize": 16,
+                      "fontWeight": 600,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Social Platforms",
+                      "width": 560,
+                      "height": 160,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "horizontal",
+                      "spacing": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "LinkedIn Profile",
+                          "width": 80,
+                          "height": 80,
+                          "backgroundColor": "#0077B5",
+                          "cornerRadius": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "H2WW",
+                              "x": 16,
+                              "y": 20,
+                              "fontSize": 12,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Twitter Profile",
+                          "width": 80,
+                          "height": 80,
+                          "backgroundColor": "#1DA1F2",
+                          "cornerRadius": 40,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "H2WW",
+                              "x": 16,
+                              "y": 20,
+                              "fontSize": 12,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Instagram Profile",
+                          "width": 80,
+                          "height": 80,
+                          "backgroundColor": "#E4405F",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "H2WW",
+                              "x": 16,
+                              "y": 20,
+                              "fontSize": 12,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "name": "YouTube Profile",
+                          "width": 80,
+                          "height": 80,
+                          "backgroundColor": "#FF0000",
+                          "cornerRadius": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "H2WW",
+                              "x": 16,
+                              "y": 20,
+                              "fontSize": 12,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "Geometric Language System",
+      "width": 1312,
+      "height": 1000,
+      "backgroundColor": "transparent",
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 40,
+      "children": [
+        {
+          "type": "text",
+          "content": "Geometric Language System",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Shape Meanings",
+          "width": 1312,
+          "height": 900,
+          "backgroundColor": "transparent",
+          "layout": true,
+          "direction": "vertical",
+          "spacing": 32,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Circle Meaning",
+              "width": 1312,
+              "height": 280,
+              "backgroundColor": "#EBF8FF",
+              "cornerRadius": 16,
+              "padding": 32,
+              "layout": true,
+              "direction": "horizontal",
+              "spacing": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "Circle Showcase",
+                  "width": 200,
+                  "height": 216,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Large Circle",
+                      "width": 120,
+                      "height": 120,
+                      "backgroundColor": "#3182CE",
+                      "cornerRadius": 60,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🔵",
+                          "x": 44,
+                          "y": 32,
+                          "fontSize": 48
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "content": "Circle",
+                      "fontSize": 20,
+                      "fontWeight": 700,
+                      "color": "#3182CE",
+                      "fontFamily": "Poppins",
+                      "textAlign": "center"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Circle Explanation",
+                  "width": 1048,
+                  "height": 216,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🔵 Circle: Continuous Learning Journey",
+                      "fontSize": 22,
+                      "fontWeight": 600,
+                      "color": "#1A202C",
+                      "fontFamily": "Poppins"
+                    },
+                    {
+                      "type": "text",
+                      "content": "The circle represents the infinite nature of learning and the continuous presence of AI in our lives. It symbolizes completeness, unity, and the ongoing relationship between human and artificial intelligence.",
+                      "fontSize": 16,
+                      "color": "#2B77CB",
+                      "lineHeight": 1.6
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Circle Applications",
+                      "width": 1048,
+                      "height": 80,
+                      "backgroundColor": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "padding": 20,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Visual Applications:",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "• AI Companion avatars • Progress indicators • User profile images • Loading states • Completion badges • Infinite scroll elements",
+                          "fontSize": 13,
+                          "color": "#4A5568",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Square Meaning",
+              "width": 1312,
+              "height": 280,
+              "backgroundColor": "#FFFBF0",
+              "cornerRadius": 16,
+              "padding": 32,
+              "layout": true,
+              "direction": "horizontal",
+              "spacing": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "Square Showcase",
+                  "width": 200,
+                  "height": 216,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Large Square",
+                      "width": 120,
+                      "height": 120,
+                      "backgroundColor": "#F6E05E",
+                      "cornerRadius": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "⬜",
+                          "x": 44,
+                          "y": 32,
+                          "fontSize": 48
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "content": "Square",
+                      "fontSize": 20,
+                      "fontWeight": 700,
+                      "color": "#D69E2E",
+                      "fontFamily": "Poppins",
+                      "textAlign": "center"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Square Explanation",
+                  "width": 1048,
+                  "height": 216,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "⬜ Square: Stable Knowledge Foundation",
+                      "fontSize": 22,
+                      "fontWeight": 600,
+                      "color": "#1A202C",
+                      "fontFamily": "Poppins"
+                    },
+                    {
+                      "type": "text",
+                      "content": "The square represents stability, reliability, and structured learning. It embodies the solid foundation of knowledge that users build as they master AI tools and concepts. Order, organization, and dependable structure.",
+                      "fontSize": 16,
+                      "color": "#B7791F",
+                      "lineHeight": 1.6
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Square Applications",
+                      "width": 1048,
+                      "height": 80,
+                      "backgroundColor": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "padding": 20,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Visual Applications:",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "• Content blocks • Tool cards • Information panels • Grid systems • Course modules • Knowledge base articles • Stable UI elements",
+                          "fontSize": 13,
+                          "color": "#4A5568",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Triangle Meaning",
+              "width": 1312,
+              "height": 280,
+              "backgroundColor": "#FFF5F5",
+              "cornerRadius": 16,
+              "padding": 32,
+              "layout": true,
+              "direction": "horizontal",
+              "spacing": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "Triangle Showcase",
+                  "width": 200,
+                  "height": 216,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Large Triangle",
+                      "width": 120,
+                      "height": 120,
+                      "backgroundColor": "#E53E3E",
+                      "cornerRadius": 16,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🔺",
+                          "x": 44,
+                          "y": 32,
+                          "fontSize": 48
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "content": "Triangle",
+                      "fontSize": 20,
+                      "fontWeight": 700,
+                      "color": "#E53E3E",
+                      "fontFamily": "Poppins",
+                      "textAlign": "center"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Triangle Explanation",
+                  "width": 1048,
+                  "height": 216,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🔺 Triangle: Growth & Progression",
+                      "fontSize": 22,
+                      "fontWeight": 600,
+                      "color": "#1A202C",
+                      "fontFamily": "Poppins"
+                    },
+                    {
+                      "type": "text",
+                      "content": "The triangle symbolizes direction, advancement, and breakthrough moments in learning. It represents the energy of progress, the excitement of leveling up, and the dynamic nature of skill acquisition in AI mastery.",
+                      "fontSize": 16,
+                      "color": "#C53030",
+                      "lineHeight": 1.6
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Triangle Applications",
+                      "width": 1048,
+                      "height": 80,
+                      "backgroundColor": "#FFFFFF",
+                      "cornerRadius": 12,
+                      "padding": 20,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Visual Applications:",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "• Progress arrows • Level up indicators • Achievement badges • Call-to-action buttons • Skill advancement • Breakthrough moments • Dynamic elements",
+                          "fontSize": 13,
+                          "color": "#4A5568",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "Typography & Brand Voice",
+      "width": 1312,
+      "height": 800,
+      "backgroundColor": "transparent",
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 40,
+      "children": [
+        {
+          "type": "text",
+          "content": "Typography & Brand Voice System",
+          "fontSize": 28,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Typography Hierarchy",
+          "width": 1312,
+          "height": 720,
+          "backgroundColor": "#F7FAFC",
+          "cornerRadius": 16,
+          "padding": 32,
+          "layout": true,
+          "direction": "vertical",
+          "spacing": 32,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Font Families",
+              "width": 1248,
+              "height": 200,
+              "backgroundColor": "transparent",
+              "layout": true,
+              "direction": "horizontal",
+              "spacing": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "Poppins Display",
+                  "width": 390,
+                  "height": 200,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 24,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Poppins",
+                      "fontSize": 24,
+                      "fontWeight": 700,
+                      "color": "#1A202C",
+                      "fontFamily": "Poppins"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Display & Headlines",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "color": "#4A5568"
+                    },
+                    {
+                      "type": "text",
+                      "content": "H2WW Platform\nGeometric\nFriendly\nApproachable",
+                      "fontSize": 16,
+                      "fontWeight": 600,
+                      "color": "#1A202C",
+                      "fontFamily": "Poppins",
+                      "lineHeight": 1.4
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Inter Body",
+                  "width": 390,
+                  "height": 200,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 24,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": 500,
+                      "color": "#1A202C",
+                      "fontFamily": "Inter"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Body Text & UI",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "color": "#4A5568"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Highly legible text for learning content. Neutral and professional appearance. Optimized for screens and reading comprehension.",
+                      "fontSize": 14,
+                      "color": "#4A5568",
+                      "fontFamily": "Inter",
+                      "lineHeight": 1.6
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Fira Code",
+                  "width": 390,
+                  "height": 200,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 24,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 16,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Fira Code",
+                      "fontSize": 20,
+                      "fontWeight": 400,
+                      "color": "#1A202C",
+                      "fontFamily": "Fira Code"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Code & Technical",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "color": "#4A5568"
+                    },
+                    {
+                      "type": "text",
+                      "content": "function learnAI() {\n  return 'success';\n}\n\n// With ligatures",
+                      "fontSize": 12,
+                      "color": "#2D3748",
+                      "fontFamily": "Fira Code",
+                      "lineHeight": 1.4
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Brand Voice",
+              "width": 1248,
+              "height": 220,
+              "backgroundColor": "#FFFFFF",
+              "cornerRadius": 12,
+              "padding": 32,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "H2WW Brand Voice & Personality",
+                  "fontSize": 20,
+                  "fontWeight": 600,
+                  "color": "#1A202C",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "Voice Attributes",
+                  "width": 1184,
+                  "height": 140,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Personality",
+                      "width": 360,
+                      "height": 140,
+                      "backgroundColor": "#EBF8FF",
+                      "cornerRadius": 8,
+                      "padding": 20,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🤖 Personality",
+                          "fontSize": 16,
+                          "fontWeight": 600,
+                          "color": "#3182CE"
+                        },
+                        {
+                          "type": "text",
+                          "content": "• Knowledgeable guide\n• Supportive mentor\n• Trusted companion\n• Patient teacher\n• Encouraging friend",
+                          "fontSize": 13,
+                          "color": "#2B77CB",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Tone",
+                      "width": 360,
+                      "height": 140,
+                      "backgroundColor": "#FFFBF0",
+                      "cornerRadius": 8,
+                      "padding": 20,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "💬 Tone",
+                          "fontSize": 16,
+                          "fontWeight": 600,
+                          "color": "#D69E2E"
+                        },
+                        {
+                          "type": "text",
+                          "content": "• Professional yet approachable\n• Confident but humble\n• Clear and direct\n• Encouraging\n• Solution-focused",
+                          "fontSize": 13,
+                          "color": "#B7791F",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Language",
+                      "width": 360,
+                      "height": 140,
+                      "backgroundColor": "#FFF5F5",
+                      "cornerRadius": 8,
+                      "padding": 20,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "💭 Language",
+                          "fontSize": 16,
+                          "fontWeight": 600,
+                          "color": "#E53E3E"
+                        },
+                        {
+                          "type": "text",
+                          "content": "• Clear, jargon-free\n• Educational focus\n• Action-oriented\n• Inclusive terminology\n• Growth mindset",
+                          "fontSize": 13,
+                          "color": "#C53030",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Message Examples",
+              "width": 1248,
+              "height": 200,
+              "backgroundColor": "#1A202C",
+              "cornerRadius": 12,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "Brand Voice in Action",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#FFFFFF",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "Example Messages",
+                  "width": 1200,
+                  "height": 140,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Welcome Message",
+                      "width": 380,
+                      "height": 140,
+                      "backgroundColor": "#2D3748",
+                      "cornerRadius": 8,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "✅ Good Example",
+                          "fontSize": 12,
+                          "fontWeight": 600,
+                          "color": "#68D391"
+                        },
+                        {
+                          "type": "text",
+                          "content": "\"Ready to master AI? I'm here to guide you every step of the way. Let's start with the basics and build your confidence together.\"",
+                          "fontSize": 12,
+                          "color": "#E2E8F0",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Progress Message",
+                      "width": 380,
+                      "height": 140,
+                      "backgroundColor": "#2D3748",
+                      "cornerRadius": 8,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "✅ Good Example",
+                          "fontSize": 12,
+                          "fontWeight": 600,
+                          "color": "#68D391"
+                        },
+                        {
+                          "type": "text",
+                          "content": "\"Great progress! You've mastered prompt basics. Ready to explore advanced techniques? I'll show you how professionals use AI.\"",
+                          "fontSize": 12,
+                          "color": "#E2E8F0",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Encouragement",
+                      "width": 380,
+                      "height": 140,
+                      "backgroundColor": "#2D3748",
+                      "cornerRadius": 8,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "✅ Good Example",
+                          "fontSize": 12,
+                          "fontWeight": 600,
+                          "color": "#68D391"
+                        },
+                        {
+                          "type": "text",
+                          "content": "\"Every expert was once a beginner. Your curiosity about AI is already your greatest asset. Let's build on that together.\"",
+                          "fontSize": 12,
+                          "color": "#E2E8F0",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "Brand Implementation Guidelines",
+      "width": 1312,
+      "height": 600,
+      "backgroundColor": "#1A202C",
+      "cornerRadius": 16,
+      "padding": 32,
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 32,
+      "children": [
+        {
+          "type": "text",
+          "content": "Brand Implementation Guidelines",
+          "fontSize": 24,
+          "fontWeight": 600,
+          "color": "#FFFFFF",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Guidelines Grid",
+          "width": 1248,
+          "height": 500,
+          "backgroundColor": "transparent",
+          "layout": true,
+          "direction": "horizontal",
+          "spacing": 32,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Do's",
+              "width": 400,
+              "height": 500,
+              "backgroundColor": "#2D3748",
+              "cornerRadius": 12,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "✅ Do's",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#68D391"
+                },
+                {
+                  "type": "text",
+                  "content": "• Use geometric elements consistently\n• Maintain proper spacing around logo\n• Apply color psychology thoughtfully\n• Keep brand voice encouraging\n• Ensure accessibility standards\n• Scale elements proportionally\n• Use approved color combinations",
+                  "fontSize": 13,
+                  "color": "#E2E8F0",
+                  "lineHeight": 1.8
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Don'ts",
+              "width": 400,
+              "height": 500,
+              "backgroundColor": "#2D3748",
+              "cornerRadius": 12,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "❌ Don'ts",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#F56565"
+                },
+                {
+                  "type": "text",
+                  "content": "• Stretch or distort logo elements\n• Use unauthorized color combinations\n• Mix geometric metaphors randomly\n• Apply complex gradients to shapes\n• Use condescending language\n• Overcomplicate simple interfaces\n• Ignore accessibility guidelines",
+                  "fontSize": 13,
+                  "color": "#E2E8F0",
+                  "lineHeight": 1.8
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Best Practices",
+              "width": 400,
+              "height": 500,
+              "backgroundColor": "#2D3748",
+              "cornerRadius": 12,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "💡 Best Practices",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#F6E05E"
+                },
+                {
+                  "type": "text",
+                  "content": "• Test logo at multiple sizes\n• Consider context and user state\n• Progressive disclosure of complexity\n• Maintain geometric harmony\n• Balance trust and approachability\n• Optimize for learning psychology\n• Document all brand decisions",
+                  "fontSize": 13,
+                  "color": "#E2E8F0",
+                  "lineHeight": 1.8
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

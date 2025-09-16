@@ -1,0 +1,672 @@
+{
+  "$schema": "https://schemas.figma.com/v1.0.0/figma-components.json",
+  "$metadata": {
+    "version": "1.0.0",
+    "description": "H2WW AI Learning Platform Figma Components Library",
+    "tokenFile": "./h2ww-design-tokens.json",
+    "exportFormat": "figmaPlugin",
+    "geometricSystem": "bauhaus-learning-metaphors"
+  },
+  "components": {
+    "ai-companion-avatar": {
+      "description": "Geometric AI companion avatar with progressive learning states",
+      "category": "navigation",
+      "figmaProperties": {
+        "componentSet": true,
+        "variants": [
+          {
+            "name": "Circle State",
+            "properties": {
+              "state": "circle",
+              "size": "default"
+            },
+            "geometry": {
+              "type": "ellipse",
+              "width": "{component.ai-companion.avatar.size.default}",
+              "height": "{component.ai-companion.avatar.size.default}",
+              "cornerRadius": "{core.border-radius.full}"
+            },
+            "fill": {
+              "type": "gradient",
+              "gradient": "{component.ai-companion.states.circle.background}",
+              "opacity": 1
+            },
+            "effects": [
+              {
+                "type": "drop-shadow",
+                "color": "rgba(229, 62, 62, 0.25)",
+                "offset": {"x": 0, "y": 2},
+                "blur": 8,
+                "spread": 0
+              }
+            ],
+            "animations": {
+              "hover": {
+                "scale": 1.05,
+                "duration": "200ms",
+                "easing": "ease-out"
+              },
+              "pulse": {
+                "opacity": "0.8 to 1.0",
+                "duration": "2000ms",
+                "easing": "ease-in-out",
+                "iteration": "infinite"
+              }
+            }
+          },
+          {
+            "name": "Square State", 
+            "properties": {
+              "state": "square",
+              "size": "default"
+            },
+            "geometry": {
+              "type": "rectangle",
+              "width": "{component.ai-companion.avatar.size.default}",
+              "height": "{component.ai-companion.avatar.size.default}",
+              "cornerRadius": "{core.border-radius.base}"
+            },
+            "fill": {
+              "type": "solid",
+              "color": "{component.ai-companion.states.square.background}"
+            },
+            "stroke": {
+              "color": "{semantic.color.learning-states.mastery}",
+              "width": 2,
+              "opacity": 0.3
+            },
+            "effects": [
+              {
+                "type": "inner-shadow",
+                "color": "rgba(49, 130, 206, 0.15)",
+                "offset": {"x": 0, "y": 1},
+                "blur": 3,
+                "spread": 0
+              }
+            ]
+          },
+          {
+            "name": "Triangle State",
+            "properties": {
+              "state": "triangle", 
+              "size": "default"
+            },
+            "geometry": {
+              "type": "polygon",
+              "points": [
+                {"x": 24, "y": 8},
+                {"x": 8, "y": 40}, 
+                {"x": 40, "y": 40}
+              ],
+              "width": "{component.ai-companion.avatar.size.default}",
+              "height": "{geometric.shapes.triangle.height}"
+            },
+            "fill": {
+              "type": "gradient",
+              "gradient": "{component.ai-companion.states.triangle.background}",
+              "angle": 180
+            },
+            "effects": [
+              {
+                "type": "drop-shadow",
+                "color": "rgba(246, 224, 94, 0.4)",
+                "offset": {"x": 0, "y": 4},
+                "blur": 12,
+                "spread": 0
+              }
+            ]
+          }
+        ]
+      },
+      "documentation": {
+        "usage": "The AI companion avatar evolves geometrically as users progress: Circle (curious beginner) → Square (stable learner) → Triangle (growth-focused expert)",
+        "accessibility": "All states maintain 3:1 contrast ratio and include semantic alt text",
+        "responsive": "Scales proportionally maintaining geometric integrity"
+      }
+    },
+    "learning-progress-indicator": {
+      "description": "Geometric progress indicators for different learning contexts",
+      "category": "feedback",
+      "figmaProperties": {
+        "componentSet": true,
+        "variants": [
+          {
+            "name": "Circular Progress",
+            "properties": {
+              "type": "circular",
+              "progress": "0-100"
+            },
+            "geometry": {
+              "type": "ellipse",
+              "width": "64px",
+              "height": "64px",
+              "strokeWidth": 4
+            },
+            "stroke": {
+              "color": "{semantic.color.learning-states.energy}",
+              "dashArray": "circumference * progress / 100",
+              "lineCap": "round"
+            },
+            "fill": "none",
+            "animations": {
+              "progress": {
+                "strokeDasharray": "animated",
+                "duration": "800ms", 
+                "easing": "ease-out"
+              }
+            }
+          },
+          {
+            "name": "Linear Progress",
+            "properties": {
+              "type": "linear",
+              "progress": "0-100"
+            },
+            "geometry": {
+              "type": "rectangle",
+              "width": "200px",
+              "height": "8px",
+              "cornerRadius": "{core.border-radius.base}"
+            },
+            "layers": [
+              {
+                "name": "track",
+                "fill": {
+                  "color": "{semantic.color.background.tertiary}"
+                }
+              },
+              {
+                "name": "progress",
+                "fill": {
+                  "color": "{semantic.color.learning-states.mastery}"
+                },
+                "width": "200px * progress / 100",
+                "animations": {
+                  "width": {
+                    "duration": "600ms",
+                    "easing": "ease-out"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "Pyramid Progress",
+            "properties": {
+              "type": "pyramid",
+              "levels": "1-5"
+            },
+            "geometry": {
+              "type": "group",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "width": "80px",
+                  "height": "12px",
+                  "y": 48,
+                  "fill": "{semantic.color.learning-states.practice}"
+                },
+                {
+                  "type": "rectangle", 
+                  "width": "64px",
+                  "height": "12px",
+                  "y": 36,
+                  "x": 8,
+                  "fill": "{semantic.color.learning-states.discovery}"
+                },
+                {
+                  "type": "rectangle",
+                  "width": "48px", 
+                  "height": "12px",
+                  "y": 24,
+                  "x": 16,
+                  "fill": "{semantic.color.learning-states.innovation}"
+                },
+                {
+                  "type": "rectangle",
+                  "width": "32px",
+                  "height": "12px", 
+                  "y": 12,
+                  "x": 24,
+                  "fill": "{semantic.color.learning-states.mastery}"
+                },
+                {
+                  "type": "rectangle",
+                  "width": "16px",
+                  "height": "12px",
+                  "y": 0,
+                  "x": 32,
+                  "fill": "{semantic.color.learning-states.advanced}"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "learning-card": {
+      "description": "Geometric learning content card with Itten color psychology",
+      "category": "content",
+      "figmaProperties": {
+        "componentSet": true,
+        "variants": [
+          {
+            "name": "Fundamentals Card",
+            "properties": {
+              "learning-type": "fundamentals",
+              "state": "default"
+            },
+            "geometry": {
+              "type": "rectangle",
+              "width": "320px",
+              "height": "180px",
+              "cornerRadius": "{core.border-radius.lg}"
+            },
+            "fill": {
+              "color": "{semantic.color.background.primary}"
+            },
+            "stroke": {
+              "color": "{semantic.color.learning-states.energy}",
+              "width": 2,
+              "opacity": 0.2
+            },
+            "effects": [
+              {
+                "type": "drop-shadow",
+                "color": "rgba(229, 62, 62, 0.1)",
+                "offset": {"x": 0, "y": 4},
+                "blur": 12,
+                "spread": 0
+              }
+            ],
+            "children": [
+              {
+                "name": "accent-bar",
+                "type": "rectangle",
+                "width": "4px",
+                "height": "180px",
+                "x": 0,
+                "fill": {
+                  "color": "{semantic.color.learning-states.energy}"
+                }
+              },
+              {
+                "name": "content-area",
+                "type": "frame",
+                "width": "304px",
+                "height": "164px",
+                "x": 8,
+                "y": 8,
+                "padding": "{core.spacing.scale.md}"
+              }
+            ],
+            "hover": {
+              "transform": "translateY(-2px)",
+              "shadow": {
+                "blur": 16,
+                "spread": 2
+              }
+            }
+          },
+          {
+            "name": "Discovery Card",
+            "properties": {
+              "learning-type": "discovery",
+              "state": "default"
+            },
+            "geometry": {
+              "type": "rectangle", 
+              "width": "320px",
+              "height": "180px",
+              "cornerRadius": "{core.border-radius.lg}"
+            },
+            "fill": {
+              "color": "{semantic.color.background.primary}"
+            },
+            "stroke": {
+              "color": "{semantic.color.learning-states.discovery}",
+              "width": 2,
+              "opacity": 0.2
+            },
+            "effects": [
+              {
+                "type": "drop-shadow",
+                "color": "rgba(246, 224, 94, 0.15)",
+                "offset": {"x": 0, "y": 4},
+                "blur": 12,
+                "spread": 0
+              }
+            ],
+            "children": [
+              {
+                "name": "accent-corner",
+                "type": "polygon",
+                "points": [
+                  {"x": 304, "y": 0},
+                  {"x": 320, "y": 0},
+                  {"x": 320, "y": 16}
+                ],
+                "fill": {
+                  "color": "{semantic.color.learning-states.discovery}"
+                }
+              }
+            ]
+          },
+          {
+            "name": "Mastery Card",
+            "properties": {
+              "learning-type": "mastery",
+              "state": "completed"
+            },
+            "geometry": {
+              "type": "rectangle",
+              "width": "320px", 
+              "height": "180px",
+              "cornerRadius": "{core.border-radius.lg}"
+            },
+            "fill": {
+              "type": "gradient",
+              "gradient": "linear-gradient(135deg, {semantic.color.background.primary} 0%, {core.color.learning-triad.primary.mastery.50} 100%)"
+            },
+            "stroke": {
+              "color": "{semantic.color.learning-states.mastery}",
+              "width": 2,
+              "opacity": 0.4
+            },
+            "children": [
+              {
+                "name": "completion-badge",
+                "type": "ellipse",
+                "width": "24px",
+                "height": "24px",
+                "x": 288,
+                "y": 8,
+                "fill": {
+                  "color": "{semantic.color.learning-states.mastery}"
+                },
+                "children": [
+                  {
+                    "name": "check-icon",
+                    "type": "vector",
+                    "fill": {
+                      "color": "{semantic.color.text.inverse}"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "geometric-button": {
+      "description": "Bauhaus-inspired button system with geometric metaphors",
+      "category": "actions",
+      "figmaProperties": {
+        "componentSet": true,
+        "variants": [
+          {
+            "name": "Primary Button",
+            "properties": {
+              "type": "primary",
+              "size": "medium",
+              "state": "default"
+            },
+            "geometry": {
+              "type": "rectangle",
+              "width": "auto",
+              "height": "48px",
+              "cornerRadius": "{core.border-radius.base}",
+              "padding": {
+                "horizontal": "{core.spacing.scale.lg}",
+                "vertical": "{core.spacing.scale.md}"
+              }
+            },
+            "fill": {
+              "color": "{component.button.primary.background.default}"
+            },
+            "text": {
+              "fontFamily": "{core.typography.display}",
+              "fontSize": "{core.font-size.scale.base}",
+              "fontWeight": "600",
+              "color": "{component.button.primary.text}",
+              "textAlign": "center"
+            },
+            "states": {
+              "hover": {
+                "fill": "{component.button.primary.background.hover}",
+                "transform": "scale(1.02)",
+                "effects": [
+                  {
+                    "type": "drop-shadow",
+                    "color": "rgba(229, 62, 62, 0.25)",
+                    "offset": {"x": 0, "y": 4},
+                    "blur": 12
+                  }
+                ]
+              },
+              "active": {
+                "fill": "{component.button.primary.background.active}",
+                "transform": "scale(0.98)"
+              },
+              "disabled": {
+                "fill": "{semantic.color.background.tertiary}",
+                "text": {
+                  "color": "{semantic.color.text.disabled}"
+                },
+                "opacity": 0.6
+              }
+            }
+          },
+          {
+            "name": "Secondary Button",
+            "properties": {
+              "type": "secondary",
+              "size": "medium", 
+              "state": "default"
+            },
+            "geometry": {
+              "type": "rectangle",
+              "width": "auto",
+              "height": "48px",
+              "cornerRadius": "{core.border-radius.base}",
+              "padding": {
+                "horizontal": "{core.spacing.scale.lg}",
+                "vertical": "{core.spacing.scale.md}"
+              }
+            },
+            "fill": {
+              "color": "{component.button.secondary.background.default}"
+            },
+            "stroke": {
+              "color": "{component.button.secondary.border}",
+              "width": 2
+            },
+            "text": {
+              "fontFamily": "{core.typography.display}",
+              "fontSize": "{core.font-size.scale.base}",
+              "fontWeight": "600",
+              "color": "{component.button.secondary.text}",
+              "textAlign": "center"
+            },
+            "states": {
+              "hover": {
+                "fill": "{component.button.secondary.background.hover}",
+                "stroke": {
+                  "color": "{core.color.learning-triad.primary.mastery.600}"
+                }
+              }
+            }
+          },
+          {
+            "name": "Icon Button",
+            "properties": {
+              "type": "icon",
+              "shape": "circle",
+              "size": "medium"
+            },
+            "geometry": {
+              "type": "ellipse",
+              "width": "40px",
+              "height": "40px"
+            },
+            "fill": {
+              "color": "transparent"
+            },
+            "children": [
+              {
+                "name": "icon",
+                "type": "vector",
+                "width": "20px",
+                "height": "20px",
+                "fill": {
+                  "color": "{semantic.color.text.secondary}"
+                }
+              }
+            ],
+            "states": {
+              "hover": {
+                "fill": "{semantic.color.background.secondary}",
+                "children": [
+                  {
+                    "name": "icon",
+                    "fill": {
+                      "color": "{semantic.color.text.primary}"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "navigation-geometric": {
+      "description": "Geometric navigation system with Bauhaus grid alignment",
+      "category": "navigation",
+      "figmaProperties": {
+        "componentSet": true,
+        "variants": [
+          {
+            "name": "Tab Navigation",
+            "properties": {
+              "type": "tabs",
+              "orientation": "horizontal"
+            },
+            "geometry": {
+              "type": "frame",
+              "width": "auto",
+              "height": "48px",
+              "fill": "transparent"
+            },
+            "children": [
+              {
+                "name": "tab-item",
+                "type": "frame",
+                "padding": {
+                  "horizontal": "{core.spacing.scale.lg}",
+                  "vertical": "{core.spacing.scale.md}"
+                },
+                "states": {
+                  "default": {
+                    "text": {
+                      "color": "{semantic.color.text.secondary}"
+                    },
+                    "borderBottom": "2px solid transparent"
+                  },
+                  "active": {
+                    "text": {
+                      "color": "{semantic.color.learning-states.mastery}"
+                    },
+                    "borderBottom": "2px solid {semantic.color.learning-states.mastery}"
+                  },
+                  "hover": {
+                    "text": {
+                      "color": "{semantic.color.text.primary}"
+                    },
+                    "borderBottom": "2px solid {semantic.color.border.primary}"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "Breadcrumb Navigation",
+            "properties": {
+              "type": "breadcrumb"
+            },
+            "geometry": {
+              "type": "frame",
+              "width": "auto",
+              "height": "32px",
+              "layout": "horizontal",
+              "gap": "{core.spacing.scale.sm}"
+            },
+            "children": [
+              {
+                "name": "breadcrumb-item",
+                "type": "frame",
+                "children": [
+                  {
+                    "name": "text",
+                    "type": "text",
+                    "fontSize": "{core.font-size.scale.sm}",
+                    "color": "{semantic.color.text.secondary}"
+                  }
+                ]
+              },
+              {
+                "name": "separator",
+                "type": "vector",
+                "width": "4px",
+                "height": "8px",
+                "fill": "{semantic.color.text.disabled}"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "figmaPluginConfig": {
+    "autoLayout": {
+      "enabled": true,
+      "defaultDirection": "vertical",
+      "defaultSpacing": "{core.spacing.scale.md}",
+      "defaultPadding": "{core.spacing.scale.md}"
+    },
+    "constraints": {
+      "maintainAspectRatio": true,
+      "geometricProportions": true
+    },
+    "animations": {
+      "defaultEasing": "ease-out",
+      "defaultDuration": "200ms",
+      "geometricTransitions": true
+    },
+    "colorMode": {
+      "supportsDarkMode": false,
+      "primaryColorSpace": "sRGB"
+    },
+    "exportSettings": {
+      "includeTokenReferences": true,
+      "generateVariants": true,
+      "createComponentSet": true,
+      "organizationMethod": "category"
+    }
+  },
+  "documentation": {
+    "usage": {
+      "geometric_metaphors": "Components use circle (continuous learning), square (stable foundation), triangle (growth) metaphors throughout",
+      "color_psychology": "Itten color theory applied - red for energy/attention, yellow for discovery, blue for mastery/trust",
+      "spacing_system": "All measurements based on 8px grid system for geometric harmony",
+      "accessibility": "WCAG AA compliant with 4.5:1 color contrast minimum"
+    },
+    "implementation": {
+      "figma_variables": "All tokens should be imported as Figma Variables for dynamic theming",
+      "component_organization": "Components organized by category: navigation, content, actions, feedback",
+      "geometric_consistency": "Maintain proportion relationships between circle:square:triangle = 3:6:9 base units",
+      "learning_states": "Color coding consistently represents learner emotional and cognitive states"
+    }
+  }
+}

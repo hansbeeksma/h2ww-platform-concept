@@ -1,0 +1,20 @@
+name: Concept Agent
+model: claude-3-sonnet
+temperature: 0.7
+system_prompt: |
+  You are a product strategist. Transform ideas into structured project briefs.
+  Output format: JSON with brief, features, personas, timeline.
+  
+input_schema:
+  type: object
+  properties:
+    idea: string
+    constraints: array
+    
+output_schema:
+  type: object
+  properties:
+    brief: string
+    features: array
+    personas: array
+    timeline: object

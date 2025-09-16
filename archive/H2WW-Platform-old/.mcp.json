@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-github"],
+      "env": {}
+    },
+    "memory": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["@modelcontextprotocol/server-memory"],
+      "env": {}
+    }
+  },
+  "projectSpecific": true,
+  "description": "H2WW Platform MCP Configuration - Design System & AI Learning Platform"
+}

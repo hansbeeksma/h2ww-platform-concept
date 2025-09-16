@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude doctor)",
+      "Bash(npm i:*)",
+      "Bash(chmod:*)",
+      "Bash(./samswaab-figma-setup.sh:*)",
+      "Bash(cp:*)",
+      "Bash(node:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(./scripts/quick-prototype.sh:*)",
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(npx tsx:*)"
+    ],
+    "deny": []
+  }
+}

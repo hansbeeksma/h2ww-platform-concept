@@ -1,0 +1,1578 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "H2WW AI Companion Interface Design",
+    "description": "Core user experience for AI learning companion wizard",
+    "concept": "Progressive trust building through conversational AI interface",
+    "designPhilosophy": "Human-AI partnership with geometric metaphors",
+    "userJourney": "Onboarding → Learning → Mastery",
+    "lastUpdated": "2024-09-15"
+  },
+  "type": "frame",
+  "name": "H2WW AI Companion Interface",
+  "width": 1440,
+  "height": 4000,
+  "backgroundColor": "#FFFFFF",
+  "padding": 64,
+  "layout": true,
+  "direction": "vertical",
+  "spacing": 64,
+  "interfaceDesignPrinciples": {
+    "trustBuilding": {
+      "transparency": "AI reasoning is always visible and explainable",
+      "progressiveDisclosure": "Features unlock as user confidence grows",
+      "humanControl": "User always maintains control over AI interactions",
+      "safetyFirst": "Clear boundaries and safe practice guidance"
+    },
+    "learningOptimization": {
+      "cognitiveLoad": "Simplified interface reduces mental overhead",
+      "contextualGuidance": "Help appears when and where needed",
+      "personalizedExperience": "Interface adapts to user skill level",
+      "multimoderaLearning": "Visual, auditory, and kinesthetic support"
+    },
+    "geometricMetaphors": {
+      "circle": "Continuous learning journey, AI companion presence",
+      "square": "Stable knowledge foundation, reliable tools",
+      "triangle": "Growth progression, skill advancement"
+    }
+  },
+  "children": [
+    {
+      "type": "frame",
+      "name": "Interface Header",
+      "width": 1312,
+      "height": 120,
+      "backgroundColor": "#F7FAFC",
+      "cornerRadius": 16,
+      "padding": 32,
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 16,
+      "children": [
+        {
+          "type": "text",
+          "content": "🤖 H2WW AI Companion Interface Design",
+          "fontSize": 32,
+          "fontWeight": 700,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "text",
+          "content": "Progressive trust building through conversational AI • User experience first approach",
+          "fontSize": 16,
+          "fontWeight": 400,
+          "color": "#4A5568",
+          "fontFamily": "Inter"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "AI Companion Widget System",
+      "width": 1312,
+      "height": 800,
+      "backgroundColor": "transparent",
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 32,
+      "children": [
+        {
+          "type": "text",
+          "content": "AI Companion Widget States",
+          "fontSize": 24,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Companion States",
+          "width": 1312,
+          "height": 720,
+          "backgroundColor": "transparent",
+          "layout": true,
+          "direction": "horizontal",
+          "spacing": 32,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Onboarding State",
+              "width": 400,
+              "height": 720,
+              "backgroundColor": "#EBF8FF",
+              "cornerRadius": 16,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "🔵 Onboarding State",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#3182CE",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "AI Avatar Circle",
+                  "width": 80,
+                  "height": 80,
+                  "backgroundColor": "#3182CE",
+                  "cornerRadius": 40,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🤖",
+                      "x": 24,
+                      "y": 20,
+                      "fontSize": 32
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Welcome Message",
+                  "width": 352,
+                  "height": 120,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "👋 Welcome to H2WW!",
+                      "fontSize": 16,
+                      "fontWeight": 600,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "text",
+                      "content": "I'm your AI learning companion. I'll guide you step-by-step from AI beginner to confident user. Ready to start your journey?",
+                      "fontSize": 14,
+                      "color": "#4A5568",
+                      "lineHeight": 1.5
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Quick Start Options",
+                  "width": 352,
+                  "height": 200,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "AI Assessment Button",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "#3182CE",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🎯 Take AI Readiness Assessment",
+                          "x": 80,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Browse Tools Button",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "cornerRadius": 8,
+                      "stroke": "#3182CE",
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🔍 Browse AI Tools",
+                          "x": 120,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#3182CE"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Free Exploration",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "💭 Just let me explore",
+                          "x": 120,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 400,
+                          "color": "#718096"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Trust Indicators",
+                  "width": 352,
+                  "height": 80,
+                  "backgroundColor": "#F0FFF4",
+                  "cornerRadius": 8,
+                  "padding": 12,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🔒 Your privacy & security",
+                      "fontSize": 12,
+                      "fontWeight": 500,
+                      "color": "#38A169"
+                    },
+                    {
+                      "type": "text",
+                      "content": "• All data stays private\n• You control AI interactions\n• Learn at your own pace",
+                      "fontSize": 11,
+                      "color": "#2F855A",
+                      "lineHeight": 1.4
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Learning State",
+              "width": 400,
+              "height": 720,
+              "backgroundColor": "#FFFBF0",
+              "cornerRadius": 16,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "⬜ Learning State",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#D69E2E",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "AI Avatar Square",
+                  "width": 80,
+                  "height": 80,
+                  "backgroundColor": "#D69E2E",
+                  "cornerRadius": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🎓",
+                      "x": 24,
+                      "y": 20,
+                      "fontSize": 32
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Learning Context",
+                  "width": 352,
+                  "height": 100,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "📚 Current Lesson: ChatGPT Basics",
+                      "fontSize": 14,
+                      "fontWeight": 600,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Great progress! You've mastered prompt basics. Ready to learn about context windows?",
+                      "fontSize": 13,
+                      "color": "#4A5568",
+                      "lineHeight": 1.4
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Progress Visualization",
+                  "width": 352,
+                  "height": 80,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Learning Progress",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Progress Track",
+                      "width": 352,
+                      "height": 8,
+                      "backgroundColor": "#E2E8F0",
+                      "cornerRadius": 4,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Progress Fill",
+                          "width": 210,
+                          "height": 8,
+                          "backgroundColor": "#D69E2E",
+                          "cornerRadius": 4
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "content": "3 of 5 modules complete • 60%",
+                      "fontSize": 12,
+                      "color": "#718096"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Learning Actions",
+                  "width": 352,
+                  "height": 200,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Continue Learning",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "#D69E2E",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "▶️ Continue Lesson",
+                          "x": 130,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Practice Mode",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "cornerRadius": 8,
+                      "stroke": "#D69E2E",
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🎯 Practice Mode",
+                          "x": 130,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#D69E2E"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Ask Question",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "❓ Ask me anything",
+                          "x": 125,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 400,
+                          "color": "#718096"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Achievement Badge",
+                  "width": 352,
+                  "height": 60,
+                  "backgroundColor": "#F0FFF4",
+                  "cornerRadius": 8,
+                  "padding": 12,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Badge Icon",
+                      "width": 36,
+                      "height": 36,
+                      "backgroundColor": "#38A169",
+                      "cornerRadius": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🏆",
+                          "x": 10,
+                          "y": 6,
+                          "fontSize": 20
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Badge Text",
+                      "width": 280,
+                      "height": 36,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Prompt Master achieved!",
+                          "fontSize": 12,
+                          "fontWeight": 600,
+                          "color": "#38A169"
+                        },
+                        {
+                          "type": "text",
+                          "content": "You've written 10 effective prompts",
+                          "fontSize": 11,
+                          "color": "#2F855A"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Expert State",
+              "width": 400,
+              "height": 720,
+              "backgroundColor": "#FFF5F5",
+              "cornerRadius": 16,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "🔺 Expert State",
+                  "fontSize": 18,
+                  "fontWeight": 600,
+                  "color": "#E53E3E",
+                  "fontFamily": "Poppins"
+                },
+                {
+                  "type": "frame",
+                  "name": "AI Avatar Triangle",
+                  "width": 80,
+                  "height": 80,
+                  "backgroundColor": "#E53E3E",
+                  "cornerRadius": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🚀",
+                      "x": 24,
+                      "y": 20,
+                      "fontSize": 32
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Expert Context",
+                  "width": 352,
+                  "height": 120,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🎯 Advanced AI Mastery",
+                      "fontSize": 14,
+                      "fontWeight": 600,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Impressive! You're now an AI power user. Ready to mentor others or explore cutting-edge techniques?",
+                      "fontSize": 13,
+                      "color": "#4A5568",
+                      "lineHeight": 1.4
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Mastery Indicators",
+                  "width": 352,
+                  "height": 100,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Mastery Level: Expert",
+                      "fontSize": 14,
+                      "fontWeight": 500,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Skills Mastered",
+                      "width": 352,
+                      "height": 60,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "horizontal",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Skill Badge 1",
+                          "width": 80,
+                          "height": 24,
+                          "backgroundColor": "#38A169",
+                          "cornerRadius": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "ChatGPT",
+                              "x": 18,
+                              "y": 4,
+                              "fontSize": 10,
+                              "fontWeight": 500,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Skill Badge 2",
+                          "width": 80,
+                          "height": 24,
+                          "backgroundColor": "#38A169",
+                          "cornerRadius": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "Midjourney",
+                              "x": 14,
+                              "y": 4,
+                              "fontSize": 10,
+                              "fontWeight": 500,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Skill Badge 3",
+                          "width": 80,
+                          "height": 24,
+                          "backgroundColor": "#38A169",
+                          "cornerRadius": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "Claude",
+                              "x": 26,
+                              "y": 4,
+                              "fontSize": 10,
+                              "fontWeight": 500,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Expert Actions",
+                  "width": 352,
+                  "height": 200,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Mentor Others",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "#E53E3E",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "👥 Mentor Others",
+                          "x": 130,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Advanced Techniques",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "cornerRadius": 8,
+                      "stroke": "#E53E3E",
+                      "strokeWeight": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "⚡ Advanced Techniques",
+                          "x": 110,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#E53E3E"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Create Content",
+                      "width": 352,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "cornerRadius": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "✍️ Share knowledge",
+                          "x": 120,
+                          "y": 14,
+                          "fontSize": 14,
+                          "fontWeight": 400,
+                          "color": "#718096"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Community Impact",
+                  "width": 352,
+                  "height": 60,
+                  "backgroundColor": "#F0FFF4",
+                  "cornerRadius": 8,
+                  "padding": 12,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Impact Icon",
+                      "width": 36,
+                      "height": 36,
+                      "backgroundColor": "#805AD5",
+                      "cornerRadius": 18,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🌟",
+                          "x": 10,
+                          "y": 6,
+                          "fontSize": 20
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Impact Text",
+                      "width": 280,
+                      "height": 36,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Community Leader",
+                          "fontSize": 12,
+                          "fontWeight": 600,
+                          "color": "#805AD5"
+                        },
+                        {
+                          "type": "text",
+                          "content": "You've helped 25+ learners succeed",
+                          "fontSize": 11,
+                          "color": "#553C9A"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "Conversational Interface Components",
+      "width": 1312,
+      "height": 600,
+      "backgroundColor": "transparent",
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 32,
+      "children": [
+        {
+          "type": "text",
+          "content": "Conversational AI Interface",
+          "fontSize": 24,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Chat Interface",
+          "width": 1312,
+          "height": 500,
+          "backgroundColor": "#F7FAFC",
+          "cornerRadius": 16,
+          "padding": 32,
+          "layout": true,
+          "direction": "vertical",
+          "spacing": 24,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Chat Messages",
+              "width": 1248,
+              "height": 360,
+              "backgroundColor": "transparent",
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "AI Message",
+                  "width": 800,
+                  "height": 80,
+                  "backgroundColor": "#EBF8FF",
+                  "cornerRadius": 16,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "AI Avatar",
+                      "width": 40,
+                      "height": 40,
+                      "backgroundColor": "#3182CE",
+                      "cornerRadius": 20,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🤖",
+                          "x": 12,
+                          "y": 8,
+                          "fontSize": 20
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Message Content",
+                      "width": 720,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Great question! Let me explain how ChatGPT context windows work...",
+                          "fontSize": 14,
+                          "color": "#1A202C",
+                          "lineHeight": 1.5
+                        },
+                        {
+                          "type": "text",
+                          "content": "2 minutes ago • Explaining concept",
+                          "fontSize": 12,
+                          "color": "#718096"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "User Message",
+                  "width": 600,
+                  "height": 60,
+                  "backgroundColor": "#E2E8F0",
+                  "cornerRadius": 16,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "User Avatar",
+                      "width": 40,
+                      "height": 40,
+                      "backgroundColor": "#4A5568",
+                      "cornerRadius": 20,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "👤",
+                          "x": 12,
+                          "y": 8,
+                          "fontSize": 20
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Message Content",
+                      "width": 520,
+                      "height": 28,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "How do I make my ChatGPT prompts more effective?",
+                          "fontSize": 14,
+                          "color": "#1A202C",
+                          "lineHeight": 1.5
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "AI Suggestion",
+                  "width": 900,
+                  "height": 120,
+                  "backgroundColor": "#F0FFF4",
+                  "cornerRadius": 16,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Suggestion Icon",
+                      "width": 40,
+                      "height": 40,
+                      "backgroundColor": "#38A169",
+                      "cornerRadius": 20,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "💡",
+                          "x": 12,
+                          "y": 8,
+                          "fontSize": 20
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Suggestion Content",
+                      "width": 820,
+                      "height": 88,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "💡 AI Suggestion: Ready to practice?",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#38A169"
+                        },
+                        {
+                          "type": "text",
+                          "content": "I can guide you through writing effective prompts step-by-step. Would you like to try the interactive prompt builder?",
+                          "fontSize": 13,
+                          "color": "#2F855A",
+                          "lineHeight": 1.4
+                        },
+                        {
+                          "type": "frame",
+                          "name": "Action Buttons",
+                          "width": 820,
+                          "height": 32,
+                          "backgroundColor": "transparent",
+                          "layout": true,
+                          "direction": "horizontal",
+                          "spacing": 8,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "name": "Yes Button",
+                              "width": 80,
+                              "height": 32,
+                              "backgroundColor": "#38A169",
+                              "cornerRadius": 6,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "content": "Yes, let's try",
+                                  "x": 8,
+                                  "y": 8,
+                                  "fontSize": 11,
+                                  "fontWeight": 500,
+                                  "color": "#FFFFFF"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "name": "Not Now Button",
+                              "width": 80,
+                              "height": 32,
+                              "backgroundColor": "transparent",
+                              "cornerRadius": 6,
+                              "stroke": "#38A169",
+                              "strokeWeight": 1,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "content": "Not now",
+                                  "x": 18,
+                                  "y": 8,
+                                  "fontSize": 11,
+                                  "fontWeight": 500,
+                                  "color": "#38A169"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Chat Input",
+              "width": 1248,
+              "height": 60,
+              "backgroundColor": "#FFFFFF",
+              "cornerRadius": 12,
+              "stroke": "#E2E8F0",
+              "strokeWeight": 1,
+              "padding": 16,
+              "layout": true,
+              "direction": "horizontal",
+              "spacing": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "Input Field",
+                  "width": 1100,
+                  "height": 28,
+                  "backgroundColor": "transparent",
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Ask your AI companion anything...",
+                      "x": 0,
+                      "y": 6,
+                      "fontSize": 14,
+                      "color": "#A0AEC0"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Send Button",
+                  "width": 40,
+                  "height": 40,
+                  "backgroundColor": "#3182CE",
+                  "cornerRadius": 20,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "➤",
+                      "x": 14,
+                      "y": 8,
+                      "fontSize": 20,
+                      "color": "#FFFFFF"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "name": "Learning Path Visualization",
+      "width": 1312,
+      "height": 800,
+      "backgroundColor": "transparent",
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 32,
+      "children": [
+        {
+          "type": "text",
+          "content": "Learning Path Visualization",
+          "fontSize": 24,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "fontFamily": "Poppins"
+        },
+        {
+          "type": "frame",
+          "name": "Skill Tree Interface",
+          "width": 1312,
+          "height": 720,
+          "backgroundColor": "#F7FAFC",
+          "cornerRadius": 16,
+          "padding": 32,
+          "layout": true,
+          "direction": "vertical",
+          "spacing": 32,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Progress Header",
+              "width": 1248,
+              "height": 80,
+              "backgroundColor": "transparent",
+              "layout": true,
+              "direction": "horizontal",
+              "spacing": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "User Progress",
+                  "width": 400,
+                  "height": 80,
+                  "backgroundColor": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🎯 Your AI Journey",
+                      "fontSize": 16,
+                      "fontWeight": 600,
+                      "color": "#1A202C"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Intermediate • 12 skills mastered",
+                      "fontSize": 13,
+                      "color": "#4A5568"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Next Milestone",
+                  "width": 400,
+                  "height": 80,
+                  "backgroundColor": "#EBF8FF",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "vertical",
+                  "spacing": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "🚀 Next Milestone",
+                      "fontSize": 16,
+                      "fontWeight": 600,
+                      "color": "#3182CE"
+                    },
+                    {
+                      "type": "text",
+                      "content": "Advanced Prompt Engineering",
+                      "fontSize": 13,
+                      "color": "#2B77CB"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "AI Companion Mini",
+                  "width": 400,
+                  "height": 80,
+                  "backgroundColor": "#F0FFF4",
+                  "cornerRadius": 12,
+                  "padding": 16,
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Companion Avatar Mini",
+                      "width": 48,
+                      "height": 48,
+                      "backgroundColor": "#38A169",
+                      "cornerRadius": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "🤖",
+                          "x": 14,
+                          "y": 10,
+                          "fontSize": 24
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Companion Message Mini",
+                      "width": 324,
+                      "height": 48,
+                      "backgroundColor": "transparent",
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "content": "Great progress today!",
+                          "fontSize": 14,
+                          "fontWeight": 500,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Ready for the next challenge?",
+                          "fontSize": 12,
+                          "color": "#2F855A"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Skill Tree",
+              "width": 1248,
+              "height": 560,
+              "backgroundColor": "#FFFFFF",
+              "cornerRadius": 12,
+              "padding": 24,
+              "layout": true,
+              "direction": "vertical",
+              "spacing": 40,
+              "children": [
+                {
+                  "type": "frame",
+                  "name": "Foundation Level",
+                  "width": 1200,
+                  "height": 120,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "AI Basics",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#E2E8F0",
+                      "cornerRadius": 12,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Completion Badge",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#38A169",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "✓",
+                              "x": 10,
+                              "y": 6,
+                              "fontSize": 16,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "content": "AI Basics",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Completed",
+                          "fontSize": 12,
+                          "color": "#38A169"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Tool Intro",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#E2E8F0",
+                      "cornerRadius": 12,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Completion Badge",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#38A169",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "✓",
+                              "x": 10,
+                              "y": 6,
+                              "fontSize": 16,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "content": "Tool Intro",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Completed",
+                          "fontSize": 12,
+                          "color": "#38A169"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Ethics",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#EBF8FF",
+                      "cornerRadius": 12,
+                      "padding": 16,
+                      "stroke": "#3182CE",
+                      "strokeWeight": 2,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "In Progress Badge",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#3182CE",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "▶",
+                              "x": 10,
+                              "y": 6,
+                              "fontSize": 16,
+                              "fontWeight": 700,
+                              "color": "#FFFFFF"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "content": "AI Ethics",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "In Progress",
+                          "fontSize": 12,
+                          "color": "#3182CE"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Intermediate Level",
+                  "width": 1200,
+                  "height": 120,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "Advanced Prompts",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#FFFBF0",
+                      "cornerRadius": 12,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Available Badge",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#D69E2E",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "🔓",
+                              "x": 8,
+                              "y": 6,
+                              "fontSize": 16
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "content": "Advanced Prompts",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#1A202C"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Available",
+                          "fontSize": 12,
+                          "color": "#D69E2E"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "name": "Workflow Design",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#F7FAFC",
+                      "cornerRadius": 12,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Locked Badge",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#A0AEC0",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "🔒",
+                              "x": 8,
+                              "y": 6,
+                              "fontSize": 16
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "content": "Workflow Design",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#718096"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Locked",
+                          "fontSize": 12,
+                          "color": "#A0AEC0"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "name": "Expert Level",
+                  "width": 1200,
+                  "height": 120,
+                  "backgroundColor": "transparent",
+                  "layout": true,
+                  "direction": "horizontal",
+                  "spacing": 40,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "name": "AI Mastery",
+                      "width": 160,
+                      "height": 120,
+                      "backgroundColor": "#F7FAFC",
+                      "cornerRadius": 12,
+                      "padding": 16,
+                      "layout": true,
+                      "direction": "vertical",
+                      "spacing": 8,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "name": "Locked Badge",
+                          "width": 32,
+                          "height": 32,
+                          "backgroundColor": "#A0AEC0",
+                          "cornerRadius": 16,
+                          "children": [
+                            {
+                              "type": "text",
+                              "content": "🔒",
+                              "x": 8,
+                              "y": 6,
+                              "fontSize": 16
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "content": "AI Mastery",
+                          "fontSize": 14,
+                          "fontWeight": 600,
+                          "color": "#718096"
+                        },
+                        {
+                          "type": "text",
+                          "content": "Locked",
+                          "fontSize": 12,
+                          "color": "#A0AEC0"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

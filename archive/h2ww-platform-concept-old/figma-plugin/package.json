@@ -1,0 +1,45 @@
+{
+  "name": "h2ww-component-library",
+  "version": "1.0.0",
+  "description": "State-of-the-art Figma plugin for anxiety-aware design systems",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch",
+    "lint": "eslint src --ext .ts,.tsx",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "figma",
+    "plugin",
+    "design-system",
+    "accessibility",
+    "anxiety-aware",
+    "ai-powered"
+  ],
+  "author": "H2WW Platform",
+  "license": "MIT",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.75.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.7",
+    "styled-components": "^6.1.6"
+  }
+}

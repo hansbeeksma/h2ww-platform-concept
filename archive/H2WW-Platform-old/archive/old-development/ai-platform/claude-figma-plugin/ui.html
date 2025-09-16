@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      background: #ffffff;
+      color: #333;
+      padding: 16px;
+    }
+    
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #000;
+    }
+    
+    .section {
+      margin-bottom: 24px;
+    }
+    
+    .input-group {
+      margin-bottom: 16px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #666;
+    }
+    
+    textarea {
+      width: 100%;
+      min-height: 200px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 12px;
+      resize: vertical;
+      background: #f8f8f8;
+    }
+    
+    textarea:focus {
+      outline: none;
+      border-color: #18a0fb;
+      background: #fff;
+    }
+    
+    .button {
+      background: #18a0fb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    
+    .button:hover {
+      background: #0090f0;
+    }
+    
+    .button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .button-secondary {
+      background: #f0f0f0;
+      color: #333;
+      margin-top: 8px;
+    }
+    
+    .button-secondary:hover {
+      background: #e0e0e0;
+    }
+    
+    .templates {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    
+    .template-btn {
+      padding: 8px 12px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+    
+    .template-btn:hover {
+      background: #18a0fb;
+      color: white;
+      border-color: #18a0fb;
+    }
+    
+    .status {
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 16px;
+      font-size: 13px;
+      display: none;
+    }
+    
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      display: block;
+    }
+    
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      display: block;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab {
+      padding: 8px 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      color: #666;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    
+    .tab.active {
+      color: #18a0fb;
+      border-bottom-color: #18a0fb;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .preview {
+      background: #f8f8f8;
+      padding: 12px;
+      border-radius: 6px;
+      margin-top: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 12px;
+      font-family: 'Monaco', 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+  <h2>🤖 Claude → Figma Design Importer</h2>
+  
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('import')">Import Design</button>
+    <button class="tab" onclick="switchTab('templates')">Templates</button>
+    <button class="tab" onclick="switchTab('help')">Help</button>
+  </div>
+  
+  <!-- Import Tab -->
+  <div id="import-tab" class="tab-content active">
+    <div class="section">
+      <div class="input-group">
+        <label for="design-json">Paste Claude-generated design JSON:</label>
+        <textarea 
+          id="design-json" 
+          placeholder='{"type": "frame", "name": "My Design", "width": 1440, "height": 900, ...}'
+        ></textarea>
+      </div>
+      
+      <button class="button" onclick="importDesign()">
+        🎨 Create Design in Figma
+      </button>
+      
+      <button class="button button-secondary" onclick="validateJSON()">
+        ✓ Validate JSON
+      </button>
+      
+      <button class="button button-secondary" onclick="loadH2WWColors()">
+        🎨 Load H2WW Colors
+      </button>
+      
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+  
+  <!-- Templates Tab -->
+  <div id="templates-tab" class="tab-content">
+    <div class="section">
+      <label>Quick Templates:</label>
+      <div class="templates">
+        <button class="template-btn" onclick="loadTemplate('landingPage')">Landing Page</button>
+        <button class="template-btn" onclick="loadTemplate('dashboard')">Dashboard</button>
+        <button class="template-btn" onclick="loadTemplate('mobileApp')">Mobile App</button>
+        <button class="template-btn" onclick="loadTemplate('card')">Card Component</button>
+        <button class="template-btn" onclick="loadTemplate('navbar')">Navigation Bar</button>
+        <button class="template-btn" onclick="loadTemplate('form')">Form Layout</button>
+      </div>
+      
+      <div class="preview" id="template-preview"></div>
+    </div>
+  </div>
+  
+  <!-- Help Tab -->
+  <div id="help-tab" class="tab-content">
+    <div class="section">
+      <h3>How to use:</h3>
+      <ol style="margin-left: 20px; line-height: 1.8;">
+        <li>Ask Claude to generate a Figma design JSON</li>
+        <li>Copy the JSON from Claude</li>
+        <li>Paste it in the text area</li>
+        <li>Click "Create Design in Figma"</li>
+      </ol>
+      
+      <h3 style="margin-top: 20px;">Example Claude prompt:</h3>
+      <div class="preview">
+        "Generate a Figma design JSON for a modern landing page with a hero section, features grid, and CTA. Include proper spacing, colors, and typography."
+      </div>
+      
+      <h3 style="margin-top: 20px;">Supported elements:</h3>
+      <ul style="margin-left: 20px; line-height: 1.8;">
+        <li>Frames & Auto-layout</li>
+        <li>Text elements</li>
+        <li>Rectangles & shapes</li>
+        <li>Buttons & components</li>
+        <li>Colors & gradients</li>
+        <li>Images (via URLs)</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Template definitions
+    const templates = {
+      landingPage: {
+        type: "frame",
+        name: "Landing Page",
+        width: 1440,
+        height: 2400,
+        backgroundColor: "#FFFFFF",
+        children: [
+          {
+            type: "frame",
+            name: "Hero Section",
+            x: 0,
+            y: 0,
+            width: 1440,
+            height: 600,
+            backgroundColor: "#18A0FB",
+            children: [
+              {
+                type: "text",
+                content: "Welcome to the Future",
+                x: 100,
+                y: 200,
+                fontSize: 56,
+                fontWeight: 700,
+                color: "#FFFFFF"
+              },
+              {
+                type: "text",
+                content: "Build amazing products with our platform",
+                x: 100,
+                y: 280,
+                fontSize: 24,
+                color: "#FFFFFF",
+                opacity: 0.9
+              },
+              {
+                type: "rectangle",
+                name: "CTA Button",
+                x: 100,
+                y: 360,
+                width: 200,
+                height: 56,
+                backgroundColor: "#FFFFFF",
+                cornerRadius: 8,
+                children: [
+                  {
+                    type: "text",
+                    content: "Get Started",
+                    x: 60,
+                    y: 18,
+                    fontSize: 18,
+                    fontWeight: 600,
+                    color: "#18A0FB"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      
+      dashboard: {
+        type: "frame",
+        name: "Dashboard",
+        width: 1440,
+        height: 900,
+        backgroundColor: "#F5F5F5",
+        children: [
+          {
+            type: "frame",
+            name: "Sidebar",
+            x: 0,
+            y: 0,
+            width: 280,
+            height: 900,
+            backgroundColor: "#1F2937"
+          },
+          {
+            type: "frame",
+            name: "Main Content",
+            x: 280,
+            y: 0,
+            width: 1160,
+            height: 900,
+            backgroundColor: "#FFFFFF",
+            padding: 32
+          }
+        ]
+      },
+      
+      card: {
+        type: "frame",
+        name: "Card Component",
+        width: 360,
+        height: 400,
+        backgroundColor: "#FFFFFF",
+        cornerRadius: 12,
+        effects: [
+          {
+            type: "dropShadow",
+            x: 0,
+            y: 4,
+            blur: 20,
+            color: "rgba(0,0,0,0.1)"
+          }
+        ],
+        padding: 24,
+        children: [
+          {
+            type: "text",
+            content: "Card Title",
+            x: 24,
+            y: 24,
+            fontSize: 24,
+            fontWeight: 600,
+            color: "#000000"
+          },
+          {
+            type: "text",
+            content: "Card description goes here",
+            x: 24,
+            y: 60,
+            fontSize: 16,
+            color: "#666666"
+          }
+        ]
+      }
+    };
+    
+    // H2WW Color palette from our exports
+    const h2wwColors = {
+      "type": "frame",
+      "name": "H2WW Color Palettes",
+      "width": 1200,
+      "height": 800,
+      "backgroundColor": "#FFFFFF",
+      "padding": 32,
+      "layout": true,
+      "direction": "vertical",
+      "spacing": 32,
+      "children": [
+        {
+          "type": "text",
+          "content": "H2WW Color System",
+          "fontSize": 36,
+          "fontWeight": 600,
+          "color": "#1A202C",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "type": "frame",
+          "name": "Primary Colors",
+          "width": 1136,
+          "height": 120,
+          "backgroundColor": "transparent",
+          "layout": true,
+          "direction": "horizontal",
+          "spacing": 24,
+          "children": [
+            {
+              "type": "frame",
+              "name": "Red - AI Fundamentals",
+              "width": 200,
+              "height": 120,
+              "backgroundColor": "#E53E3E",
+              "cornerRadius": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "Red",
+                  "x": 16,
+                  "y": 16,
+                  "fontSize": 16,
+                  "fontWeight": 600,
+                  "color": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "content": "#E53E3E",
+                  "x": 16,
+                  "y": 36,
+                  "fontSize": 14,
+                  "color": "#FFFFFF",
+                  "opacity": 0.9
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Yellow - Learning",
+              "width": 200,
+              "height": 120,
+              "backgroundColor": "#F6E05E",
+              "cornerRadius": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "Yellow",
+                  "x": 16,
+                  "y": 16,
+                  "fontSize": 16,
+                  "fontWeight": 600,
+                  "color": "#1A202C"
+                },
+                {
+                  "type": "text",
+                  "content": "#F6E05E",
+                  "x": 16,
+                  "y": 36,
+                  "fontSize": 14,
+                  "color": "#1A202C",
+                  "opacity": 0.9
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "name": "Blue - Trust",
+              "width": 200,
+              "height": 120,
+              "backgroundColor": "#3182CE",
+              "cornerRadius": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "content": "Blue",
+                  "x": 16,
+                  "y": 16,
+                  "fontSize": 16,
+                  "fontWeight": 600,
+                  "color": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "content": "#3182CE",
+                  "x": 16,
+                  "y": 36,
+                  "fontSize": 14,
+                  "color": "#FFFFFF",
+                  "opacity": 0.9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+    
+    function loadH2WWColors() {
+      document.getElementById('design-json').value = JSON.stringify(h2wwColors, null, 2);
+      validateJSON();
+    }
+    
+    function switchTab(tab) {
+      // Update tab buttons
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      // Update tab content
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.getElementById(`${tab}-tab`).classList.add('active');
+    }
+    
+    function loadTemplate(templateName) {
+      const template = templates[templateName];
+      if (template) {
+        document.getElementById('design-json').value = JSON.stringify(template, null, 2);
+        document.getElementById('template-preview').textContent = JSON.stringify(template, null, 2);
+        switchTab('import');
+      }
+    }
+    
+    function validateJSON() {
+      const input = document.getElementById('design-json').value;
+      const status = document.getElementById('status');
+      
+      try {
+        const json = JSON.parse(input);
+        status.className = 'status success';
+        status.textContent = '✅ Valid JSON! Ready to import.';
+        return true;
+      } catch (error) {
+        status.className = 'status error';
+        status.textContent = '❌ Invalid JSON: ' + error.message;
+        return false;
+      }
+    }
+    
+    function importDesign() {
+      const input = document.getElementById('design-json').value;
+      const status = document.getElementById('status');
+      
+      if (!input.trim()) {
+        status.className = 'status error';
+        status.textContent = '❌ Please paste a design JSON first';
+        return;
+      }
+      
+      if (!validateJSON()) {
+        return;
+      }
+      
+      try {
+        const design = JSON.parse(input);
+        
+        // Send to Figma plugin code
+        parent.postMessage({
+          pluginMessage: {
+            type: 'create-design',
+            design: design
+          }
+        }, '*');
+        
+        status.className = 'status success';
+        status.textContent = '🎨 Creating design in Figma...';
+        
+      } catch (error) {
+        status.className = 'status error';
+        status.textContent = '❌ Error: ' + error.message;
+      }
+    }
+    
+    // Listen for messages from plugin
+    window.onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      const status = document.getElementById('status');
+      
+      if (msg.type === 'success') {
+        status.className = 'status success';
+        status.textContent = '✅ ' + msg.message;
+      } else if (msg.type === 'error') {
+        status.className = 'status error';
+        status.textContent = '❌ ' + msg.message;
+      }
+    };
+  </script>
+</body>
+</html>

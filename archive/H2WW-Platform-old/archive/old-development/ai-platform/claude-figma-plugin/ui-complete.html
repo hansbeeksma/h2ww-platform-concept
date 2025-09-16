@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13px;
+      background: #ffffff;
+      color: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #E53E3E 0%, #F6E05E 50%, #3182CE 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .tabs {
+      display: flex;
+      background: #F9FAFB;
+      border-bottom: 1px solid #E5E7EB;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+
+    .tab {
+      padding: 12px 16px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      color: #6B7280;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab:hover {
+      color: #374151;
+      background: #F3F4F6;
+    }
+
+    .tab.active {
+      color: #E53E3E;
+      border-bottom-color: #E53E3E;
+      background: white;
+    }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #E5E7EB;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+
+    .component-card {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .component-card:hover {
+      border-color: #E53E3E;
+      background: #FEF2F2;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(229, 62, 62, 0.1);
+    }
+
+    .component-icon {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto 8px;
+      background: linear-gradient(135deg, #E53E3E, #F6E05E);
+      border-radius: 8px;
+    }
+
+    .component-name {
+      font-size: 11px;
+      font-weight: 500;
+      color: #374151;
+    }
+
+    .component-count {
+      font-size: 10px;
+      color: #9CA3AF;
+      margin-top: 2px;
+    }
+
+    .button-primary {
+      background: #E53E3E;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+      width: 100%;
+    }
+
+    .button-primary:hover {
+      background: #DC2626;
+    }
+
+    .button-secondary {
+      background: transparent;
+      color: #3182CE;
+      border: 2px solid #3182CE;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+      width: 100%;
+    }
+
+    .button-secondary:hover {
+      background: #3182CE;
+      color: white;
+    }
+
+    .quick-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      background: #F9FAFB;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .checkbox-item:hover {
+      background: #F3F4F6;
+    }
+
+    .checkbox-item input {
+      margin-right: 8px;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 12px;
+      font-size: 12px;
+      display: none;
+    }
+
+    .status.success {
+      background: #D1FAE5;
+      color: #065F46;
+      border: 1px solid #6EE7B7;
+      display: block;
+    }
+
+    .status.error {
+      background: #FEE2E2;
+      color: #991B1B;
+      border: 1px solid #FCA5A5;
+      display: block;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #E5E7EB;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .search-box:focus {
+      outline: none;
+      border-color: #E53E3E;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .badge.new {
+      background: #D1FAE5;
+      color: #065F46;
+    }
+
+    .badge.beta {
+      background: #DBEAFE;
+      color: #1E40AF;
+    }
+
+    .footer {
+      padding: 12px;
+      background: #F9FAFB;
+      border-top: 1px solid #E5E7EB;
+      text-align: center;
+      font-size: 11px;
+      color: #6B7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎨 H2WW Complete Design System</h1>
+    <p>All UI/UX components from your checklist</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('visual')">Visual Language</button>
+    <button class="tab" onclick="switchTab('elements')">UI Elements</button>
+    <button class="tab" onclick="switchTab('components')">UI Components</button>
+    <button class="tab" onclick="switchTab('patterns')">UI Patterns</button>
+    <button class="tab" onclick="switchTab('templates')">Page Templates</button>
+    <button class="tab" onclick="switchTab('layout')">Layout Systems</button>
+    <button class="tab" onclick="switchTab('editorial')">Editorial</button>
+    <button class="tab" onclick="switchTab('practices')">Practices</button>
+    <button class="tab" onclick="switchTab('utilities')">Utilities</button>
+  </div>
+
+  <div class="content">
+    <!-- Visual Language Tab -->
+    <div id="visual-tab" class="tab-content active">
+      <div class="section">
+        <h3 class="section-title">Visual Language</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('color-palette')">
+            <div class="component-icon" style="background: linear-gradient(135deg, #E53E3E, #F6E05E, #3182CE)"></div>
+            <div class="component-name">Color</div>
+            <div class="component-count">Palettes & Categories</div>
+          </div>
+          <div class="component-card" onclick="createComponent('typography')">
+            <div class="component-icon" style="background: #374151"></div>
+            <div class="component-name">Typography</div>
+            <div class="component-count">Hierarchy & Weights</div>
+          </div>
+          <div class="component-card" onclick="createComponent('iconography')">
+            <div class="component-icon" style="background: #8B5CF6"></div>
+            <div class="component-name">Iconography</div>
+            <div class="component-count">Pictograms & Icons</div>
+          </div>
+          <div class="component-card" onclick="createComponent('motion')">
+            <div class="component-icon" style="background: #3182CE"></div>
+            <div class="component-name">Motion</div>
+            <div class="component-count">Principles & Timing</div>
+          </div>
+          <div class="component-card" onclick="createComponent('space')">
+            <div class="component-icon" style="background: #F6E05E"></div>
+            <div class="component-name">Space</div>
+            <div class="component-count">Units & Metrics</div>
+          </div>
+          <div class="component-card" onclick="createComponent('photography')">
+            <div class="component-icon" style="background: #22C55E"></div>
+            <div class="component-name">Photography</div>
+            <div class="component-count">Style & Structure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UI Elements Tab -->
+    <div id="elements-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">Text Elements</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('paragraph')">
+            <div class="component-icon"></div>
+            <div class="component-name">Paragraph</div>
+          </div>
+          <div class="component-card" onclick="createComponent('lead-paragraph')">
+            <div class="component-icon"></div>
+            <div class="component-name">Lead Paragraph</div>
+          </div>
+          <div class="component-card" onclick="createComponent('block-quote')">
+            <div class="component-icon"></div>
+            <div class="component-name">Block Quote</div>
+          </div>
+          <div class="component-card" onclick="createComponent('headers')">
+            <div class="component-icon"></div>
+            <div class="component-name">Headers (H1-H6)</div>
+          </div>
+          <div class="component-card" onclick="createComponent('lists')">
+            <div class="component-icon"></div>
+            <div class="component-name">Lists</div>
+          </div>
+          <div class="component-card" onclick="createComponent('code')">
+            <div class="component-icon"></div>
+            <div class="component-name">Code</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Buttons</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('button-primary')">
+            <div class="component-icon"></div>
+            <div class="component-name">Primary</div>
+          </div>
+          <div class="component-card" onclick="createComponent('button-secondary')">
+            <div class="component-icon"></div>
+            <div class="component-name">Secondary</div>
+          </div>
+          <div class="component-card" onclick="createComponent('button-groups')">
+            <div class="component-icon"></div>
+            <div class="component-name">Button Groups</div>
+          </div>
+          <div class="component-card" onclick="createComponent('menu-buttons')">
+            <div class="component-icon"></div>
+            <div class="component-name">Menu Buttons</div>
+          </div>
+          <div class="component-card" onclick="createComponent('split-buttons')">
+            <div class="component-icon"></div>
+            <div class="component-name">Split Buttons</div>
+          </div>
+          <div class="component-card" onclick="createComponent('fab')">
+            <div class="component-icon"></div>
+            <div class="component-name">FAB</div>
+            <div class="component-count">Floating Action</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Form Controls</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('text-input')">
+            <div class="component-icon"></div>
+            <div class="component-name">Text</div>
+          </div>
+          <div class="component-card" onclick="createComponent('email-input')">
+            <div class="component-icon"></div>
+            <div class="component-name">Email</div>
+          </div>
+          <div class="component-card" onclick="createComponent('textarea')">
+            <div class="component-icon"></div>
+            <div class="component-name">Text Area</div>
+          </div>
+          <div class="component-card" onclick="createComponent('radio')">
+            <div class="component-icon"></div>
+            <div class="component-name">Radio</div>
+          </div>
+          <div class="component-card" onclick="createComponent('checkbox')">
+            <div class="component-icon"></div>
+            <div class="component-name">Checkbox</div>
+          </div>
+          <div class="component-card" onclick="createComponent('select')">
+            <div class="component-icon"></div>
+            <div class="component-name">Select</div>
+          </div>
+          <div class="component-card" onclick="createComponent('file-upload')">
+            <div class="component-icon"></div>
+            <div class="component-name">File Upload</div>
+          </div>
+          <div class="component-card" onclick="createComponent('labels')">
+            <div class="component-icon"></div>
+            <div class="component-name">Labels</div>
+          </div>
+          <div class="component-card" onclick="createComponent('floating-labels')">
+            <div class="component-icon"></div>
+            <div class="component-name">Floating Labels</div>
+          </div>
+          <div class="component-card" onclick="createComponent('microcopy')">
+            <div class="component-icon"></div>
+            <div class="component-name">Microcopy</div>
+          </div>
+          <div class="component-card" onclick="createComponent('validation')">
+            <div class="component-icon"></div>
+            <div class="component-name">Validation</div>
+          </div>
+          <div class="component-card" onclick="createComponent('required')">
+            <div class="component-icon"></div>
+            <div class="component-name">Required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Layout Elements</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('divider')">
+            <div class="component-icon"></div>
+            <div class="component-name">Divider / Rule</div>
+          </div>
+          <div class="component-card" onclick="createComponent('switch')">
+            <div class="component-icon"></div>
+            <div class="component-name">Switch</div>
+          </div>
+          <div class="component-card" onclick="createComponent('slider')">
+            <div class="component-icon"></div>
+            <div class="component-name">Slider</div>
+          </div>
+          <div class="component-card" onclick="createComponent('image')">
+            <div class="component-icon"></div>
+            <div class="component-name">Image</div>
+          </div>
+          <div class="component-card" onclick="createComponent('block')">
+            <div class="component-icon"></div>
+            <div class="component-name">Block</div>
+          </div>
+          <div class="component-card" onclick="createComponent('full-bleed')">
+            <div class="component-icon"></div>
+            <div class="component-name">Full Bleed</div>
+          </div>
+          <div class="component-card" onclick="createComponent('inline-positions')">
+            <div class="component-icon"></div>
+            <div class="component-name">Inline w/ Positions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UI Components Tab -->
+    <div id="components-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">All UI Components</h3>
+        <input type="text" class="search-box" placeholder="Search components..." onkeyup="filterComponents(this.value)">
+        <div class="component-grid" id="components-list">
+          <div class="component-card" onclick="createComponent('action-bar')">
+            <div class="component-icon"></div>
+            <div class="component-name">Action Bar/Sheet</div>
+          </div>
+          <div class="component-card" onclick="createComponent('back-to-top')">
+            <div class="component-icon"></div>
+            <div class="component-name">Back to Top</div>
+          </div>
+          <div class="component-card" onclick="createComponent('badges')">
+            <div class="component-icon"></div>
+            <div class="component-name">Badges</div>
+          </div>
+          <div class="component-card" onclick="createComponent('breadcrumbs')">
+            <div class="component-icon"></div>
+            <div class="component-name">Breadcrumbs</div>
+          </div>
+          <div class="component-card" onclick="createComponent('calendar-picker')">
+            <div class="component-icon"></div>
+            <div class="component-name">Calendar Picker</div>
+          </div>
+          <div class="component-card" onclick="createComponent('caption')">
+            <div class="component-icon"></div>
+            <div class="component-name">Caption</div>
+          </div>
+          <div class="component-card" onclick="createComponent('cards')">
+            <div class="component-icon"></div>
+            <div class="component-name">Cards</div>
+          </div>
+          <div class="component-card" onclick="createComponent('chat')">
+            <div class="component-icon"></div>
+            <div class="component-name">Chat (live)</div>
+          </div>
+          <div class="component-card" onclick="createComponent('code-block')">
+            <div class="component-icon"></div>
+            <div class="component-name">Code Block</div>
+          </div>
+          <div class="component-card" onclick="createComponent('comments')">
+            <div class="component-icon"></div>
+            <div class="component-name">Comments</div>
+          </div>
+          <div class="component-card" onclick="createComponent('contact-us')">
+            <div class="component-icon"></div>
+            <div class="component-name">Contact Us</div>
+          </div>
+          <div class="component-card" onclick="createComponent('cookie-notification')">
+            <div class="component-icon"></div>
+            <div class="component-name">Cookie Notification</div>
+          </div>
+          <div class="component-card" onclick="createComponent('data-tables')">
+            <div class="component-icon"></div>
+            <div class="component-name">Data Tables</div>
+          </div>
+          <div class="component-card" onclick="createComponent('dialog')">
+            <div class="component-icon"></div>
+            <div class="component-name">Dialog</div>
+          </div>
+          <div class="component-card" onclick="createComponent('drawer')">
+            <div class="component-icon"></div>
+            <div class="component-name">Drawer/Accordion</div>
+          </div>
+          <div class="component-card" onclick="createComponent('filters')">
+            <div class="component-icon"></div>
+            <div class="component-name">Filters</div>
+          </div>
+          <div class="component-card" onclick="createComponent('footer')">
+            <div class="component-icon"></div>
+            <div class="component-name">Footer</div>
+          </div>
+          <div class="component-card" onclick="createComponent('footnotes')">
+            <div class="component-icon"></div>
+            <div class="component-name">Footnotes</div>
+          </div>
+          <div class="component-card" onclick="createComponent('header')">
+            <div class="component-icon"></div>
+            <div class="component-name">Header</div>
+          </div>
+          <div class="component-card" onclick="createComponent('hero-billboard')">
+            <div class="component-icon"></div>
+            <div class="component-name">Hero Billboard</div>
+          </div>
+          <div class="component-card" onclick="createComponent('hero-carousel')">
+            <div class="component-icon"></div>
+            <div class="component-name">Hero Carousel</div>
+          </div>
+          <div class="component-card" onclick="createComponent('legend')">
+            <div class="component-icon"></div>
+            <div class="component-name">Legend</div>
+          </div>
+          <div class="component-card" onclick="createComponent('loading')">
+            <div class="component-icon"></div>
+            <div class="component-name">Loading/Spinner</div>
+          </div>
+          <div class="component-card" onclick="createComponent('local-navigation')">
+            <div class="component-icon"></div>
+            <div class="component-name">Local Navigation</div>
+          </div>
+          <div class="component-card" onclick="createComponent('maps')">
+            <div class="component-icon"></div>
+            <div class="component-name">Maps</div>
+          </div>
+          <div class="component-card" onclick="createComponent('menu')">
+            <div class="component-icon"></div>
+            <div class="component-name">Menu</div>
+          </div>
+          <div class="component-card" onclick="createComponent('messaging')">
+            <div class="component-icon"></div>
+            <div class="component-name">Messaging</div>
+          </div>
+          <div class="component-card" onclick="createComponent('modal')">
+            <div class="component-icon"></div>
+            <div class="component-name">Modal</div>
+          </div>
+          <div class="component-card" onclick="createComponent('nav-megamenu')">
+            <div class="component-icon"></div>
+            <div class="component-name">Nav Megamenu</div>
+          </div>
+          <div class="component-card" onclick="createComponent('pagination')">
+            <div class="component-icon"></div>
+            <div class="component-name">Pagination</div>
+          </div>
+          <div class="component-card" onclick="createComponent('progress-bar')">
+            <div class="component-icon"></div>
+            <div class="component-name">Progress Bar</div>
+          </div>
+          <div class="component-card" onclick="createComponent('pull-quote')">
+            <div class="component-icon"></div>
+            <div class="component-name">Pull Quote</div>
+          </div>
+          <div class="component-card" onclick="createComponent('ratings')">
+            <div class="component-icon"></div>
+            <div class="component-name">Ratings</div>
+          </div>
+          <div class="component-card" onclick="createComponent('reviews')">
+            <div class="component-icon"></div>
+            <div class="component-name">Reviews</div>
+          </div>
+          <div class="component-card" onclick="createComponent('rich-text-editor')">
+            <div class="component-icon"></div>
+            <div class="component-name">Rich Text Editor</div>
+          </div>
+          <div class="component-card" onclick="createComponent('search')">
+            <div class="component-icon"></div>
+            <div class="component-name">Search</div>
+          </div>
+          <div class="component-card" onclick="createComponent('sidebar')">
+            <div class="component-icon"></div>
+            <div class="component-name">Sidebar</div>
+          </div>
+          <div class="component-card" onclick="createComponent('site-navigation')">
+            <div class="component-icon"></div>
+            <div class="component-name">Site/App Navigation</div>
+          </div>
+          <div class="component-card" onclick="createComponent('social-networking')">
+            <div class="component-icon"></div>
+            <div class="component-name">Social Networking</div>
+          </div>
+          <div class="component-card" onclick="createComponent('status')">
+            <div class="component-icon"></div>
+            <div class="component-name">Status</div>
+            <span class="badge beta">Beta</span>
+          </div>
+          <div class="component-card" onclick="createComponent('tabs')">
+            <div class="component-icon"></div>
+            <div class="component-name">Tabs</div>
+          </div>
+          <div class="component-card" onclick="createComponent('tags')">
+            <div class="component-icon"></div>
+            <div class="component-name">Tags / Chips / Pills</div>
+          </div>
+          <div class="component-card" onclick="createComponent('thumbnails')">
+            <div class="component-icon"></div>
+            <div class="component-name">Thumbnails / #-ups</div>
+          </div>
+          <div class="component-card" onclick="createComponent('tips')">
+            <div class="component-icon"></div>
+            <div class="component-name">Tips / Tutorial</div>
+          </div>
+          <div class="component-card" onclick="createComponent('toolbar')">
+            <div class="component-icon"></div>
+            <div class="component-name">Toolbar</div>
+          </div>
+          <div class="component-card" onclick="createComponent('tooltips')">
+            <div class="component-icon"></div>
+            <div class="component-name">Tooltips</div>
+          </div>
+          <div class="component-card" onclick="createComponent('video-media')">
+            <div class="component-icon"></div>
+            <div class="component-name">Video & Media</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UI Patterns Tab -->
+    <div id="patterns-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">UI Patterns</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('authentication')">
+            <div class="component-icon"></div>
+            <div class="component-name">Authentication</div>
+          </div>
+          <div class="component-card" onclick="createComponent('create-account')">
+            <div class="component-icon"></div>
+            <div class="component-name">Create Account</div>
+          </div>
+          <div class="component-card" onclick="createComponent('database-connection')">
+            <div class="component-icon"></div>
+            <div class="component-name">Database Connection</div>
+          </div>
+          <div class="component-card" onclick="createComponent('form-structure')">
+            <div class="component-icon"></div>
+            <div class="component-name">Form Structure</div>
+          </div>
+          <div class="component-card" onclick="createComponent('launch')">
+            <div class="component-icon"></div>
+            <div class="component-name">Launch</div>
+          </div>
+          <div class="component-card" onclick="createComponent('permissions')">
+            <div class="component-icon"></div>
+            <div class="component-name">Permissions</div>
+          </div>
+          <div class="component-card" onclick="createComponent('settings')">
+            <div class="component-icon"></div>
+            <div class="component-name">Settings</div>
+          </div>
+          <div class="component-card" onclick="createComponent('site-structure')">
+            <div class="component-icon"></div>
+            <div class="component-name">Site / App Structure</div>
+          </div>
+          <div class="component-card" onclick="createComponent('swipe-refresh')">
+            <div class="component-icon"></div>
+            <div class="component-name">Swipe to Refresh</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Templates Tab -->
+    <div id="templates-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">Page Templates</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('home-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Home</div>
+          </div>
+          <div class="component-card" onclick="createComponent('category-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Category</div>
+          </div>
+          <div class="component-card" onclick="createComponent('product-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Product</div>
+          </div>
+          <div class="component-card" onclick="createComponent('dashboard-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Dashboard</div>
+          </div>
+          <div class="component-card" onclick="createComponent('article-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Article</div>
+          </div>
+          <div class="component-card" onclick="createComponent('search-results')">
+            <div class="component-icon"></div>
+            <div class="component-name">Search Results</div>
+          </div>
+          <div class="component-card" onclick="createComponent('contact-us-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Contact Us</div>
+          </div>
+          <div class="component-card" onclick="createComponent('getting-started')">
+            <div class="component-icon"></div>
+            <div class="component-name">Getting Started</div>
+          </div>
+          <div class="component-card" onclick="createComponent('discussion-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Discussion</div>
+          </div>
+          <div class="component-card" onclick="createComponent('gallery-page')">
+            <div class="component-icon"></div>
+            <div class="component-name">Gallery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout Systems Tab -->
+    <div id="layout-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">Layout Systems</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('grids-sites')">
+            <div class="component-icon"></div>
+            <div class="component-name">Grids for Sites</div>
+          </div>
+          <div class="component-card" onclick="createComponent('grids-apps')">
+            <div class="component-icon"></div>
+            <div class="component-name">Grids for Apps</div>
+          </div>
+          <div class="component-card" onclick="createComponent('paneling')">
+            <div class="component-icon"></div>
+            <div class="component-name">Paneling/Transitions</div>
+          </div>
+          <div class="component-card" onclick="createComponent('responsive')">
+            <div class="component-icon"></div>
+            <div class="component-name">Responsive/Breakpoints</div>
+          </div>
+          <div class="component-card" onclick="createComponent('screen-sizes')">
+            <div class="component-icon"></div>
+            <div class="component-name">Screen Sizes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial Tab -->
+    <div id="editorial-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">Editorial Guidelines</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('voice-tone')">
+            <div class="component-icon"></div>
+            <div class="component-name">Voice & Tone</div>
+          </div>
+          <div class="component-card" onclick="createComponent('writing-web')">
+            <div class="component-icon"></div>
+            <div class="component-name">Writing for the Web</div>
+          </div>
+          <div class="component-card" onclick="createComponent('word-list')">
+            <div class="component-icon"></div>
+            <div class="component-name">Word List</div>
+          </div>
+          <div class="component-card" onclick="createComponent('capitalization')">
+            <div class="component-icon"></div>
+            <div class="component-name">Capitalization</div>
+          </div>
+          <div class="component-card" onclick="createComponent('punctuation')">
+            <div class="component-icon"></div>
+            <div class="component-name">Punctuation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Branding</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('identity')">
+            <div class="component-icon"></div>
+            <div class="component-name">Identity</div>
+          </div>
+          <div class="component-card" onclick="createComponent('logo')">
+            <div class="component-icon"></div>
+            <div class="component-name">Logo(s)</div>
+          </div>
+          <div class="component-card" onclick="createComponent('tagline')">
+            <div class="component-icon"></div>
+            <div class="component-name">Tagline(s)</div>
+          </div>
+          <div class="component-card" onclick="createComponent('partnerships')">
+            <div class="component-icon"></div>
+            <div class="component-name">Partnerships</div>
+          </div>
+          <div class="component-card" onclick="createComponent('themes')">
+            <div class="component-icon"></div>
+            <div class="component-name">Themes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Research & Users</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('user-needs')">
+            <div class="component-icon"></div>
+            <div class="component-name">User Needs</div>
+          </div>
+          <div class="component-card" onclick="createComponent('personas')">
+            <div class="component-icon"></div>
+            <div class="component-name">Personas</div>
+          </div>
+          <div class="component-card" onclick="createComponent('research-techniques')">
+            <div class="component-icon"></div>
+            <div class="component-name">Research Techniques</div>
+          </div>
+          <div class="component-card" onclick="createComponent('surveys')">
+            <div class="component-icon"></div>
+            <div class="component-name">Surveys</div>
+          </div>
+          <div class="component-card" onclick="createComponent('ab-testing')">
+            <div class="component-icon"></div>
+            <div class="component-name">A/B, Multivar Testing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Practices Tab -->
+    <div id="practices-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">Best Practices</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('accessibility')">
+            <div class="component-icon"></div>
+            <div class="component-name">Accessibility</div>
+          </div>
+          <div class="component-card" onclick="createComponent('prototyping')">
+            <div class="component-icon"></div>
+            <div class="component-name">Prototyping</div>
+          </div>
+          <div class="component-card" onclick="createComponent('performance')">
+            <div class="component-icon"></div>
+            <div class="component-name">Performance</div>
+          </div>
+          <div class="component-card" onclick="createComponent('seo')">
+            <div class="component-icon"></div>
+            <div class="component-name">SEO</div>
+          </div>
+          <div class="component-card" onclick="createComponent('design-thinking')">
+            <div class="component-icon"></div>
+            <div class="component-name">Design Thinking</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Coding Standards</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('style-guide')">
+            <div class="component-icon"></div>
+            <div class="component-name">Style</div>
+          </div>
+          <div class="component-card" onclick="createComponent('browsers-devices')">
+            <div class="component-icon"></div>
+            <div class="component-name">Browsers & Devices</div>
+          </div>
+          <div class="component-card" onclick="createComponent('environments')">
+            <div class="component-icon"></div>
+            <div class="component-name">Environments</div>
+          </div>
+          <div class="component-card" onclick="createComponent('prog-enhancement')">
+            <div class="component-icon"></div>
+            <div class="component-name">Prog. Enhancement</div>
+          </div>
+          <div class="component-card" onclick="createComponent('version-control')">
+            <div class="component-icon"></div>
+            <div class="component-name">Version Control</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utilities Tab -->
+    <div id="utilities-tab" class="tab-content">
+      <div class="section">
+        <h3 class="section-title">Downloads</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('templates-download')">
+            <div class="component-icon"></div>
+            <div class="component-name">Templates (PSD...)</div>
+          </div>
+          <div class="component-card" onclick="createComponent('swatch-palettes')">
+            <div class="component-icon"></div>
+            <div class="component-name">Swatch Palettes</div>
+          </div>
+          <div class="component-card" onclick="createComponent('fonts')">
+            <div class="component-icon"></div>
+            <div class="component-name">Fonts</div>
+          </div>
+          <div class="component-card" onclick="createComponent('icons')">
+            <div class="component-icon"></div>
+            <div class="component-name">Icons</div>
+          </div>
+          <div class="component-card" onclick="createComponent('code-download')">
+            <div class="component-icon"></div>
+            <div class="component-name">Code</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Utilities</h3>
+        <div class="component-grid">
+          <div class="component-card" onclick="createComponent('variables-tokens')">
+            <div class="component-icon"></div>
+            <div class="component-name">Variables / Tokens</div>
+          </div>
+          <div class="component-card" onclick="createComponent('mixins')">
+            <div class="component-icon"></div>
+            <div class="component-name">Mixins</div>
+          </div>
+          <div class="component-card" onclick="createComponent('helpers')">
+            <div class="component-icon"></div>
+            <div class="component-name">Helpers</div>
+          </div>
+          <div class="component-card" onclick="createComponent('customize')">
+            <div class="component-icon"></div>
+            <div class="component-name">Customize</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="quick-actions">
+      <button class="button-primary" onclick="importCompleteSystem()">
+        🚀 Import Complete System
+      </button>
+      <button class="button-secondary" onclick="exportSystem()">
+        📥 Export to Code
+      </button>
+    </div>
+    <p>H2WW Design System v2.0.0</p>
+  </div>
+
+  <script>
+    // Load complete system data
+    let systemData = null;
+
+    // Try to load the complete system JSON
+    fetch('./h2ww-complete-system.json')
+      .then(response => response.json())
+      .then(data => {
+        systemData = data;
+        console.log('System data loaded successfully');
+      })
+      .catch(error => {
+        console.error('Error loading system data:', error);
+        // Use embedded fallback data
+        systemData = {
+          version: "2.0.0",
+          visualLanguage: {},
+          uiElements: {},
+          uiComponents: {},
+          uiPatterns: {},
+          pageTemplates: {},
+          layoutSystems: {},
+          editorial: {},
+          branding: {},
+          research: {},
+          practices: {},
+          codingStandards: {},
+          downloads: {},
+          utilities: {}
+        };
+      });
+
+    function switchTab(tabName) {
+      // Update tab buttons
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Update tab content
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+      document.getElementById(`${tabName}-tab`).classList.add('active');
+    }
+
+    function createComponent(componentType) {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'create-component',
+          componentType: componentType,
+          spec: getComponentSpec(componentType),
+          tokens: systemData
+        }
+      }, '*');
+    }
+
+    function getComponentSpec(type) {
+      // Return specific spec based on component type
+      const specs = {
+        'button-primary': { variant: 'primary', label: 'Primary Button' },
+        'button-secondary': { variant: 'secondary', label: 'Secondary Button' },
+        'card': { title: 'Card Title', description: 'Card description content' },
+        'modal': { title: 'Modal Title', content: 'Modal content', confirmLabel: 'Confirm' },
+        'authentication': { type: 'login' },
+        'dashboard-page': { widgets: true }
+      };
+      return specs[type] || {};
+    }
+
+    function importCompleteSystem() {
+      if (!systemData) {
+        alert('System data not loaded yet. Please try again.');
+        return;
+      }
+
+      parent.postMessage({
+        pluginMessage: {
+          type: 'create-complete-system',
+          systemData: systemData
+        }
+      }, '*');
+    }
+
+    function exportSystem() {
+      // Export functionality would go here
+      alert('Export functionality coming soon!');
+    }
+
+    function filterComponents(searchTerm) {
+      const cards = document.querySelectorAll('#components-list .component-card');
+      cards.forEach(card => {
+        const name = card.querySelector('.component-name').textContent.toLowerCase();
+        if (name.includes(searchTerm.toLowerCase())) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

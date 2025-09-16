@@ -1,0 +1,38 @@
+{
+  "name": "H2WW Design System Importer",
+  "id": "h2ww-design-system",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "parameters": [
+    {
+      "name": "Import Tokens",
+      "key": "importTokens", 
+      "allowFreeform": false
+    },
+    {
+      "name": "Import Components",
+      "key": "importComponents",
+      "allowFreeform": false
+    }
+  ],
+  "menu": [
+    {
+      "name": "Import Design Tokens",
+      "command": "import-tokens"
+    },
+    {
+      "name": "Import Component Library", 
+      "command": "import-components"
+    },
+    {
+      "name": "Import Complete System",
+      "command": "import-all"
+    }
+  ]
+}

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13px;
+      background: #f9fafb;
+      color: #1f2937;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 16px 20px;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    .search-bar {
+      margin-top: 12px;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 12px 8px 36px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 12px;
+      background: #f9fafb;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      pointer-events: none;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .categories {
+      display: flex;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      overflow-x: auto;
+      padding: 0 20px;
+    }
+
+    .category-tab {
+      padding: 12px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #6b7280;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .category-tab:hover {
+      color: #374151;
+    }
+
+    .category-tab.active {
+      color: #3b82f6;
+      border-bottom-color: #3b82f6;
+    }
+
+    .component-grid {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .component-section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .component-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .component-item {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .component-item:hover {
+      border-color: #3b82f6;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .component-preview {
+      width: 100%;
+      height: 60px;
+      background: #f9fafb;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .component-name {
+      font-size: 11px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 4px;
+    }
+
+    .component-desc {
+      font-size: 10px;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+
+    .footer {
+      padding: 12px 20px;
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      font-size: 10px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Scrollbar styling */
+    .component-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .component-grid::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+
+    .component-grid::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+
+    .component-grid::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>H2WW Component Library</h1>
+    <p>Real interface components from your admin dashboard</p>
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+      </svg>
+      <input type="text" class="search-input" placeholder="Search components..." id="searchInput" oninput="filterComponents()">
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="categories">
+      <div class="category-tab active" data-category="all" onclick="showCategory('all')">All Components</div>
+      <div class="category-tab" data-category="navigation" onclick="showCategory('navigation')">Navigation</div>
+      <div class="category-tab" data-category="headers" onclick="showCategory('headers')">Headers</div>
+      <div class="category-tab" data-category="cards" onclick="showCategory('cards')">Cards</div>
+      <div class="category-tab" data-category="buttons" onclick="showCategory('buttons')">Buttons</div>
+      <div class="category-tab" data-category="forms" onclick="showCategory('forms')">Forms</div>
+      <div class="category-tab" data-category="content" onclick="showCategory('content')">Content</div>
+    </div>
+
+    <div class="component-grid" id="componentGrid">
+      <!-- Navigation Components -->
+      <div class="component-section" data-category="navigation">
+        <h3 class="section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          Navigation Components
+        </h3>
+        <div class="component-list">
+          <div class="component-item" onclick="insertComponent('sidebar-nav')">
+            <div class="component-preview">📋</div>
+            <div class="component-name">Sidebar Navigation</div>
+            <div class="component-desc">Fixed sidebar with navigation links</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('nav-link')">
+            <div class="component-preview">🔗</div>
+            <div class="component-name">Navigation Link</div>
+            <div class="component-desc">Individual nav item with icon</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('brand-header')">
+            <div class="component-preview">🏷️</div>
+            <div class="component-name">Brand Header</div>
+            <div class="component-desc">Logo + app name + subtitle</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('tab-navigation')">
+            <div class="component-preview">📑</div>
+            <div class="component-name">Tab Navigation</div>
+            <div class="component-desc">Horizontal tab switcher</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Header Components -->
+      <div class="component-section" data-category="headers">
+        <h3 class="section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Header Components
+        </h3>
+        <div class="component-list">
+          <div class="component-item" onclick="insertComponent('top-header')">
+            <div class="component-preview">📊</div>
+            <div class="component-name">Top Header Bar</div>
+            <div class="component-desc">Sticky header with glassmorphism</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('search-field')">
+            <div class="component-preview">🔍</div>
+            <div class="component-name">Search Input</div>
+            <div class="component-desc">Search field with icon</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('page-header')">
+            <div class="component-preview">📄</div>
+            <div class="component-name">Page Header</div>
+            <div class="component-desc">Large title + description</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('user-dropdown')">
+            <div class="component-preview">👤</div>
+            <div class="component-name">User Profile</div>
+            <div class="component-desc">Avatar + name + role dropdown</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card Components -->
+      <div class="component-section" data-category="cards">
+        <h3 class="section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14-4H3a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"></path>
+          </svg>
+          Card Components
+        </h3>
+        <div class="component-list">
+          <div class="component-item" onclick="insertComponent('metric-card')">
+            <div class="component-preview">📈</div>
+            <div class="component-name">Metric Card</div>
+            <div class="component-desc">Stats card with icon + number</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('action-card')">
+            <div class="component-preview">⚡</div>
+            <div class="component-name">Action Card</div>
+            <div class="component-desc">Large card with CTA button</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('create-card')">
+            <div class="component-preview">➕</div>
+            <div class="component-name">Create Card</div>
+            <div class="component-desc">Dashed border create new card</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('activity-card')">
+            <div class="component-preview">📋</div>
+            <div class="component-name">Activity Feed</div>
+            <div class="component-desc">Recent activity list</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button Components -->
+      <div class="component-section" data-category="buttons">
+        <h3 class="section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
+          </svg>
+          Button Components
+        </h3>
+        <div class="component-list">
+          <div class="component-item" onclick="insertComponent('primary-button')">
+            <div class="component-preview">🔵</div>
+            <div class="component-name">Primary Button</div>
+            <div class="component-desc">Dark background button</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('secondary-button')">
+            <div class="component-preview">⚪</div>
+            <div class="component-name">Secondary Button</div>
+            <div class="component-desc">Border style button</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('icon-button')">
+            <div class="component-preview">⚫</div>
+            <div class="component-name">Icon Button</div>
+            <div class="component-desc">Round icon-only button</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('notification-button')">
+            <div class="component-preview">🔔</div>
+            <div class="component-name">Notification Button</div>
+            <div class="component-desc">Bell icon with badge</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Components -->
+      <div class="component-section" data-category="forms">
+        <h3 class="section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Form Components
+        </h3>
+        <div class="component-list">
+          <div class="component-item" onclick="insertComponent('text-input')">
+            <div class="component-preview">📝</div>
+            <div class="component-name">Text Input</div>
+            <div class="component-desc">Standard text input field</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('search-input')">
+            <div class="component-preview">🔍</div>
+            <div class="component-name">Search Input</div>
+            <div class="component-desc">Search field with icon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Components -->
+      <div class="component-section" data-category="content">
+        <h3 class="section-title">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Content Components
+        </h3>
+        <div class="component-list">
+          <div class="component-item" onclick="insertComponent('activity-item')">
+            <div class="component-preview">📌</div>
+            <div class="component-name">Activity Item</div>
+            <div class="component-desc">Single activity with timestamp</div>
+          </div>
+          <div class="component-item" onclick="insertComponent('help-section')">
+            <div class="component-preview">❓</div>
+            <div class="component-name">Help Section</div>
+            <div class="component-desc">Help card with CTA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    H2WW Component Library • Insert real interface components
+  </div>
+
+  <script>
+    let currentCategory = 'all';
+    let searchTerm = '';
+
+    function showCategory(category) {
+      currentCategory = category;
+
+      // Update tab appearance
+      document.querySelectorAll('.category-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+      // Show/hide sections
+      filterComponents();
+    }
+
+    function filterComponents() {
+      const searchInput = document.getElementById('searchInput');
+      searchTerm = searchInput.value.toLowerCase();
+
+      const sections = document.querySelectorAll('.component-section');
+      const items = document.querySelectorAll('.component-item');
+
+      sections.forEach(section => {
+        const sectionCategory = section.getAttribute('data-category');
+        let hasVisibleItems = false;
+
+        // Show section if category matches or 'all'
+        if (currentCategory === 'all' || currentCategory === sectionCategory) {
+          const sectionItems = section.querySelectorAll('.component-item');
+
+          sectionItems.forEach(item => {
+            const name = item.querySelector('.component-name').textContent.toLowerCase();
+            const desc = item.querySelector('.component-desc').textContent.toLowerCase();
+
+            if (searchTerm === '' || name.includes(searchTerm) || desc.includes(searchTerm)) {
+              item.style.display = 'block';
+              hasVisibleItems = true;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          section.style.display = hasVisibleItems ? 'block' : 'none';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+
+    function insertComponent(componentType) {
+      // Send message to plugin code to insert component
+      parent.postMessage({
+        pluginMessage: {
+          type: 'insert-component',
+          componentType: componentType
+        }
+      }, '*');
+
+      // Visual feedback
+      const button = event.currentTarget;
+      const originalBg = button.style.background;
+      button.style.background = '#e0f2fe';
+      button.style.borderColor = '#0284c7';
+
+      setTimeout(() => {
+        button.style.background = originalBg;
+        button.style.borderColor = '#e5e7eb';
+      }, 300);
+    }
+
+    // Initialize
+    filterComponents();
+  </script>
+</body>
+</html>

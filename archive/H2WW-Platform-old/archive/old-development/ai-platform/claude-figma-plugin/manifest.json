@@ -1,0 +1,11 @@
+{
+  "name": "H2WW Complete Design System",
+  "id": "h2ww-complete-design-system",
+  "api": "1.0.0",
+  "main": "code-extended.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "ui-complete.html",
+  "documentAccess": "dynamic-page"
+}

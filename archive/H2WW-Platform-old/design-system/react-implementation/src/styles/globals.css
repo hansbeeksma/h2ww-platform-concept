@@ -1,0 +1,286 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* H2WW Design System CSS Variables */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 0 72% 51%; /* ai-fundamentals-500 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 94%;
+    --accent-foreground: 222.2 84% 4.9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 8px;
+
+    /* Apple HIG Easing Curves */
+    --apple-ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --apple-ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --apple-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --apple-ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+    /* H2WW Learning Colors - Apple HIG Enhanced */
+    --ai-fundamentals: 212 100% 50%; /* Apple System Blue */
+    --discovery: 48 100% 50%; /* Apple System Yellow */
+    --mastery: 283 69% 59%; /* Apple System Purple */
+    --creativity: 24 95% 53%;
+    --growth: 145 100% 42%; /* Apple System Green */
+    --innovation: 262 83% 58%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 0 72% 51%;
+    --primary-foreground: 222.2 84% 4.9%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* H2WW Typography Base Styles */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
+  h6 {
+    @apply text-lg;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* H2WW Focus Styles for Accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+
+  /* H2WW Motion Preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* H2WW High Contrast Mode */
+  @media (prefers-contrast: high) {
+    :root {
+      --border: 0 0% 0%;
+      --ring: 0 0% 0%;
+    }
+  }
+}
+
+/* H2WW Component Utilities */
+@layer components {
+  .h2ww-geometric-accent {
+    @apply relative;
+  }
+
+  .h2ww-geometric-accent::before {
+    content: '';
+    @apply absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-ai-fundamentals to-discovery rounded-full;
+  }
+
+  .h2ww-learning-card {
+    @apply bg-card text-card-foreground border border-border rounded-lg shadow-soft p-6 transition-shadow hover:shadow-medium;
+  }
+
+  .h2ww-discovery-state {
+    @apply bg-discovery/10 border-discovery/20 text-discovery-900;
+  }
+
+  .h2ww-fundamentals-state {
+    @apply bg-ai-fundamentals/10 border-ai-fundamentals/20 text-ai-fundamentals-900;
+  }
+
+  .h2ww-mastery-state {
+    @apply bg-mastery/10 border-mastery/20 text-mastery-900;
+  }
+
+  .h2ww-progress-indicator {
+    @apply relative overflow-hidden rounded-full bg-muted;
+  }
+
+  .h2ww-progress-bar {
+    @apply h-full transition-all duration-500 ease-out;
+  }
+
+  .h2ww-discovery-progress {
+    @apply bg-gradient-to-r from-discovery to-creativity;
+  }
+
+  .h2ww-fundamentals-progress {
+    @apply bg-gradient-to-r from-ai-fundamentals to-creativity;
+  }
+
+  .h2ww-mastery-progress {
+    @apply bg-gradient-to-r from-mastery to-innovation;
+  }
+}
+
+/* Apple HIG Animation Utilities */
+@layer utilities {
+  /* Apple-style animations */
+  .animate-apple-fade-in {
+    animation: fadeIn 200ms var(--apple-ease-out);
+  }
+
+  .animate-apple-slide-in {
+    animation: slideIn 300ms var(--apple-ease-out);
+  }
+
+  .animate-apple-scale-in {
+    animation: scaleIn 200ms var(--apple-ease-out);
+  }
+
+  .animate-apple-bounce {
+    animation: bounce 300ms var(--apple-spring);
+  }
+
+  .animate-apple-press {
+    animation: press 100ms var(--apple-ease-in-out);
+  }
+
+  /* Apple-style transitions */
+  .transition-apple {
+    transition: all 200ms var(--apple-ease-out);
+  }
+
+  .transition-apple-slow {
+    transition: all 300ms var(--apple-ease-out);
+  }
+
+  .transition-apple-spring {
+    transition: all 400ms var(--apple-spring);
+  }
+
+  /* Touch target utilities */
+  .touch-target-min {
+    @apply min-h-touch-min min-w-touch-min;
+  }
+
+  .touch-target-comfortable {
+    @apply min-h-touch-comfortable min-w-touch-comfortable;
+  }
+
+  .touch-target-large {
+    @apply min-h-touch-large min-w-touch-large;
+  }
+
+  /* Apple-style interactive states */
+  .apple-button-style {
+    @apply transition-apple transform-gpu;
+  }
+
+  .apple-button-style:hover {
+    @apply scale-102 shadow-apple-2;
+  }
+
+  .apple-button-style:active {
+    @apply scale-98 shadow-apple-1;
+    transition-duration: 100ms;
+  }
+
+  /* Apple-style focus indicators */
+  .apple-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500;
+  }
+
+  /* Legacy animations */
+  .animate-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 300ms ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 200ms ease-out;
+  }
+
+  .transition-h2ww {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .transition-h2ww-slow {
+    @apply transition-all duration-500 ease-out;
+  }
+}

@@ -1,0 +1,316 @@
+{
+  "version": "1.0.0",
+  "description": "H2WW Design System - AI Learning Interface Components based on Human-AI Interaction Research & Bauhaus Principles",
+  "research_basis": {
+    "conversational_design": "Addresses blank page, iteration, input-output, scoping, and personalization challenges",
+    "obviousness_principle": "Leverages existing user mental models for intuitive AI interactions",
+    "multimodal_support": "Supports visual, textual, and progressive disclosure patterns",
+    "beyond_conversational": "Integrated, contextual, & multimodal AI interfaces that move beyond text-only interaction",
+    "contextual_intelligence": "Interfaces that understand user intent and provide clear system state signifiers",
+    "efficiency_principle": "Interactions remain outside input fields when words are less efficient",
+    "polyadic_interaction": "Supports complex human-human-AI social dynamics beyond simple transactional exchanges",
+    "ethical_boundaries": "Respects social boundaries and privacy in multi-party AI conversations",
+    "trust_mechanisms": "Built-in trust-building and disclosure mechanisms for ethical AI interaction",
+    "privacy_harm_prevention": "Implements comprehensive framework addressing 18 privacy harms and risks in conversational AI",
+    "conversation_context_awareness": "Adapts interaction patterns based on relationship stages and conversation purposes",
+    "functional_trust_model": "Emphasizes security, privacy, and transparency over emotional bonding in AI interactions",
+    "transactional_conversation_design": "Prioritizes task-oriented dialogue patterns suitable for human-AI interaction"
+  },
+  "components": {
+    "ai-companion-avatar": {
+      "type": "component",
+      "name": "AI Companion Avatar",
+      "width": 96,
+      "height": 96,
+      "backgroundColor": "#E53E3E",
+      "cornerRadius": 48
+    },
+    
+    "learning-card": {
+      "type": "component", 
+      "name": "H2WW Learning Card",
+      "width": 320,
+      "height": 180,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 12
+    },
+    
+    "geometric-button-primary": {
+      "type": "component",
+      "name": "Geometric Button Primary",
+      "width": 200,
+      "height": 48,
+      "backgroundColor": "#E53E3E",
+      "cornerRadius": 8
+    },
+    
+    "geometric-button-secondary": {
+      "type": "component",
+      "name": "Geometric Button Secondary", 
+      "width": 200,
+      "height": 48,
+      "backgroundColor": "transparent",
+      "cornerRadius": 8,
+      "stroke": "#3182CE",
+      "strokeWeight": "2px"
+    },
+    
+    "progress-indicator": {
+      "type": "component",
+      "name": "H2WW Progress Indicator",
+      "width": 400,
+      "height": 120,
+      "backgroundColor": "#F7FAFC",
+      "cornerRadius": 12
+    },
+    
+    "navigation-tab": {
+      "type": "component",
+      "name": "H2WW Navigation Tab",
+      "width": 120,
+      "height": 48,
+      "backgroundColor": "#F7FAFC",
+      "cornerRadius": 8
+    },
+    
+    "color-swatch-red": {
+      "type": "component",
+      "name": "H2WW Color Swatch Red",
+      "width": 200,
+      "height": 120,
+      "backgroundColor": "#E53E3E",
+      "cornerRadius": 8
+    },
+    
+    "color-swatch-blue": {
+      "type": "component",
+      "name": "H2WW Color Swatch Blue",
+      "width": 200,
+      "height": 120,
+      "backgroundColor": "#3182CE",
+      "cornerRadius": 8
+    },
+    
+    "color-swatch-yellow": {
+      "type": "component",
+      "name": "H2WW Color Swatch Yellow",
+      "width": 200,
+      "height": 120,
+      "backgroundColor": "#F6E05E",
+      "cornerRadius": 8
+    },
+    
+    "learning-dashboard-header": {
+      "type": "component",
+      "name": "H2WW Dashboard Header",
+      "width": 1200,
+      "height": 80,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 0
+    },
+    
+    "ai-guidance-panel": {
+      "type": "component",
+      "name": "AI Guidance Panel",
+      "description": "Addresses blank page problem with templates and suggestions",
+      "width": 400,
+      "height": 300,
+      "backgroundColor": "#F7FAFC",
+      "cornerRadius": 12,
+      "research_pattern": "blank_page_solution"
+    },
+    
+    "ai-capability-indicator": {
+      "type": "component",
+      "name": "AI Capability Indicator",
+      "description": "Communicates AI confidence and limitations transparently",
+      "width": 320,
+      "height": 80,
+      "backgroundColor": "#EBF8FF",
+      "cornerRadius": 8,
+      "stroke": "#3182CE",
+      "strokeWeight": "1px",
+      "research_pattern": "scoping_solution"
+    },
+    
+    "iteration-controls": {
+      "type": "component",
+      "name": "Iteration Controls",
+      "description": "Enables precise, incremental refinement of AI outputs",
+      "width": 280,
+      "height": 120,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 8,
+      "stroke": "#E2E8F0",
+      "strokeWeight": "1px",
+      "research_pattern": "iteration_solution"
+    },
+    
+    "multimodal-input": {
+      "type": "component",
+      "name": "Multimodal Input Interface",
+      "description": "Supports text, voice, and visual input modes",
+      "width": 480,
+      "height": 160,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 12,
+      "stroke": "#E2E8F0",
+      "strokeWeight": "2px",
+      "research_pattern": "input_output_solution"
+    },
+    
+    "personalization-widget": {
+      "type": "component",
+      "name": "Learning Style Personalization",
+      "description": "Adapts interface to individual cognitive preferences",
+      "width": 360,
+      "height": 200,
+      "backgroundColor": "#F6E05E",
+      "cornerRadius": 16,
+      "research_pattern": "personalization_solution"
+    },
+    
+    "contextual-ai-controls": {
+      "type": "component",
+      "name": "Contextual AI Controls",
+      "description": "Graphical controls that understand user intent beyond text",
+      "width": 400,
+      "height": 180,
+      "backgroundColor": "#EBF8FF",
+      "cornerRadius": 12,
+      "stroke": "#3182CE",
+      "strokeWeight": "2px",
+      "research_pattern": "beyond_conversational"
+    },
+    
+    "ai-state-indicator": {
+      "type": "component",
+      "name": "AI System State Indicator",
+      "description": "Clear signifiers of current AI capabilities and context",
+      "width": 320,
+      "height": 100,
+      "backgroundColor": "#F0FFF4",
+      "cornerRadius": 8,
+      "stroke": "#38A169",
+      "strokeWeight": "2px",
+      "research_pattern": "contextual_intelligence"
+    },
+    
+    "gesture-input-area": {
+      "type": "component",
+      "name": "Gesture & Visual Input Area",
+      "description": "Direct manipulation interface for non-text AI interaction",
+      "width": 480,
+      "height": 320,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 16,
+      "stroke": "#E2E8F0",
+      "strokeWeight": "3px",
+      "research_pattern": "multimodal_beyond_text"
+    },
+    
+    "predictive-learning-widget": {
+      "type": "component",
+      "name": "Predictive Learning Interface",
+      "description": "Algorithm-friendly interface with engagement feedback loops",
+      "width": 400,
+      "height": 240,
+      "backgroundColor": "#FFF5F5",
+      "cornerRadius": 12,
+      "stroke": "#E53E3E",
+      "strokeWeight": "1px",
+      "research_pattern": "predictive_personalized"
+    },
+    
+    "social-boundary-indicator": {
+      "type": "component",
+      "name": "Social Boundary Indicator",
+      "description": "Ethical AI component for polyadic interactions - respects social boundaries",
+      "width": 300,
+      "height": 120,
+      "backgroundColor": "#F0FFF4",
+      "cornerRadius": 8,
+      "stroke": "#38A169",
+      "strokeWeight": "2px",
+      "research_pattern": "polyadic_ethics"
+    },
+    
+    "privacy-disclosure-panel": {
+      "type": "component",
+      "name": "Privacy & Disclosure Panel",
+      "description": "Transparent privacy controls for conversational AI interactions",
+      "width": 400,
+      "height": 200,
+      "backgroundColor": "#FFFAF0",
+      "cornerRadius": 12,
+      "stroke": "#DD6B20",
+      "strokeWeight": "2px",
+      "research_pattern": "privacy_transparency"
+    },
+    
+    "trust-building-interface": {
+      "type": "component",
+      "name": "Trust Building Interface",
+      "description": "Component for establishing trust in polyadic human-AI interactions",
+      "width": 360,
+      "height": 180,
+      "backgroundColor": "#EDF2F7",
+      "cornerRadius": 12,
+      "stroke": "#4A5568",
+      "strokeWeight": "1px",
+      "research_pattern": "trust_building"
+    },
+    
+    "privacy-harm-prevention": {
+      "type": "component",
+      "name": "Privacy Harm Prevention Interface",
+      "description": "Addresses 9 privacy harms: monitoring, aggregation, linkability, identification, disclosure, insecurity, interrogation, behavioral manipulation, secondary use",
+      "width": 450,
+      "height": 220,
+      "backgroundColor": "#FFF5F5",
+      "cornerRadius": 12,
+      "stroke": "#E53E3E",
+      "strokeWeight": "2px",
+      "research_pattern": "solove_taxonomy_implementation"
+    },
+    
+    "conversation-context-adapter": {
+      "type": "component",
+      "name": "Conversation Context Adapter",
+      "description": "Adapts conversation style based on relationship stage: friend, acquaintance, stranger patterns",
+      "width": 400,
+      "height": 180,
+      "backgroundColor": "#F0FFF4",
+      "cornerRadius": 12,
+      "stroke": "#38A169",
+      "strokeWeight": "2px",
+      "research_pattern": "conversation_relationship_adaptation"
+    },
+    
+    "functional-trust-indicator": {
+      "type": "component",
+      "name": "Functional Trust Indicator",
+      "description": "Displays security, privacy, and transparency metrics rather than emotional trust",
+      "width": 320,
+      "height": 120,
+      "backgroundColor": "#FFFBEB",
+      "cornerRadius": 8,
+      "stroke": "#D69E2E",
+      "strokeWeight": "2px",
+      "research_pattern": "functional_vs_emotional_trust"
+    },
+    
+    "transactional-conversation-frame": {
+      "type": "component",
+      "name": "Transactional Conversation Frame",
+      "description": "Task-oriented conversation container for AI interactions",
+      "width": 480,
+      "height": 200,
+      "backgroundColor": "#FFFFFF",
+      "cornerRadius": 12,
+      "stroke": "#718096",
+      "strokeWeight": "2px",
+      "research_pattern": "transactional_over_social"
+    }
+  }
+}

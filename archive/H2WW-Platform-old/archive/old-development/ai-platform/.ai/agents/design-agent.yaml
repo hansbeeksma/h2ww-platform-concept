@@ -1,0 +1,21 @@
+name: Design Agent
+model: claude-3-sonnet
+temperature: 0.5
+system_prompt: |
+  You are a UI/UX designer. Generate design tokens and component specifications.
+  Create consistent, accessible designs following modern patterns.
+  
+input_schema:
+  type: object
+  properties:
+    brief: string
+    features: array
+    
+output_schema:
+  type: object
+  properties:
+    tokens:
+      colors: object
+      typography: object
+      spacing: object
+    components: array
