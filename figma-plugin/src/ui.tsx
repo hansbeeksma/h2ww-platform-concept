@@ -59,7 +59,6 @@ const App: React.FC = () => {
   const [aiAnalysis, setAiAnalysis] = useState<AIAnalysis | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSelection, setHasSelection] = useState(false);
-<<<<<<< HEAD
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -69,10 +68,6 @@ const App: React.FC = () => {
       setIsReady(true);
     }, 1000);
 
-=======
-
-  useEffect(() => {
->>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
     // Listen for messages from main thread
     window.onmessage = (event) => {
       const { type, data } = event.data.pluginMessage || {};
@@ -80,11 +75,8 @@ const App: React.FC = () => {
       switch (type) {
         case 'plugin-ready':
           console.log('Plugin ready');
-<<<<<<< HEAD
           setIsReady(true);
           clearTimeout(readyTimeout);
-=======
->>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
           // Request current selection
           parent.postMessage({ pluginMessage: { type: 'get-selection' } }, '*');
           break;
@@ -112,11 +104,8 @@ const App: React.FC = () => {
           console.log('Unknown message type:', type);
       }
     };
-<<<<<<< HEAD
 
     return () => clearTimeout(readyTimeout);
-=======
->>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
   }, []);
 
   const createComponent = (component: AnxietyAwareComponent) => {
@@ -132,45 +121,51 @@ const App: React.FC = () => {
   const analyzeSelection = () => {
     setIsLoading(true);
     parent.postMessage({
-      pluginMessage: { type: 'analyze-selection' }
+      pluginMessage: {
+        type: 'analyze-selection'
+      }
+    }, '*');
+  };
+
+  const applyDesignTokens = (tokens: any) => {
+    parent.postMessage({
+      pluginMessage: {
+        type: 'design-tokens',
+        tokens
+      }
+    }, '*');
+  };
+
+  const runAccessibilityCheck = () => {
+    parent.postMessage({
+      pluginMessage: {
+        type: 'accessibility-check'
+      }
     }, '*');
   };
 
   const renderLibraryView = () => (
     <div>
       <div className="anxiety-aware-notice">
-        💡 <strong>Anxiety-Aware Design:</strong> These components are specifically designed to reduce user anxiety and build confidence through thoughtful interaction patterns.
+        🧠 H2WW Anxiety-Aware Components - Designed to reduce user stress and build confidence
       </div>
 
       <div className="section">
-        <div className="section-title">🔹 Atoms (Basic Components)</div>
+        <div className="section-title">Component Library</div>
         <div className="component-grid">
-          {anxietyAwareComponents.filter(c => c.category === 'atom').map(component => (
+          {anxietyAwareComponents.map((component) => (
             <div
               key={component.id}
               className={`component-card ${selectedComponent?.id === component.id ? 'selected' : ''}`}
               onClick={() => setSelectedComponent(component)}
             >
-              <div style={{ fontSize: '12px', fontWeight: '600' }}>{component.name}</div>
-              <div className={`anxiety-level ${component.variants[0].anxietyLevel.replace('-', '')}`}>
-                {component.variants[0].anxietyLevel} anxiety
+              <div style={{ fontWeight: 600, marginBottom: '4px' }}>
+                {component.name}
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="section">
-        <div className="section-title">🔸 Molecules (Combined Components)</div>
-        <div className="component-grid">
-          {anxietyAwareComponents.filter(c => c.category === 'molecule').map(component => (
-            <div
-              key={component.id}
-              className={`component-card ${selectedComponent?.id === component.id ? 'selected' : ''}`}
-              onClick={() => setSelectedComponent(component)}
-            >
-              <div style={{ fontSize: '12px', fontWeight: '600' }}>{component.name}</div>
-              <div className={`anxiety-level ${component.variants[0].anxietyLevel.replace('-', '')}`}>
+              <div style={{ fontSize: '11px', color: '#666', marginBottom: '4px' }}>
+                {component.category}
+              </div>
+              <div className={`anxiety-level ${component.variants[0].anxietyLevel.replace('-', ' ')}`}>
                 {component.variants[0].anxietyLevel} anxiety
               </div>
             </div>
@@ -180,29 +175,30 @@ const App: React.FC = () => {
 
       {selectedComponent && (
         <div className="section">
-          <div className="section-title">📋 Component Details</div>
+          <div className="section-title">Component Details</div>
           <div style={{ background: 'white', padding: '12px', borderRadius: '6px', border: '1px solid #D8D8D8' }}>
-            <div style={{ fontWeight: '600', marginBottom: '8px' }}>{selectedComponent.name}</div>
-            <div style={{ fontSize: '13px', color: '#4A4A4A', marginBottom: '8px' }}>
-              {selectedComponent.usageGuidelines}
-            </div>
+            <div style={{ fontWeight: 600, marginBottom: '8px' }}>{selectedComponent.name}</div>
 
             <div style={{ marginBottom: '8px' }}>
-              <strong>Anxiety Reduction:</strong>
-              <ul style={{ marginLeft: '16px', fontSize: '12px' }}>
-                {selectedComponent.anxietyReduction.map((item, index) => (
-                  <li key={index}>{item}</li>
+              <strong>Anxiety Reduction Features:</strong>
+              <ul style={{ margin: '4px 0', paddingLeft: '16px', fontSize: '13px' }}>
+                {selectedComponent.anxietyReduction.map((feature, index) => (
+                  <li key={index}>{feature}</li>
                 ))}
               </ul>
             </div>
 
             <div style={{ marginBottom: '12px' }}>
-              <strong>Accessibility:</strong>
-              <ul style={{ marginLeft: '16px', fontSize: '12px' }}>
-                {selectedComponent.accessibilityFeatures.map((item, index) => (
-                  <li key={index}>{item}</li>
+              <strong>Accessibility Features:</strong>
+              <ul style={{ margin: '4px 0', paddingLeft: '16px', fontSize: '13px' }}>
+                {selectedComponent.accessibilityFeatures.map((feature, index) => (
+                  <li key={index}>{feature}</li>
                 ))}
               </ul>
+            </div>
+
+            <div style={{ marginBottom: '12px', fontSize: '13px', fontStyle: 'italic', color: '#666' }}>
+              {selectedComponent.usageGuidelines}
             </div>
 
             <button
@@ -218,183 +214,159 @@ const App: React.FC = () => {
     </div>
   );
 
+  const renderTokensView = () => (
+    <div>
+      <div className="section">
+        <div className="section-title">Calm Confidence Design Tokens</div>
+
+        <div style={{ marginBottom: '16px' }}>
+          <strong>Primary Colors</strong>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '8px' }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                background: calmConfidenceTokens.colors.primary.blue,
+                borderRadius: '4px',
+                marginRight: '8px'
+              }} />
+              <div>
+                <div style={{ fontSize: '13px', fontWeight: 600 }}>Trust Blue</div>
+                <div style={{ fontSize: '11px', color: '#666' }}>{calmConfidenceTokens.colors.primary.blue}</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{
+                width: '32px',
+                height: '32px',
+                background: calmConfidenceTokens.colors.primary.light,
+                borderRadius: '4px',
+                marginRight: '8px'
+              }} />
+              <div>
+                <div style={{ fontSize: '13px', fontWeight: 600 }}>Calm Light</div>
+                <div style={{ fontSize: '11px', color: '#666' }}>{calmConfidenceTokens.colors.primary.light}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          className="button secondary"
+          onClick={() => applyDesignTokens({ color: calmConfidenceTokens.colors.primary.blue })}
+        >
+          Apply Trust Blue
+        </button>
+        <button
+          className="button secondary"
+          onClick={() => applyDesignTokens({ color: calmConfidenceTokens.colors.semantic.success })}
+        >
+          Apply Success Green
+        </button>
+      </div>
+    </div>
+  );
+
   const renderAIAssistantView = () => (
     <div>
-      <div className="anxiety-aware-notice">
-        🤖 <strong>AI Assistant:</strong> Get anxiety-aware design recommendations and accessibility improvements for your selected elements.
-      </div>
-
       <div className="section">
+        <div className="section-title">AI-Powered Analysis</div>
+
+        <div className="anxiety-aware-notice">
+          🤖 Select elements on your canvas to analyze cognitive load and anxiety patterns
+        </div>
+
         <button
           className="button"
           onClick={analyzeSelection}
-          disabled={isLoading || !hasSelection}
+          disabled={!hasSelection || isLoading}
         >
           {isLoading ? 'Analyzing...' : 'Analyze Selection'}
         </button>
 
         {!hasSelection && (
-          <div style={{ textAlign: 'center', color: '#9B9B9B', fontSize: '13px', marginTop: '8px' }}>
-            Select elements in Figma to get AI recommendations
+          <div style={{ fontSize: '13px', color: '#666', marginTop: '8px' }}>
+            Please select elements in Figma to enable analysis
           </div>
         )}
-      </div>
 
-      {aiAnalysis && (
-        <div className="section">
-          <div className="section-title">📊 Analysis Results</div>
+        {aiAnalysis && (
+          <div style={{ marginTop: '16px', background: 'white', padding: '12px', borderRadius: '6px' }}>
+            <div style={{ fontWeight: 600, marginBottom: '8px' }}>Analysis Results</div>
 
-          <div style={{ background: 'white', padding: '12px', borderRadius: '6px', border: '1px solid #D8D8D8', marginBottom: '12px' }}>
-            <div style={{ fontWeight: '600', marginBottom: '8px' }}>Cognitive Load Score</div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{
-                width: '100px',
-                height: '8px',
-                background: '#EAF3FB',
-                borderRadius: '4px',
-                overflow: 'hidden'
-              }}>
-                <div style={{
-                  width: `${(10 - aiAnalysis.cognitiveLoad) * 10}%`,
-                  height: '100%',
-                  background: aiAnalysis.cognitiveLoad > 7 ? '#E85D75' : '#7ED321',
-                  transition: 'width 0.3s ease'
-                }} />
+            <div style={{ marginBottom: '8px' }}>
+              <strong>Cognitive Load Score:</strong> {aiAnalysis.cognitiveLoad}/10
+              {aiAnalysis.cognitiveLoad > 7 && (
+                <div style={{ color: '#E85D75', fontSize: '12px' }}>⚠️ High cognitive load detected</div>
+              )}
+            </div>
+
+            {aiAnalysis.anxietyPatterns.length > 0 && (
+              <div style={{ marginBottom: '8px' }}>
+                <strong>Anxiety Patterns:</strong>
+                <ul style={{ margin: '4px 0', paddingLeft: '16px', fontSize: '12px' }}>
+                  {aiAnalysis.anxietyPatterns.map((pattern, index) => (
+                    <li key={index} style={{ color: '#E85D75' }}>{pattern}</li>
+                  ))}
+                </ul>
               </div>
-              <span style={{ fontSize: '12px' }}>
-                {aiAnalysis.cognitiveLoad}/10 {aiAnalysis.cognitiveLoad > 7 ? '(High - Reduce complexity)' : '(Good)'}
-              </span>
-            </div>
+            )}
+
+            {aiAnalysis.recommendations.length > 0 && (
+              <div>
+                <strong>Recommendations:</strong>
+                <ul style={{ margin: '4px 0', paddingLeft: '16px', fontSize: '12px' }}>
+                  {aiAnalysis.recommendations.map((rec, index) => (
+                    <li key={index} style={{ color: calmConfidenceTokens.colors.primary.blue }}>
+                      {rec.description}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-
-          {aiAnalysis.anxietyPatterns.length > 0 && (
-            <div style={{ background: '#FDF2F4', padding: '12px', borderRadius: '6px', marginBottom: '12px' }}>
-              <div style={{ fontWeight: '600', marginBottom: '8px', color: '#E85D75' }}>⚠️ Anxiety Patterns Found</div>
-              {aiAnalysis.anxietyPatterns.map((pattern, index) => (
-                <div key={index} style={{ fontSize: '12px', marginBottom: '4px' }}>• {pattern}</div>
-              ))}
-            </div>
-          )}
-
-          {aiAnalysis.recommendations.length > 0 && (
-            <div style={{ background: '#F0F9E8', padding: '12px', borderRadius: '6px' }}>
-              <div style={{ fontWeight: '600', marginBottom: '8px', color: '#7ED321' }}>💡 AI Recommendations</div>
-              {aiAnalysis.recommendations.map((rec, index) => (
-                <div key={index} style={{ fontSize: '12px', marginBottom: '8px', borderLeft: '2px solid #7ED321', paddingLeft: '8px' }}>
-                  <div style={{ fontWeight: '500' }}>{rec.description}</div>
-                  <div style={{ color: '#4A4A4A' }}>Solution: {rec.solution}</div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-    </div>
-  );
-
-  const renderTokensView = () => (
-    <div>
-      <div className="section-title">🎨 Calm Confidence Design Tokens</div>
-
-      <div className="section">
-        <div style={{ fontWeight: '500', marginBottom: '8px' }}>Primary Colors</div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', marginBottom: '16px' }}>
-          {Object.entries(calmConfidenceTokens.colors.primary).map(([name, color]) => (
-            <div key={name} style={{ textAlign: 'center' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                background: color,
-                borderRadius: '6px',
-                margin: '0 auto 4px',
-                border: '1px solid #D8D8D8'
-              }} />
-              <div style={{ fontSize: '11px', fontWeight: '500' }}>{name}</div>
-              <div style={{ fontSize: '10px', color: '#9B9B9B' }}>{color}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="section">
-        <div style={{ fontWeight: '500', marginBottom: '8px' }}>Semantic Colors</div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
-          {Object.entries(calmConfidenceTokens.colors.semantic).map(([name, color]) => (
-            <div key={name} style={{ textAlign: 'center' }}>
-              <div style={{
-                width: '40px',
-                height: '40px',
-                background: color,
-                borderRadius: '6px',
-                margin: '0 auto 4px',
-                border: '1px solid #D8D8D8'
-              }} />
-              <div style={{ fontSize: '11px', fontWeight: '500' }}>{name}</div>
-              <div style={{ fontSize: '10px', color: '#9B9B9B' }}>{color}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="section">
-        <div style={{ fontWeight: '500', marginBottom: '8px' }}>Typography Scale</div>
-        {Object.entries(calmConfidenceTokens.typography.scale).map(([name, size]) => (
-          <div key={name} style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '8px 0',
-            borderBottom: '1px solid #F0F0F0'
-          }}>
-            <span style={{ fontSize: size, fontWeight: '500' }}>Aa</span>
-            <span style={{ fontSize: '12px' }}>{name}</span>
-            <span style={{ fontSize: '11px', color: '#9B9B9B' }}>{size}</span>
-          </div>
-        ))}
+        )}
       </div>
     </div>
   );
 
   const renderAccessibilityView = () => (
     <div>
-      <div className="anxiety-aware-notice">
-        ♿ <strong>Accessibility First:</strong> Check and improve the accessibility of your designs with WCAG AA+ compliance.
-      </div>
-
       <div className="section">
-        <button className="button" disabled={!hasSelection}>
-          Check Accessibility
-        </button>
-        <button className="button secondary">
-          Auto-Fix Issues
-        </button>
-      </div>
+        <div className="section-title">Accessibility Validator</div>
 
-      <div className="section">
-        <div className="section-title">✅ Accessibility Checklist</div>
-        <div style={{ background: 'white', padding: '12px', borderRadius: '6px', border: '1px solid #D8D8D8' }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ color: '#7ED321', marginRight: '8px' }}>✓</span>
-            Color contrast 4.5:1 minimum
+        <div className="anxiety-aware-notice">
+          ♿ WCAG AA+ compliance checking with anxiety-aware enhancements
+        </div>
+
+        <button
+          className="button"
+          onClick={runAccessibilityCheck}
+          disabled={!hasSelection}
+        >
+          Run Accessibility Check
+        </button>
+
+        {!hasSelection && (
+          <div style={{ fontSize: '13px', color: '#666', marginTop: '8px' }}>
+            Please select elements in Figma to check accessibility
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ color: '#7ED321', marginRight: '8px' }}>✓</span>
-            Touch targets 44px minimum
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-            <span style={{ color: '#F5A623', marginRight: '8px' }}>⚠</span>
-            Alt text for images
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <span style={{ color: '#7ED321', marginRight: '8px' }}>✓</span>
-            Keyboard navigation
-          </div>
+        )}
+
+        <div style={{ marginTop: '16px', background: 'white', padding: '12px', borderRadius: '6px' }}>
+          <div style={{ fontWeight: 600, marginBottom: '8px' }}>Quick Guidelines</div>
+          <ul style={{ fontSize: '13px', paddingLeft: '16px' }}>
+            <li>Touch targets: minimum 44x44px</li>
+            <li>Color contrast: 4.5:1 (AA) or 7:1 (AAA)</li>
+            <li>Text size: minimum 16px for body text</li>
+            <li>Focus indicators: visible and high contrast</li>
+            <li>Screen reader labels: descriptive and complete</li>
+          </ul>
         </div>
       </div>
     </div>
   );
 
-<<<<<<< HEAD
   // Show loading state until ready
   if (!isReady) {
     return (
@@ -417,8 +389,6 @@ const App: React.FC = () => {
     );
   }
 
-=======
->>>>>>> c7121eeb27ecf1c56a0825ced716cd4bc0060b8a
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
@@ -430,27 +400,28 @@ const App: React.FC = () => {
       <div style={{
         display: 'flex',
         background: 'white',
-        borderBottom: '1px solid #D8D8D8',
-        fontSize: '12px'
+        borderBottom: '1px solid #D8D8D8'
       }}>
         {[
-          { key: 'library', label: '📚 Library', view: 'library' },
-          { key: 'tokens', label: '🎨 Tokens', view: 'tokens' },
-          { key: 'ai', label: '🤖 AI', view: 'ai-assistant' },
-          { key: 'a11y', label: '♿ A11y', view: 'accessibility' }
-        ].map(({ key, label, view }) => (
+          { key: 'library', label: 'Library' },
+          { key: 'tokens', label: 'Tokens' },
+          { key: 'ai-assistant', label: 'AI Assistant' },
+          { key: 'accessibility', label: 'A11y' }
+        ].map(({ key, label }) => (
           <button
             key={key}
             style={{
               flex: 1,
-              padding: '8px 4px',
+              padding: '12px 8px',
+              fontSize: '13px',
+              fontWeight: 500,
               border: 'none',
-              background: currentView === view ? '#EAF3FB' : 'transparent',
-              color: currentView === view ? '#4A90E2' : '#4A4A4A',
+              background: currentView === key ? '#EAF3FB' : 'transparent',
+              color: currentView === key ? '#4A90E2' : '#4A4A4A',
               cursor: 'pointer',
-              borderBottom: currentView === view ? '2px solid #4A90E2' : 'none'
+              borderBottom: currentView === key ? '2px solid #4A90E2' : 'none'
             }}
-            onClick={() => setCurrentView(view as any)}
+            onClick={() => setCurrentView(key as any)}
           >
             {label}
           </button>
